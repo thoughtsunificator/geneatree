@@ -1,0 +1,22 @@
+{
+	"short_name": "geneatree",
+	"name": "geneatree",
+	"description": "Family tree maker",
+	"icons": [
+		{
+			"src": "/resource/icons/192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/resource/icons/512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": "/?source=pwa",
+	"background_color": "#00000052",
+	"display": "standalone",
+	"scope": "/",
+	"theme_color": "#8a7575"
+}

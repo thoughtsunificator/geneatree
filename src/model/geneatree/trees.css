@@ -1,0 +1,94 @@
+#trees {
+	display: grid;
+	overflow: hidden;
+	color: white;
+	position: relative;
+	width: 20vw;
+	background-color: rgb(138, 117, 117);
+	border-width: 1px 1px 0;
+	border-style: solid;
+	border-color: rgb(62, 60, 60) rgb(62, 60, 60);
+	border-image: initial;
+	z-index: 2;
+	grid-template-rows: auto auto 1fr;
+	border-top: 0;
+}
+
+#trees .logo {
+	text-align: center;
+	padding-top: var(--SIZE_XXS);
+	padding-bottom: 10px;
+	background-color: #8a75759e;
+}
+
+#trees .tree {
+	display: grid;
+	grid-template-columns: 25px minmax(0, 1fr) auto;
+	color: rgb(242, 242, 242);
+	border-bottom: 2px solid rgba(0, 0, 0, 0.22);
+	box-shadow: rgba(255, 255, 255, 0.24) 0px 1px;
+	padding: var(--SIZE_XXS);
+	align-items: center;
+	padding: 0.7em;
+}
+
+#trees .tree.active {
+	border-right: 2px solid #ffe3e3;
+	background-color: #829982;
+}
+
+#trees .tree:not(.active) {
+	color: #c6c4c4 !important;
+}
+
+#trees .tree:hover {
+	color: white !important;
+}
+
+#trees .edit-icon {
+	background-color: transparent;
+	border: 0;
+	padding: 0;
+}
+
+#trees .tree:not(.active) .edit-icon {
+	display: none;
+}
+
+#trees .filter {
+	border: 0;
+	width: 100%;
+	padding: 10px;
+	padding-right:35px;
+	background-color: #6f5b5b;
+	border-bottom: 1px solid #3c3c3c;
+	border-top: 2px solid rgba(0, 0, 0, 0.22);
+	box-shadow: 0px -1px #ffffff3d;
+	color: #ffffffc2;
+}
+
+
+#trees .filter::placeholder {
+	color: #dddddd;
+}
+
+#trees #search > div {
+	display: grid;
+}
+
+#trees #search input {
+	grid-column: 1;
+	grid-row: 1;
+}
+
+#trees #search div:after {
+	content: "🔍";
+	position: relative;
+	grid-column: 1;
+	grid-row: 1;
+	align-self: center;
+	justify-self: end;
+	font-size: 1.2em;
+	margin-right: 5px;
+	pointer-events: none;
+}

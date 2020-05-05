@@ -1,0 +1,14 @@
+.grid {
+	display: grid;
+	grid-auto-flow: column;
+}
+
+.column {
+	display: grid;
+}
+
+.cell .content {
+	left: 0;
+	right: 0;
+	position: relative;
+}

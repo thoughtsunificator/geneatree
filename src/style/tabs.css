@@ -1,0 +1,41 @@
+.tabs {
+	display: grid;
+	grid-gap: 15px;
+	grid-auto-rows: max-content;
+}
+
+.tabs > .indicators {
+	display: grid;
+	grid-auto-flow: column;
+}
+
+.tabs > .indicators > .indicator {
+	text-align: center;
+	background-color: #dfc7c7;
+	padding: var(--SIZE_XXS);
+	border-top: 1px solid gray;
+	border-bottom: 2px solid gray;
+}
+
+.tabs > .indicators > .indicator:nth-child(even) {
+	border-left: 1px solid #958080;
+	border-right: 1px solid #958080;
+}
+
+.tabs > .indicators > .indicator.active {
+	background-color: #bfa3a37a;
+	border-bottom: 0;
+}
+
+.tabs > .tabs .tab {
+	padding: 20px;
+}
+
+.tabs > .tabs .tab:not(.active) {
+	visibility: hidden;
+	position: absolute;
+	height: 0;
+	padding: 0!important;
+	width: 0;
+	overflow: hidden;
+}

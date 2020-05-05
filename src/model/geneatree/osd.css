@@ -1,0 +1,30 @@
+#osd {
+	position: fixed;
+	right: var(--SIZE_XS);
+	top: var(--SIZE_XS);
+	z-index: 1;
+	display: grid;
+	grid-gap: var(--SIZE_XS);
+	place-items: end;
+	place-content: end;
+	pointer-events: none;
+}
+
+#osd .message {
+	color: white;
+	border: 1px solid #666161;
+	padding: var(--SIZE_XS);
+	background-color: rgba(15, 15, 15, 0.77);
+	border-bottom: 2px solid #000 !important;
+}
+
+#osd .message.error {
+	background-color: rgba(204, 77, 77, 0.77);
+	border-bottom: 2px solid #605555 !important;
+}
+
+#osd .message.valid {
+	color: black;
+	background-color: #b9dbb9;
+	border-bottom: 2px solid #6f8c72 !important;
+}

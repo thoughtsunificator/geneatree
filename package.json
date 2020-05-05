@@ -1,0 +1,58 @@
+{
+	"name": "geneatree",
+	"description": "Family Tree Maker",
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/thoughtsunificator/geneatree.git"
+	},
+	"bugs": {
+		"url": "https://github.com/thoughtsunificator/geneatree/issues"
+	},
+	"homepage": "https://github.com/thoughtsunificator/geneatree#readme",
+	"author": "Romain Lebesle <oss@thoughtsunificator.me> (https://thoughtsunificator.me)",
+	"scripts": {
+		"start": "rollup --config rollup.config.js --watch --environment BUILD:development",
+		"build": "rollup --config rollup.config.js --environment BUILD:production",
+		"test": "web-test-runner \"test/**/*.test.js\" --node-resolve",
+		"generate-docs": "jsdoc --configure .jsdoc.json --verbose",
+		"eslint": "eslint 'src/**/*.js'",
+		"stylelint": "stylelint 'src/**/*.css'"
+	},
+	"devDependencies": {
+		"@esm-bundle/chai": "^4.3.4-fix.0",
+		"@rollup/plugin-node-resolve": "^15.0.1",
+		"@thoughtsunificator/rollup-plugin-window-env": "^1.0.7",
+		"@web/test-runner": "^0.13.22",
+		"docdash": "^1.2.0",
+		"eslint": "^8.5.0",
+		"eslint-import-resolver-custom-alias": "^1.3.0",
+		"eslint-import-resolver-node": "^0.3.6",
+		"eslint-plugin-eslint-plugin": "^4.1.0",
+		"eslint-plugin-import": "^2.25.3",
+		"jsdoc": "^3.6.7",
+		"postcss": "^8.4.5",
+		"postcss-easy-import": "^3.0.0",
+		"postcss-import": "^14.0.2",
+		"rollup": "^3.7.5",
+		"rollup-plugin-copy-watch": "^0.0.1",
+		"rollup-plugin-livereload": "^2.0.5",
+		"rollup-plugin-postcss": "^4.0.2",
+		"rollup-plugin-serve": "^2.0.2",
+		"rollup-plugin-worker-factory": "^0.5.7",
+		"stylelint": "^14.1.0",
+		"stylelint-config-standard": "^24.0.0"
+	},
+	"dependencies": {
+		"@domodel/form": "^0.0.15",
+		"@domodel/paginator": "^1.0.13",
+		"@domodel/router": "^1.0.50",
+		"@domodel/steps": "^1.0.17",
+		"@domodel/tabs": "^1.0.16",
+		"@thoughtsunificator/gedcom-parser": "^1.0.8",
+		"@thoughtsunificator/grid": "^1.0.11",
+		"@wwa/rollup-plugin-terser": "^1.0.1",
+		"css-generics": "^1.0.8",
+		"domodel": "^1.0.56"
+	}
+}

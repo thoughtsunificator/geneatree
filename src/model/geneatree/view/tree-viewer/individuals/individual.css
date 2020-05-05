@@ -1,0 +1,78 @@
+#tree-viewer-individuals .column,
+#tree-viewer-individuals .grid {
+	grid-gap: 20px;
+}
+
+#tree-viewer-individuals .individual {
+	display: grid;
+	grid-gap: 20px;
+}
+
+#tree-viewer-individuals .individual .self {
+	position: relative;
+	text-align: center;
+	border-left: 3px solid #445;
+	border: 1px solid black;
+	border-radius: var(--SIZE_XXS);
+	font-size: var(--SIZE_SMALL);
+	color: black;
+	box-shadow: 5px 5px 4px #4d4545;
+}
+
+#tree-viewer-individuals .individual .self.man {
+	background-color: lightblue;
+}
+
+#tree-viewer-individuals .individual .self.woman {
+	background-color: pink;
+}
+
+#tree-viewer-individuals .individual .self.unknown {
+	background-color: #cac4be;
+}
+
+#tree-viewer-individuals .individual .self.decujus {
+	border: 1px solid gold;
+}
+
+#tree-viewer-individuals .individual .self:hover:before {
+	text-decoration: underline;
+	background: #9f9f9fb3 !important;
+	width: 100%;
+	height: 100%;
+	content: "Edit";
+	color: white;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-radius: 4px;
+	display: grid;
+	place-content: center;
+}
+
+#tree-viewer-individuals .individual .placeholder {
+	display: none;
+}
+
+#tree-viewer-individuals .individual .settings {
+	display: none;
+}
+
+#tree-viewer-individuals .individual.selected .root:hover .settings {
+	display: block;
+}
+
+#tree-viewer-individuals .individual.selected .placeholder {
+	display: grid;
+}
+
+#tree-viewer-individuals .individual .placeholder {
+	place-content: center;
+	background-color: transparent;
+	border: 1px solid black;
+	border-radius: var(--SIZE_XXS);
+}
+
+#tree-viewer-individuals .individual .placeholder:hover {
+	background-color: #ffffff41 !important;
+}

@@ -1,0 +1,10 @@
+#tree-viewer {
+	overflow: hidden;
+	position: relative;
+}
+
+#tree-viewer-explorer {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}

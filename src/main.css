@@ -1,0 +1,51 @@
+@import "css-generics";
+@import "@domodel/paginator";
+@import "@domodel/steps";
+@import "@domodel/tabs";
+@import "./model/**/*.css"; /* handled at build time by postcss-easy-import */
+@import "./style/**/*.css"; /* handled at build time by postcss-easy-import */
+
+* {
+	outline: none;
+}
+
+button {
+	border: 1px solid #7e7e7e;
+	font-size: 1em;
+}
+
+label > div {
+	margin-top: var(--SIZE_XXS);
+}
+
+.sidelines {
+	position: relative;
+}
+
+.sidelines:before {
+	width: 75px;
+	display: block;
+	content: "";
+	background-color: black;
+	height: 1px;
+	top: 0;
+	left: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+
+.sidelines:after {
+	width: 75px;
+	display: block;
+	content: "";
+	background-color: black;
+	height: 1px;
+	top: 0;
+	right: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}

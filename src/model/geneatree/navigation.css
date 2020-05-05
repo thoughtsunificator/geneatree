@@ -1,0 +1,38 @@
+#navigation {
+	display: grid;
+	place-content: center;
+	position: sticky;
+	bottom: 0;
+}
+
+#navigation .items {
+	display: grid;
+	grid-gap: var(--SIZE_XXS);
+	padding: var(--SIZE_XXS);
+	grid-auto-flow: column;
+}
+
+#router.viewer #navigation {
+	position: absolute;
+	margin: auto;
+	width: 100%;
+}
+
+#router:not(.viewer) + #osd + #navigation .items {
+	background-color: rgb(200, 177, 177);
+}
+
+#navigation button {
+	padding: var(--SIZE_XXS) var(--SIZE_XS);
+	background-color: transparent;
+	color: #000000a3;
+	border-bottom: 2px solid #392727;
+}
+
+#navigation button:hover {
+	background-color: #ffffff24;
+}
+
+#navigation button.active {
+	background-color: #0404041a;
+}

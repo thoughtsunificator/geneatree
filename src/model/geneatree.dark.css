@@ -1,0 +1,30 @@
+.theme-dark #router.viewer {
+	background-color: #000000d4;
+	border-left: 1px solid #5d5b5b;
+}
+
+.theme-dark #trees-toggle {
+	background-color: transparent;
+	border: 1px solid gray;
+}
+
+.theme-dark #osd {
+	background-color: rgba(255, 255, 255, 0.14);
+}
+
+.theme-dark #tree-viewer-individuals .individual .placeholder {
+	border-color: #ffffff66;
+}
+
+.theme-dark #router.viewer + #navigation button {
+	color: white;
+	border: 1px solid white;
+}
+
+.theme-dark #router.viewer + #osd + #navigation .items {
+	background-color: #2b2b2b;
+}
+
+.theme-dark #router.viewer + #osd + #navigation .items button {
+	color: white
+}
