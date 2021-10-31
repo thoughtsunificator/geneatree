@@ -1,0 +1,10 @@
+#view-tree .tab-individuals .individual {
+	background-color: #887a7a33;
+	color: #423535e0;
+	padding: 7px;
+	text-align: center;
+}
+
+#view-tree .tab-individuals .individual:hover {
+	background-color: #887a7a53;
+}

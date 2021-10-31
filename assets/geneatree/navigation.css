@@ -1,0 +1,25 @@
+#navigation {
+	position: fixed;
+	display: grid;
+	padding: var(--SIZE_XXS);
+	right: 0;
+	background-color: transparent;
+	bottom: 0;
+	z-index: 1;
+	grid-gap: var(--SIZE_XXS);
+	grid-auto-flow: column;
+	border: 1px solid #06060659;
+	border-bottom: 0;
+}
+
+#navigation button {
+	padding: var(--SIZE_XXS) var(--SIZE_XS);
+	background-color: transparent;
+	color: #000000a3;
+	border-bottom: 2px solid #392727;
+}
+
+#navigation button:hover {
+	text-decoration: underline;
+	background-color: #ffffff24;
+}

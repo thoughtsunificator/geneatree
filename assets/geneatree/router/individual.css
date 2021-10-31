@@ -1,0 +1,49 @@
+#view-individual .tab-individual .man {
+	background-color: #add8e68a;
+}
+
+#view-individual .tab-individual .woman {
+	background-color: #ffc0cb68;
+}
+
+#view-individual .tab-individual .unknown {
+	background-color: #cac4be;
+}
+
+#view-individual .tab-individual .decujus {
+	border: 1px solid gold;
+}
+
+#view-individual .tab-notes .note {
+	background-color: #9e8d8d47;
+	padding: var(--SIZE_XXS);
+	word-break: break-word
+}
+
+#view-individual .tab-notes .actions {
+	display: grid;
+	grid-auto-flow: column;
+	gap: var(--SIZE_XXS);
+	margin-top: var(--SIZE_XXS);
+	border-top: 1px solid #755b5b;
+	padding-top: var(--SIZE_XXS);
+	background-color: #6c69692e;
+	padding: 7px 30px;
+}
+
+
+#view-individual .tab-relationships .individual.man {
+	background-color: lightblue;
+}
+
+#view-individual .tab-relationships .individual.woman {
+	background-color: pink;
+}
+
+#view-individual .tab-relationships .individual.unknown {
+	background-color: #cac4be;
+}
+
+#view-individual .tab-relationships .individual.decujus {
+	border: 1px solid gold;
+}

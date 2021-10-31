@@ -1,0 +1,52 @@
+{
+	"name": "geneatree",
+	"main": "index.js",
+	"description": "Family tree maker",
+	"scripts": {
+		"generate-docs": "jsdoc --configure .jsdoc.json --verbose",
+		"lint": "eslint src/**/*.js",
+		"start": "rollup --config rollup.config.dev.mjs --watch",
+		"build": "rollup --config rollup.config.prod.mjs"
+	},
+	"devDependencies": {
+		"@rollup/plugin-alias": "^3.1.2",
+		"@rollup/plugin-commonjs": "^19.0.0",
+		"@rollup/plugin-node-resolve": "^13.0.0",
+		"@thoughtsunificator/rollup-plugin-config-env": "^1.1.0",
+		"eslint": "^7.28.0",
+		"jsdom": "^16.6.0",
+		"postcss": "^8.3.7",
+		"postcss-easy-import": "^3.0.0",
+		"postcss-import": "^14.0.2",
+		"postcss-import-ext-glob": "^2.0.1",
+		"rollup": "^2.58.3",
+		"rollup-plugin-bundle-worker": "^0.1.0",
+		"rollup-plugin-copy-watch": "^0.0.1",
+		"rollup-plugin-delete": "^2.0.0",
+		"rollup-plugin-livereload": "^2.0.0",
+		"rollup-plugin-postcss": "^4.0.0",
+		"rollup-plugin-root-import": "^1.0.0",
+		"rollup-plugin-serve": "^1.1.0",
+		"rollup-plugin-terser": "^7.0.2"
+	},
+	"dependencies": {
+		"@domodel/form": "^0.0.13",
+		"@domodel/grid": "^1.0.12",
+		"@domodel/paginator": "^1.0.13",
+		"@domodel/router": "^1.0.33",
+		"@domodel/steps": "^1.0.17",
+		"@domodel/tabs": "^1.0.14",
+		"@thoughtsunificator/gedcom-parser": "^1.0.8",
+		"css-generics": "^1.0.8",
+		"domodel": "^1.0.51"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/thoughtsunificator/geneatree.git"
+	},
+	"bugs": {
+		"url": "https://github.com/thoughtsunificator/geneatree/issues"
+	},
+	"author": "Romain Lebesle <oss@thoughtsunificator.me> (https://thoughtsunificator.me)",
+	"license": "MIT"
+}

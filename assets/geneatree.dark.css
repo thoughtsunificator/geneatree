@@ -1,0 +1,22 @@
+.theme-dark {
+	color: white;
+}
+
+.theme-dark #router.viewer {
+	background-color: #000000d4;
+	border-left: 1px solid #5d5b5b;
+}
+
+.theme-dark #trees-toggle {
+	background-color: transparent;
+	border: 1px solid gray;
+}
+
+.theme-dark #tree-viewer-osd {
+	background-color: rgba(255, 255, 255, 0.14);
+}
+
+.theme-dark #tree-viewer-individuals .individual .placeholder {
+	border-color: #ffffff66;
+}
+

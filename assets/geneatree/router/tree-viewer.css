@@ -1,0 +1,27 @@
+#tree-viewer {
+	overflow: hidden;
+	position: relative;
+}
+
+#tree-viewer-explorer {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+#tree-viewer-osd {
+	position: absolute;
+	right: var(--SIZE_XS);
+	top: var(--SIZE_XS);
+	z-index: 1;
+	font-size: 1.1em;
+	transition: opacity 1s ease-in-out;
+	opacity: 0;
+	background-color: rgba(15, 15, 15, 0.77);
+	color: white;
+	padding: var(--SIZE_XS);
+}
+
+#tree-viewer-osd.error {
+	background-color: rgba(204, 77, 77, 0.77);
+}

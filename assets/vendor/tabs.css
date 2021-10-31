@@ -1,0 +1,27 @@
+.tabs {
+	display: grid;
+	grid-gap: 15px;
+}
+
+.tabs .indicators {
+	display: grid;
+	grid-auto-flow: column;
+}
+
+.tabs .indicator {
+	text-align: center;
+	background-color: #dfc7c7;
+	padding: var(--SIZE_XXS);
+	border-top: 1px solid gray;
+	border-bottom: 2px solid gray;
+}
+
+.tabs .indicator:nth-child(even) {
+	border-left: 1px solid #958080;
+	border-right: 1px solid #958080;
+}
+
+.tabs .indicator.active {
+	background-color: #bfa3a37a;
+	border-bottom: 0;
+}

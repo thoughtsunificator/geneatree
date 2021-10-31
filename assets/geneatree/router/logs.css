@@ -1,0 +1,12 @@
+#view-logs .log {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-columns: 0.5fr 1.2fr 5fr;
+	background-color: #b59d9d;
+	grid-gap: var(--SIZE_LARGE);
+	padding: var(--SIZE_XS);
+}
+
+#view-logs .log:nth-child(odd) {
+	background-color: #d2b9b9;
+}
