@@ -1,7 +1,7 @@
 {
 	"short_name": "geneatree",
-	"name": "geneatree: Tool for genealogists",
-	"description": "Genealogy tree viewer and maker",
+	"name": "geneatree",
+	"description": "Family tree maker",
 	"icons": [
 		{
 			"src": "/resource/icons/192.png",
