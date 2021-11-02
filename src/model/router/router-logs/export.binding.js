@@ -1,5 +1,5 @@
 import { Binding } from "domodel"
-import { FormBinding } from "@domodel/form"
+import { Form, FormBinding } from "@domodel/form"
 
 import Log from "/object/log.js"
 
@@ -8,11 +8,19 @@ import Log from "/object/log.js"
  */
 class ExportBinding extends FormBinding {
 
+	constructor() {
+		const form = new Form()
+		super({ form })
+		this.properties.form = form
+	}
+
 	onCreated() {
+
+		super.onCreated()
 
 		const { geneatree } = this.properties
 
-		_form.listen("submitted", data => {
+		this.properties.form.listen("submitted", data => {
 			const logs = geneatree.logs.map(log => ({
 				message: log.message,
 				data: log.data,

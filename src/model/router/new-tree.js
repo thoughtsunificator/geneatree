@@ -6,7 +6,7 @@ export default data => ({
 			tagName: "h3",
 			className: "title",
 			identifier: "title",
-			textContent: `Ajouter un arbre`
+			textContent: `Add tree`
 		},
 		{
 			tagName: "div",

@@ -32,7 +32,7 @@ class LogsBinding extends Binding {
 
 	onCreated() {
 
-		const { geneatree } = this.properties
+		const { geneatree, router } = this.properties
 
 		const _types = {}
 
@@ -44,6 +44,8 @@ class LogsBinding extends Binding {
 
 		this.identifier.clearButton.addEventListener("click", () => {
 			geneatree.emit("logs clear")
+			const logs = geneatree.findLogs({ query: event.target.value, types: _types })
+			this.render(logs)
 		})
 
 		this.identifier.searchInput.addEventListener("input", event => {

@@ -1,7 +1,3 @@
-.theme-dark {
-	color: white;
-}
-
 .theme-dark #router.viewer {
 	background-color: #000000d4;
 	border-left: 1px solid #5d5b5b;
@@ -12,7 +8,7 @@
 	border: 1px solid gray;
 }
 
-.theme-dark #tree-viewer-osd {
+.theme-dark #osd {
 	background-color: rgba(255, 255, 255, 0.14);
 }
 
@@ -20,3 +16,7 @@
 	border-color: #ffffff66;
 }
 
+.theme-dark #router.viewer + #navigation button {
+	color: white;
+	border: 1px solid white;
+}

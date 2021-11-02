@@ -1,5 +1,9 @@
 import { Binding } from "domodel"
 
+import ItemModel from "./navigation/item.js"
+
+import ItemBinding from "./navigation/item.binding.js"
+
 /**
  * @global
  */
@@ -14,10 +18,10 @@ class NavigationBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		this.identifier.viewer.addEventListener("click", () => this.browse("/"))
-		this.identifier.about.addEventListener("click", () => this.browse("/about"))
-		this.identifier.logs.addEventListener("click", () => this.browse("/logs"))
-		this.identifier.settings.addEventListener("click", () => this.browse("/settings"))
+		this.run(ItemModel({ title: "Viewer" }), { binding: new ItemBinding({ path: "/" }) })
+		this.run(ItemModel({ title: "Settings" }), { binding: new ItemBinding({ path: "/settings" }) })
+		this.run(ItemModel({ title: "Logs" }), { binding: new ItemBinding({ path: "/logs" }) })
+		this.run(ItemModel({ title: "About" }), { binding: new ItemBinding({ path: "/about" }) })
 
 	}
 

@@ -5,7 +5,7 @@ export default {
 			tagName: "input",
 			className: "filter",
 			identifier: "input",
-			placeholder: "Filtrer les arbres",
+			placeholder: "Filtrer les trees",
 		}
 	]
 }

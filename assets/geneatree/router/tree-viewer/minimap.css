@@ -1,5 +1,4 @@
 #tree-viewer-minimap {
-	display: none;
 	position: absolute;
 	padding: var(--SIZE_XXS);
 	left: var(--SIZE_XXS);

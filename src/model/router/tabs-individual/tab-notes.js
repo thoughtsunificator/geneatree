@@ -4,24 +4,10 @@ export default {
 	style: "display: grid; grid-gap: 20px",
 	children: [
 		{
-			tagName: "div",
-			className: "title",
-			style: "display: grid;grid-template-columns: auto 1fr;grid-auto-columns: max-content;",
-			children: [
-				{
-					tagName: "button",
-					style: "display: none; grid-column: 1;grid-row: 1;",
-					identifier: "back",
-					textContent: "⬅",
-					title: "Go back"
-				},
-				{
-					tagName: "h3",
-					identifier: "title",
-					style: "grid-column-start: 1; grid-row: 1; justify-self: center; align-self: center; grid-column-end: 3;",
-					textContent: `Liste des notes`
-				},
-			]
+			tagName: "h3",
+			identifier: "title",
+			style: "grid-column-start: 1; grid-row: 1; justify-self: center; align-self: center; grid-column-end: 3;",
+			textContent: `Liste des notes`
 		},
 		{
 			tagName: "div",
@@ -42,13 +28,13 @@ export default {
 										{
 											tagName: "input",
 											identifier: "searchInput",
-											placeholder: "Filtrer les notes",
+											placeholder: "Filter notes",
 										},
 										{
 											tagName: "div",
 											style: "display: none",
 											identifier: "placeholder",
-											textContent: "Aucune note n'a pu être trouvée."
+											textContent: "No notes were found."
 										},
 										{
 											tagName: "div",
@@ -60,7 +46,7 @@ export default {
 											tagName: "button",
 											identifier: "addNote",
 											className: "button4",
-											textContent: "Ajouter une note"
+											textContent: "Add note"
 										}
 									]
 								}

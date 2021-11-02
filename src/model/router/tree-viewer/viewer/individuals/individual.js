@@ -43,21 +43,21 @@ export default data => ({
 			identifier: "addParent",
 			className: `placeholder`,
 			style: ` width: ${WIDTH}px; height: ${HEIGHT}px; grid-row: 1;`,
-			textContent: "Ajouter un parent",
+			textContent: "Add father",
 		},
 		{
 			tagName: "div",
 			identifier: "addSpouse",
 			className: `placeholder`,
 			style: ` width: ${WIDTH}px; height: ${HEIGHT}px;`,
-			textContent: "Ajouter un conjoint"
+			textContent: "Add spouse"
 		},
 		{
 			tagName: "div",
 			identifier: "addChild",
 			className: `placeholder`,
 			style: ` width: ${WIDTH}px; height: ${HEIGHT}px;`,
-			textContent: "Ajouter un enfant"
+			textContent: "Add child"
 		}
 	]
 })

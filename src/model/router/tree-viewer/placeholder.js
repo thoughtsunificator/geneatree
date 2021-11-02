@@ -1,4 +1,4 @@
-export default {
+export default data => ({
 	tagName: "div",
 	id: "tree-viewer-placeholder",
 	children: [
@@ -32,17 +32,16 @@ export default {
 				},
 				{
 					tagName: "div",
-					style: "display: none",
 					identifier: "selectTree",
 					children: [
 						{
 							tagName: "p",
 							style: "text-align: center; color: white; padding: 15px 0;",
-							innerHTML: "Veuillez selectionner un arbre."
+							innerHTML: "Select a tree."
 						}
 					]
 				}
 			]
 		}
 	]
-}
+})

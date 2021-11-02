@@ -2,8 +2,8 @@ import { Core, Observable, Binding } from "domodel"
 import { Step, Steps, StepsModel, StepsBinding } from "@domodel/steps"
 import { Form, FormModel, FormBinding } from "@domodel/form"
 
-import TreeFormModel from "./tabs-tree/form.js"
-import IndividualFormModel from "./tabs-individual/form.js"
+import TreeFormModel from "/model/form/tree.js"
+import IndividualFormModel from "/model/form/individual.js"
 
 /**
  * @global
@@ -14,33 +14,38 @@ class AddTreeBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		const _form = new Form()
-		const _form_ = new Form()
+		this.treeForm = new Form()
+		const decujusForm = new Form()
 		const steps = new Steps([
-			new Step("Arbre", FormModel(TreeFormModel({ title: `Créer un arbre` })), FormBinding, { form: _form }),
-			new Step("Decujus", FormModel(IndividualFormModel({ title: "Créer le decujus" })), FormBinding, { form: _form_ })
+			new Step("Tree", FormModel(TreeFormModel({ title: `Tree` })), FormBinding, { form: this.treeForm }),
+			new Step("Decujus", FormModel(IndividualFormModel({ title: "Decujus" })), FormBinding, { form: decujusForm })
 		])
 
 		steps.listen("stepChanged", data => {
-			if(data.name === "Arbre") {
-				_form.emit("focus")
+			if(data.name === "Tree") {
+				this.treeForm.emit("focus")
 			} else if(data.name === "Decujus") {
-				_form_.emit("focus")
+				decujusForm.emit("focus")
 			}
 		})
 
 		steps.listen("done", () => {
-			geneatree.emit("tree add", [{ meta: steps.getStepByName("Arbre").data }, [{ meta: steps.getStepByName("Decujus").data }]])
-			geneatree.emit("tree select", geneatree.trees[geneatree.trees.list.length - 1])
+			geneatree.trees.emit("add", [{ meta: steps.getStepByName("Tree").data }, [{ meta: steps.getStepByName("Decujus").data }]])
+			geneatree.trees.emit("select", geneatree.trees.list[geneatree.trees.list.length - 1])
+			geneatree.router.emit("browse", { path: "/" })
 		})
 
-		_form.listen("submitted", data => steps.emit("stepNext", data))
-		_form_.listen("submitted", data => steps.emit("stepNext", data))
+		this.treeForm.listen("submitted", data => steps.emit("stepNext", data))
+		decujusForm.listen("submitted", data => steps.emit("stepNext", data))
 
 		this.run(StepsModel, { binding: new StepsBinding({ steps }) })
 
-		steps.emit("stepSet", "Arbre")
+		steps.emit("stepSet", "Tree")
 
+	}
+
+	async onRendered() {
+		this.treeForm.emit("focus")
 	}
 
 }

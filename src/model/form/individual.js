@@ -12,7 +12,7 @@ export default data => ({
 			children: [
 				{
 					tagName: "label",
-					textContent: "Nom de naissance:",
+					textContent: "Birth name:",
 					children: [
 						{
 							tagName: "div",
@@ -33,7 +33,7 @@ export default data => ({
 			children: [
 				{
 					tagName: "label",
-					textContent: "Prénom:",
+					textContent: "First name:",
 					children: [
 						{
 							tagName: "div",
@@ -54,7 +54,7 @@ export default data => ({
 			children: [
 				{
 					tagName: "label",
-					textContent: "Nom:",
+					textContent: "Last name:",
 					children: [
 						{
 							tagName: "div",
@@ -75,7 +75,7 @@ export default data => ({
 			children: [
 				{
 					tagName: "label",
-					textContent: "Genre:",
+					textContent: "Gender:",
 					children: [
 						{
 							tagName: "div",
@@ -120,7 +120,7 @@ export default data => ({
 			children: [
 				{
 					tagName: "label",
-					textContent: "Date de naissance:",
+					textContent: "Birth date:",
 					children: [
 						{
 							tagName: "div",
@@ -142,7 +142,7 @@ export default data => ({
 			children: [
 				{
 					tagName: "label",
-					textContent: "Lieu de naissance:",
+					textContent: "Birth place:",
 					children: [
 						{
 							tagName: "div",
@@ -167,7 +167,7 @@ export default data => ({
 			children: [
 				{
 					tagName: "label",
-					textContent: "Date de décès",
+					textContent: "Death date",
 					children: [
 						{
 							tagName: "div",
@@ -189,7 +189,7 @@ export default data => ({
 			children: [
 				{
 					tagName: "label",
-					textContent: "Lieu de décès:",
+					textContent: "Death place:",
 					children: [
 						{
 							tagName: "div",
@@ -210,7 +210,7 @@ export default data => ({
 			children: [
 				{
 					tagName: "label",
-					textContent: "Domicile:",
+					textContent: "Address:",
 					children: [
 						{
 							tagName: "div",
@@ -231,7 +231,7 @@ export default data => ({
 			children: [
 				{
 					tagName: "label",
-					textContent: "Profession:",
+					textContent: "Work:",
 					children: [
 						{
 							tagName: "div",
@@ -245,135 +245,6 @@ export default data => ({
 						}
 					]
 				}
-			]
-		},
-		{
-			tagName: "div",
-			children: [
-				{
-					tagName: "label",
-					textContent: "Téléphone portable:",
-					children: [
-						{
-							tagName: "div",
-							children: [
-								{
-									identifier: "cellPhone",
-									className: "width-100",
-									type: "tel",
-									tagName: "input",
-								}
-							]
-						}
-					]
-				}
-			]
-		},
-		{
-			tagName: "div",
-			children: [
-				{
-					tagName: "label",
-					textContent: "Téléphone Fixe:",
-					children: [
-						{
-							tagName: "div",
-							children: [
-								{
-									identifier: "homePhone",
-									className: "width-100",
-									type: "tel",
-									tagName: "input",
-								}
-							]
-						}
-					]
-				}
-			]
-		},
-		{
-			tagName: "div",
-			children: [
-				{
-					tagName: "label",
-					textContent: "Email:",
-					children: [
-						{
-							tagName: "div",
-							children: [
-								{
-									identifier: "mail",
-									type: "email",
-									className: "width-100",
-									tagName: "input",
-								}
-							]
-						}
-					]
-				}
-			]
-		},
-		{
-			tagName: "div",
-			children: [
-				{
-					tagName: "label",
-					style: "display: grid; grid-template-columns: 1fr auto",
-					textContent: "Décédé saisi:",
-					children: [
-						{
-							identifier: "seisin",
-							tagName: "input",
-							type: "checkbox"
-						},
-					]
-				}
-			]
-		},
-		{
-			tagName: "div",
-			children: [
-				{
-					tagName: "label",
-					style: "display: grid; grid-template-columns: 1fr auto",
-					textContent: "Héritier:",
-					children: [
-						{
-							tagName: "input",
-							identifier: "heir",
-							type: "checkbox"
-						}
-					]
-				}
-			]
-		},
-		{
-			tagName: "div",
-			children: [
-				{
-					tagName: "label",
-					textContent: "Quotité (n/d) :",
-					children: [
-						{
-							tagName: "div",
-							style: "display: grid; grid-auto-flow: column; grid-gap: 5px;",
-							children: [
-								{
-									tagName: "input",
-									type: "number",
-									className: "width-100",
-									identifier: "quota_numerator"
-								},
-								{
-									tagName: "input",
-									type: "number",
-									className: "width-100",
-									identifier: "quota_denominator"
-								}
-							]
-						}
-					]
-				},
 			]
 		}
 	]

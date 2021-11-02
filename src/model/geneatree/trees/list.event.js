@@ -9,7 +9,7 @@ import TreeBinding from "./list/tree.binding.js"
  */
 class ListEventListener extends EventListener {
 
-	treeListAdd() {
+	listAdd(data) {
 		const { geneatree } = this.properties
 		if(geneatree.trees.list.length > 1) {
 			this.run(TreeModel(data), { method: Core.METHOD.PREPEND, parentNode: this.root, binding: new TreeBinding({ geneatree, tree: data }) })

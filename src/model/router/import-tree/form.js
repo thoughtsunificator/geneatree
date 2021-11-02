@@ -4,7 +4,7 @@ export default data => ({
 	children: [
 		{
 			tagName: "h3",
-			textContent: "Importer un fichier",
+			textContent: "Import a file",
 			className: "title"
 		},
 		{
@@ -39,7 +39,7 @@ export default data => ({
 			children: [
 				{
 					tagName: "label",
-					textContent: "Fichier:",
+					textContent: "File:",
 					children: [
 						{
 							tagName: "div",

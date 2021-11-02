@@ -5,10 +5,10 @@ export default data => ({
 	children: [
 		{
 			tagName: "div",
-			identifier: "fileReference",
+			identifier: "name",
 			style: "overflow: hidden",
-			textContent: data.meta.fileReference,
-			title: data.meta.fileReference
+			textContent: data.meta.name,
+			title: data.meta.name
 		},
 		{
 			tagName: "button",

@@ -3,7 +3,6 @@
 	grid-gap: 15px;
 }
 
-
 .steps .indicators {
 	display: grid;
 	grid-auto-flow: column;
@@ -41,7 +40,11 @@
 }
 
 .steps .step:not(.active) {
-	display: none;
+	visibility: hidden;
+	position: absolute;
+	height: 0;
+	width: 0;
+	overflow: hidden;
 }
 
 .steps .indicator.draft:not(.active):hover,

@@ -20,31 +20,30 @@ class IndividualsBinding extends Binding {
 
 	onCreated() {
 
-		const { geneatree } = this.properties
+		const { geneatree, tree } = this.properties
 
-		this.listen(geneatree.explorer, "coordinates update", data => {
+		this.listen(geneatree.explorer, "coordinatesSet", data => {
 			this.root.style.left = data.x + "px"
 			this.root.style.top = data.y + "px"
 		})
 
-		this.listen(geneatree.explorer, "scale update", data => {
+		this.listen(geneatree.explorer, "scaleSet", data => {
 			this.root.style.transform = `scale(${data})`
 		})
 
 		this.identifier.focusOne.addEventListener("focus", () => {
-			if(geneatree.trees.selected !== null && geneatree.trees.selected.individuals.length >= 1) {
-				geneatree.trees.selected.individuals[geneatree.trees.selected.individuals.length - 1].emit("node focus")
+			if(tree !== null && tree.individuals.length >= 1) {
+				tree.individuals[tree.individuals.length - 1].emit("node focus")
 			}
 		})
 
 		this.identifier.focusTwo.addEventListener("focus", () => {
-			if(geneatree.trees.selected !== null && geneatree.trees.selected.individuals.length >= 1) {
-				geneatree.trees.selected.individuals[0].emit("node focus")
+			if(tree !== null && tree.individuals.length >= 1) {
+				tree.individuals[0].emit("node focus")
 			}
 		})
 
 		this.run(GridModel, { parentNode: this.identifier.list, binding: new GridBinding({ grid: geneatree.grid }) })
-
 
 	}
 

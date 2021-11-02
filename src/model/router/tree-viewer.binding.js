@@ -1,4 +1,11 @@
 import { Binding } from "domodel"
+import { Router, Route, RouterModel, RouterBinding } from "@domodel/router"
+
+import PlaceholderModel from "./tree-viewer/placeholder.js"
+import ViewerModel from "./tree-viewer/viewer.js"
+
+import PlaceholderBinding from "./tree-viewer/placeholder.binding.js"
+import ViewerBinding from "./tree-viewer/viewer.binding.js"
 
 import Log from "/object/log.js"
 
@@ -19,47 +26,20 @@ class TreeViewerBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		this.listen(geneatree.trees, "add", data => {
-			this.identifier.treesToggle.style.display = ""
-			geneatree.trees.emit("toggle", { toggle: true })
+		const router = new Router([
+			new Route("/", PlaceholderModel, PlaceholderBinding),
+			new Route("/viewer", ViewerModel, ViewerBinding),
+		], Router.TYPE.VIRTUAL, null, null)
+
+		this.run(RouterModel, {
+			binding: new RouterBinding({ router })
 		})
 
-		this.listen(geneatree.trees, "remove", data => {
-			data.individuals.forEach(individual => individual.emit("node remove"))
-		})
-
-		this.listen(geneatree.trees, "remove", data => {
-			if(geneatree.trees.list.length === 0) {
-				this.identifier.treesToggle.style.display = "none"
-				geneatree.trees.emit("toggle", { toggle: false })
-			}
-		})
-
-		this.listen(geneatree.trees, "toggle", data => {
-			if(data.toggle === true) {
-				this.root.style.gridColumn = ""
-			} else {
-				this.root.style.gridColumn = "span 2"
-			}
-		})
-
-		this.listen(geneatree, "select", data => {
-			this.identifier.treesToggle.style.display = ""
-			geneatree.trees.emit("toggle", { toggle: true })
-		})
-
-		const resizeObserver = new ResizeObserver(() => {
-			const { width, height } = this.root.getBoundingClientRect()
-			geneatree.explorer.width = width
-			geneatree.explorer.height = height
-			if(geneatree.trees.selected !== null) {
-				geneatree.trees.selected.viewer.width = width
-				geneatree.trees.selected.viewer.height = height
-			}
-			geneatree.emit("tree viewer resized", { width, height })
-		})
-
-		resizeObserver.observe(this.root)
+		if(geneatree.trees.selected) {
+			router.emit("browse", { path: "/viewer", properties: { tree: geneatree.trees.selected } })
+		} else {
+			router.emit("browse", { path: "/" })
+		}
 
 	}
 

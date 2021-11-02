@@ -5,6 +5,7 @@
 	grid-template-columns: auto 1fr;
 	grid-template-rows: 1fr auto;
 	background-color: rgba(0, 0, 0, 0.32);
+	font-family: "Open Sans";
 }
 
 #trees-toggle {
@@ -16,4 +17,6 @@
 	border-radius: 4px;
 	z-index: 1;
 	position: absolute;
+	top: 0;
+	left: 0;
 }

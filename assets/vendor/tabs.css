@@ -25,3 +25,12 @@
 	background-color: #bfa3a37a;
 	border-bottom: 0;
 }
+
+
+.tabs .tab:not(.active) {
+	visibility: hidden;
+	position: absolute;
+	height: 0;
+	width: 0;
+	overflow: hidden;
+}

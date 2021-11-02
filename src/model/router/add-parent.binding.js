@@ -2,7 +2,7 @@ import { Core, Observable, Binding } from "domodel"
 import { Step, Steps, StepsModel, StepsBinding } from "@domodel/steps"
 import { Form, FormModel, FormBinding } from "@domodel/form"
 
-import IndividualFormModel from "./tabs-individual/form.js"
+import IndividualFormModel from "/model/form/individual.js"
 import AddParentFormModel from "./add-parent/form.js"
 
 import AddParentFormBinding from "./add-parent/form.binding.js"
@@ -26,8 +26,6 @@ class AddParentBinding extends Binding {
 			new Step("Individu", FormModel(IndividualFormModel({ title: "Parent" })), FormBinding, { form: _form }),
 			new Step("Relation", FormModel(AddParentFormModel), AddParentFormBinding, { form: _form_})
 		])
-
-		steps.listen("initialized", () => steps.emit("stepSet", "Individu"))
 
 		steps.listen("stepChanged", data => {
 			if(data.name === "Individu") {
@@ -61,6 +59,8 @@ class AddParentBinding extends Binding {
 		_form_.listen("submitted", data => steps.emit("stepNext", data))
 
 		this.run(StepsModel, { binding: new StepsBinding({ steps }) })
+
+		steps.emit("stepSet", "Individu")
 
 	}
 

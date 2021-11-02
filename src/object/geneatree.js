@@ -1,7 +1,34 @@
 import { Observable } from "domodel"
 import { Grid } from "@domodel/grid"
+import { Router, Route } from "@domodel/router"
 
 import { SOCKET_STATE_INITIAL } from "../persistence/socket.js"
+
+import AboutModel from "/model/router/about.js"
+import SettingsModel from "/model/router/settings.js"
+import AddTreeBinding from "/model/router/add-tree.binding.js"
+import AddTreeModel from "/model/router/add-tree.js"
+import NewTreeBinding from "/model/router/new-tree.binding.js"
+import NewTreeModel from "/model/router/new-tree.js"
+import ImportTreeBinding from "/model/router/import-tree.binding.js"
+import ImportTreeModel from "/model/router/import-tree.js"
+import TreeBinding from "/model/router/tree.binding.js"
+import TreeModel from "/model/router/tree.js"
+import LogsModel from "/model/router/logs.js"
+import TreeViewerModel from "/model/router/tree-viewer.js"
+
+import AboutBinding from "/model/router/about.binding.js"
+import SettingsBinding from "/model/router/settings.binding.js"
+import AddChildBinding from "/model/router/add-child.binding.js"
+import AddChildModel from "/model/router/add-child.js"
+import AddSpouseBinding from "/model/router/add-spouse.binding.js"
+import AddSpouseModel from "/model/router/add-spouse.js"
+import AddParentBinding from "/model/router/add-parent.binding.js"
+import AddParentModel from "/model/router/add-parent.js"
+import IndividualBinding from "/model/router/individual.binding.js"
+import IndividualModel from "/model/router/individual.js"
+import LogsBinding from "/model/router/logs.binding.js"
+import TreeViewerBinding from "/model/router/tree-viewer.binding.js"
 
 import Log from "./log.js"
 import Explorer from "./explorer.js"
@@ -29,6 +56,20 @@ class Geneatree extends Observable {
 		this._explorer = new Explorer()
 		this._individuals = new Individuals()
 		this._trees = new Trees()
+		this._router = new Router([
+			new Route("/", TreeViewerModel, TreeViewerBinding),
+			new Route("/logs", LogsModel, LogsBinding),
+			new Route("/about", AboutModel, AboutBinding),
+			new Route("/settings", SettingsModel, SettingsBinding),
+			new Route("/tree/new", NewTreeModel, NewTreeBinding),
+			new Route("/tree/add", AddTreeModel, AddTreeBinding),
+			new Route("/tree/import", ImportTreeModel, ImportTreeBinding),
+			new Route("/tree", TreeModel, TreeBinding),
+			new Route("/tree/add-parent", AddChildModel, AddChildBinding),
+			new Route("/tree/add-child", AddParentModel, AddParentBinding),
+			new Route("/tree/add-spouse", AddSpouseModel, AddSpouseBinding),
+			new Route("/tree/individual", IndividualModel, IndividualBinding)
+		], Router.TYPE.VIRTUAL)
 	}
 
 	log(message, data, type) {
@@ -105,6 +146,14 @@ class Geneatree extends Observable {
 	 */
 	get individuals() {
 		return this._individuals
+	}
+
+	/**
+	 * @readonly
+	 * @type {Router}
+	 */
+	get router() {
+		return this._router
 	}
 
 }

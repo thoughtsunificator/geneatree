@@ -15,22 +15,6 @@ export default data => ({
 					textContent: `geneatree v0.0.8`
 				},
 			]
-		},
-		{
-			tagName: "div",
-			identifier: "content",
-			children: [
-				{
-					tagName: "div",
-					style: "padding: var(--SIZE_XXS); background-color: #332e2e2e; color: #0b0a0a; border: 2px solid #26202030; border-bottom: 3px solid #806363d1;",
-					children: [
-						{
-							tagName: `p`,
-							innerHTML: `Application web permettant le traitement et l'export d'arbres généalogique.`
-						}
-					]
-				}
-			]
 		}
 	]
 })

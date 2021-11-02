@@ -12,7 +12,7 @@ class ListBinding extends Binding {
 	 * @param {Geneatree} properties.geneatree
 	 */
 	constructor(properties) {
-		super(properties, new ListEventListener(properties.geneatree))
+		super(properties, new ListEventListener(properties.geneatree.trees))
 	}
 
 }

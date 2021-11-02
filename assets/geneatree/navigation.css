@@ -3,13 +3,13 @@
 	display: grid;
 	padding: var(--SIZE_XXS);
 	right: 0;
-	background-color: transparent;
 	bottom: 0;
 	z-index: 1;
 	grid-gap: var(--SIZE_XXS);
 	grid-auto-flow: column;
-	border: 1px solid #06060659;
-	border-bottom: 0;
+	margin: auto;
+	left: 0;
+	place-content: center;
 }
 
 #navigation button {
@@ -22,4 +22,8 @@
 #navigation button:hover {
 	text-decoration: underline;
 	background-color: #ffffff24;
+}
+
+#navigation button.active {
+	background-color: #0404041f;
 }

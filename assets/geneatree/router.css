@@ -1,6 +1,7 @@
 #router {
 	display: grid;
 	grid-template-rows: subgrid;
+	position: relative;
 }
 
 #router.viewer > .router {
@@ -19,8 +20,6 @@
 }
 
 #router:not(.viewer) > .router > div {
-	border: 1px solid #645e5e5e;
-	padding: var(--SIZE_LARGE);
 	display: grid;
 	grid-gap: var(--SIZE_MEDIUM);
 }

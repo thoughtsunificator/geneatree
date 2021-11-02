@@ -13,7 +13,7 @@ class TreesEventListener extends EventListener {
 	add(data) {
 		const { geneatree } = this.properties
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] tree add", data })
-		const tree = geneatree.addTree(data[0].meta)
+		const tree = geneatree.trees.add(data[0].meta)
 		if(data[0].type === "online") {
 			tree.networkId = data[0]._id
 		} else if(data[0].type === "offline") {
@@ -43,6 +43,8 @@ class TreesEventListener extends EventListener {
 				})
 			}
 		}
+		geneatree.trees.emit("listAdd", tree)
+		geneatree.emit("tree added", tree)
 	}
 
 	/**
@@ -55,6 +57,7 @@ class TreesEventListener extends EventListener {
 			data.tree.meta[key] = data.form[key]
 		}
 		data.tree.emit("update")
+		geneatree.emit("tree updated", data)
 	}
 
 	/**
@@ -65,6 +68,7 @@ class TreesEventListener extends EventListener {
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] tree remove", data })
 		geneatree.removeTree(data)
 		data.emit("remove")
+		geneatree.emit("tree removed", data)
 	}
 
 	/**
@@ -78,12 +82,12 @@ class TreesEventListener extends EventListener {
 		}
 		geneatree.trees.selected = data
 		data.emit("select")
-		geneatree.trees.filter(tree => tree !== data).forEach(tree => tree.emit("unselect"))
+		geneatree.trees.list.filter(tree => tree !== data).forEach(tree => tree.emit("unselect"))
 		for(const individual of data.individuals) {
 			geneatree.emit("gridFill", { data: individual, x: individual.cell ? individual.cell.x : 0, y: individual.cell ? individual.cell.y : 0 })
 		}
-		geneatree.emit("treeViewerInitialize", data)
 		this.root.style.display = ""
+		geneatree.emit("tree selected", data)
 	}
 
 	/**
@@ -97,6 +101,7 @@ class TreesEventListener extends EventListener {
 		geneatree.trees.selected = null
 		data.emit("unselect")
 		data.individuals.forEach(individual => individual.emit("node remove"))
+		geneatree.emit("tree unselected", data)
 	}
 
 	/**

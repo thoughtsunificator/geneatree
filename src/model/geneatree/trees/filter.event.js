@@ -5,11 +5,10 @@ import { EventListener } from "domodel"
  */
 class FilterEventListener extends EventListener {
 
-
 	treeFilter(data) {
 		const { geneatree } = this.properties
 		const treesList = geneatree.findTrees(data)
-		geneatree.trees.filter(tree => treesList.includes(tree) === false).forEach(tree => tree.emit("tab hide"))
+		geneatree.trees.list.filter(tree => treesList.includes(tree) === false).forEach(tree => tree.emit("tab hide"))
 		treesList.forEach(tree => tree.emit("tab show"))
 		geneatree.emit("tree filtered", { trees: treesList, query: data })
 		if(treesList.length === 1 && treesList[0] !== geneatree.trees.selected) {

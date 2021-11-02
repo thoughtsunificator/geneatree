@@ -1,14 +1,11 @@
 import { Core, Binding, Observable } from "domodel"
-import { Form, FormModel } from "@domodel/form"
 import { Router, Route, RouterModel, RouterBinding } from "@domodel/router"
 
 import ListModel from "./router-logs/list.js"
-import ExportLogsFormModel from "./export-logs/form.js"
+import ExportLogsFormModel from "./router-logs/export.js"
 
 import ListBinding from "./router-logs/list.binding.js"
 import ExportBinding from "./router-logs/export.binding.js"
-
-import { LOGS_FORMATS_EXPORT } from "/model/geneatree.binding.js"
 
 /**
  * @global
@@ -21,7 +18,7 @@ class LogsBinding extends Binding {
 
 		const router = new Router([
 			new Route("/", ListModel, ListBinding),
-			new Route("/export", FormModel(ExportLogsFormModel(LOGS_FORMATS_EXPORT)), ExportBinding)
+			new Route("/export", ExportLogsFormModel, ExportBinding)
 		])
 
 		this.run(RouterModel, {

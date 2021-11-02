@@ -2,7 +2,7 @@ import { Core, Observable, Binding } from "domodel"
 import { Step, Steps, StepsModel, StepsBinding } from "@domodel/steps"
 import { Form, FormModel, FormBinding } from "@domodel/form"
 
-import IndividualFormModel from "./tabs-individual/form.js"
+import IndividualFormModel from "/model/form/individual.js"
 import AddSpouseModel from "./add-spouse/form.js"
 
 import AddSpouseFormBinding from "./add-spouse/form.binding.js"

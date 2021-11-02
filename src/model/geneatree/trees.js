@@ -27,7 +27,7 @@ export default {
 					identifier: "addButton",
 					textContent: "+",
 					style: "justify-self: flex-end;",
-					title: "Ajouter un arbre",
+					title: "Add tree",
 					className: "add-tree"
 				},
 			]

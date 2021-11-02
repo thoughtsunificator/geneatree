@@ -4,7 +4,7 @@ import { Form, FormModel, FormBinding } from "@domodel/form"
 import { Parser } from "@thoughtsunificator/gedcom-parser"
 
 import TreeImportFileModel from "./import-tree/form.js"
-import TreeFormModel from "./tabs-tree/form.js"
+import TreeFormModel from "/model/form/tree.js"
 
 import StepFileBinding from "./import-tree/step-file.binding.js"
 
@@ -23,13 +23,13 @@ class ImportTreeBinding extends Binding {
 		const _form_ = new Form()
 		const steps = new Steps([
 			new Step("Fichier", FormModel(TreeImportFileModel(TREE_FORMATS_IMPORT)), StepFileBinding, { form: _form}),
-			new Step("Arbre", FormModel(TreeFormModel({ title: `Créer un arbre` })), FormBinding, { form: _form_})
+			new Step("Tree", FormModel(TreeFormModel({ title: `Tree` })), FormBinding, { form: _form_})
 		])
 
 		steps.listen("stepChanged", data => {
 			if(data.name === "Fichier") {
 				_form.emit("focus")
-			} else if(data.name === "Arbre") {
+			} else if(data.name === "Tree") {
 				_form_.emit("focus")
 			}
 		})
@@ -39,7 +39,7 @@ class ImportTreeBinding extends Binding {
 			console.log(Parser.parse(steps.getStepByName("Fichier").data))
 			// parse data
 			// geneatree.emit("tree add", [{ meta: data[1] }, []])
-			// geneatree.emit("tree select", geneatree.trees[geneatree.trees.list.length - 1])
+			// geneatree.emit("tree select", geneatree.trees.list[geneatree.trees.list.length - 1])
 		})
 
 		_form_.listen("submitted", data => steps.emit("stepNext", data))

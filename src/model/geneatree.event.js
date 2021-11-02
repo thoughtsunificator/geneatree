@@ -1,8 +1,8 @@
 import { EventListener } from "domodel"
 
-import IndividualModel from "./router/tree-viewer/individuals/individual.js"
+import IndividualModel from "./router/tree-viewer/viewer/individuals/individual.js"
 
-import IndividualBinding from "./router/tree-viewer/individuals/individual.binding.js"
+import IndividualBinding from "./router/tree-viewer/viewer/individuals/individual.binding.js"
 
 /**
  * @global
@@ -23,3 +23,4 @@ class GeneatreeEventListener extends EventListener {
 }
 
 export default GeneatreeEventListener
+
