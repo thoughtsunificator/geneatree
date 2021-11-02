@@ -5,9 +5,9 @@
 	position: relative;
 	width: 150px;
 	background-color: rgb(138, 117, 117);
-	border-width: 1px 1px 3px;
+	border-width: 1px 1px 0;
 	border-style: solid;
-	border-color: rgb(62, 60, 60) rgb(62, 60, 60) black;
+	border-color: rgb(62, 60, 60) rgb(62, 60, 60);
 	border-image: initial;
 	grid-template-rows: auto auto 1fr;
 }

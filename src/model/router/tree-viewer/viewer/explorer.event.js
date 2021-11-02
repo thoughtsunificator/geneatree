@@ -11,7 +11,7 @@ class ExplorerEventListener extends EventListener {
 	 * @event ExplorerEventListener#dragStart
 	 */
 	dragStart(data) {
-		const { geneatree } = this.properties
+		const { geneatree, tree } = this.properties
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] tree viewer drag start",  data })
 		tree.viewer.dragging.clientX = data.clientX
 		tree.viewer.dragging.clientY = data.clientY
@@ -22,7 +22,7 @@ class ExplorerEventListener extends EventListener {
 	 * @event ExplorerEventListener#dragEnd
 	 */
 	dragEnd() {
-		const { geneatree } = this.properties
+		const { geneatree, tree } = this.properties
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] tree viewer drag end" })
 		tree.viewer.dragging.clientX = null
 		tree.viewer.dragging.clientY = null
@@ -56,8 +56,8 @@ class ExplorerEventListener extends EventListener {
 	 * @event ExplorerEventListener#dragToggle
 	 */
 	dragToggle(data) {
-		const { geneatree } = this.properties
-		geneatree.explorer.toggled = data
+		const { geneatree, tree } = this.properties
+		tree.viewer.dragging.toggled = data
 	}
 
 	/**
@@ -85,7 +85,7 @@ class ExplorerEventListener extends EventListener {
 	 * @event ExplorerEventListener#scaleSet
 	 */
 	scaleSet(data) {
-		const { geneatree, tree} = this.properties
+		const { geneatree, tree } = this.properties
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] tree viewer scale set",  data })
 		tree.viewer.scale = data
 	}

@@ -1,4 +1,11 @@
 export default {
 	tagName: "nav",
-	id: "navigation"
+	id: "navigation",
+	children: [
+		{
+			tagName: "div",
+			className: "items",
+			identifier: "items"
+		}
+	]
 }

@@ -5,7 +5,6 @@
 	grid-template-columns: auto 1fr;
 	grid-template-rows: 1fr auto;
 	background-color: rgba(0, 0, 0, 0.32);
-	font-family: "Open Sans";
 }
 
 #trees-toggle {

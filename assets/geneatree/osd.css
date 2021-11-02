@@ -5,10 +5,11 @@
 	z-index: 1;
 	display: grid;
 	grid-gap: var(--SIZE_XS);
+	place-items: end;
+	place-content: end;
 }
 
 #osd .message {
-	font-size: 1.1em;
 	color: white;
 	padding: var(--SIZE_XS);
 	background-color: rgba(15, 15, 15, 0.77);

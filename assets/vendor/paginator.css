@@ -1,4 +1,4 @@
-.pagination-pages button {
+.pagination-controls button {
 	background-color: rgb(223, 199, 199);
 	border-color: rgb(100, 100, 93);
 	border-style: solid;
@@ -6,11 +6,11 @@
 	padding: 8px;
 }
 
-.pagination-pages button:disabled {
+.pagination-controls button:disabled {
 	background-color: #aa9696;
 }
 
-.pagination-pages button:not(:disabled):hover {
+.pagination-controls button:not(:disabled):hover {
 	background-color: #d0b7b7 !important;
 }
 

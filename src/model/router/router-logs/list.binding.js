@@ -36,7 +36,7 @@ class LogsBinding extends Binding {
 
 		const _types = {}
 
-		this.paginator = new Paginator(15)
+		this.paginator = new Paginator(8)
 
 		this.identifier.exportButton.addEventListener("click", () => {
 			router.emit("browse", { path: "/export" })

@@ -1,15 +1,23 @@
 #navigation {
 	position: fixed;
 	display: grid;
-	padding: var(--SIZE_XXS);
 	right: 0;
 	bottom: 0;
 	z-index: 1;
-	grid-gap: var(--SIZE_XXS);
-	grid-auto-flow: column;
 	margin: auto;
 	left: 0;
 	place-content: center;
+}
+
+#navigation .items {
+	display: grid;
+	grid-gap: var(--SIZE_XXS);
+	padding: var(--SIZE_XXS);
+	grid-auto-flow: column;
+}
+
+#router:not(.viewer) + #osd + #navigation .items {
+	background-color: rgb(200, 177, 177);
 }
 
 #navigation button {
@@ -25,5 +33,6 @@
 }
 
 #navigation button.active {
-	background-color: #0404041f;
+	background-color: #0404041a;
+	text-decoration: underline;
 }

@@ -41,3 +41,11 @@
 	border: 1px solid white;
 	border-bottom: 2px solid #000037;
 }
+
+.theme-pattern #router.viewer + #osd + #navigation .items {
+	background-color: #445;
+}
+
+.theme-pattern #router.viewer + #osd + #navigation .items button {
+	color: white
+}

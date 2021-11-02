@@ -10,9 +10,9 @@
 
 #router:not(.viewer) {
 	place-content: center;
-	place-items: center;
 	padding: var(--SIZE_MEDIUM);
 	background-color: rgb(200, 177, 177);
+	padding-bottom: 45px;
 }
 
 #router:not(.viewer) > .router {
