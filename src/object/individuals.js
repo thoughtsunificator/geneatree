@@ -1,4 +1,6 @@
 import { Observable } from "domodel"
+import { Grid } from "@thoughtsunificator/grid"
+
 
 /**
  * @global
@@ -11,6 +13,7 @@ class Individuals extends Observable {
 	constructor() {
 		super()
 		this._list = []
+		this._grid = new Grid()
 	}
 
 	/**

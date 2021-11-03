@@ -1,11 +1,11 @@
 import { Binding } from "domodel"
 import { Router, Route, RouterModel, RouterBinding } from "@domodel/router"
 
-import PlaceholderModel from "./tree-viewer/placeholder.js"
-import ViewerModel from "./tree-viewer/viewer.js"
+import HomeModel from "./router-tree-viewer/home.js"
+import ViewerModel from "./router-tree-viewer/viewer.js"
 
-import PlaceholderBinding from "./tree-viewer/placeholder.binding.js"
-import ViewerBinding from "./tree-viewer/viewer.binding.js"
+import HomeBinding from "./router-tree-viewer/home.binding.js"
+import ViewerBinding from "./router-tree-viewer/viewer.binding.js"
 
 import Log from "/object/log.js"
 
@@ -27,7 +27,7 @@ class TreeViewerBinding extends Binding {
 		const { geneatree } = this.properties
 
 		const router = new Router([
-			new Route("/", PlaceholderModel, PlaceholderBinding),
+			new Route("/", HomeModel, HomeBinding),
 			new Route("/viewer", ViewerModel, ViewerBinding),
 		], Router.TYPE.VIRTUAL, null, null)
 

@@ -1,5 +1,4 @@
 import { Observable } from "domodel"
-import { Grid } from "@domodel/grid"
 import { Router, Route } from "@domodel/router"
 
 import { SOCKET_STATE_INITIAL } from "../persistence/socket.js"
@@ -52,7 +51,6 @@ class Geneatree extends Observable {
 		this._logs = []
 		this._socketState = SOCKET_STATE_INITIAL
 		this._settings = { ...Geneatree.SETTINGS }
-		this._grid = new Grid()
 		this._explorer = new Explorer()
 		this._individuals = new Individuals()
 		this._trees = new Trees()

@@ -9,10 +9,20 @@ import ItemBinding from "./navigation/item.binding.js"
  */
 class NavigationBinding extends Binding {
 
+	/**
+	 * @param {object}    properties
+	 * @param {Geneatree} properties.geneatree
+	 */
+	constructor(properties) {
+		super(properties)
+	}
+
+	/**
+	 * @param {string} path
+	 */
 	browse(path) {
 		this.properties.geneatree.router.emit("browse", { path })
 	}
-
 
 	onCreated() {
 

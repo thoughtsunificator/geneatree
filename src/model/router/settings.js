@@ -9,7 +9,7 @@ export default data => ({
 		},
 		{
 			tagName: "div",
-			identifier: "router"
+			identifier: "tabs"
 		}
 	]
 })

@@ -3,9 +3,9 @@ import { Step, Steps, StepsModel, StepsBinding } from "@domodel/steps"
 import { Form, FormModel, FormBinding } from "@domodel/form"
 
 import IndividualFormModel from "/model/form/individual.js"
-import AddSpouseModel from "./add-spouse/form.js"
+import AddSpouseModel from "./steps-add-spouse/form.js"
 
-import AddSpouseFormBinding from "./add-spouse/form.binding.js"
+import AddSpouseFormBinding from "./steps-add-spouse/form.binding.js"
 
 import Relationship from "/object/relationship.js"
 import RelationshipIndividual from "/object/relationship-individual.js"
@@ -19,19 +19,19 @@ class AddSpouseBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		const _form = new Form()
-		const _form_ = new Form()
+		const individualForm = new Form()
+		const relationshipForm = new Form()
 
 		const steps = new Steps([
-			new Step("Individu", FormModel(IndividualFormModel({ title: "Conjoint" })), FormBinding, { form: _form }),
-			new Step("Relation", FormModel(AddSpouseModel), AddSpouseFormBinding, { form: _form_})
+			new Step("Individu", FormModel(IndividualFormModel({ title: "Conjoint" })), FormBinding, { form: individualForm }),
+			new Step("Relationship", FormModel(AddSpouseModel), AddSpouseFormBinding, { form: relationshipForm})
 		])
 
 		steps.listen("stepChanged", data => {
 			if(data.name === "Individu") {
-				_form.emit("focus")
-			} else if(data.name === "Relation") {
-				_form_.emit("focus")
+				individualForm.emit("focus")
+			} else if(data.name === "Relationship") {
+				relationshipForm.emit("focus")
 			}
 		})
 
@@ -44,8 +44,8 @@ class AddSpouseBinding extends Binding {
 			const relationshipIndividual2 = new RelationshipIndividual(individual, RelationshipIndividual.ROLES.SPOUSE)
 
 			const relationship = geneatree.trees.selected.addRelationship(Relationship.TYPES.UNION.MARRIAGE, relationshipIndividual1, relationshipIndividual2)
-			relationship.meta.startDate = steps.getStepByName("Relation").data.relationDate
-			relationship.meta.place = steps.getStepByName("Relation").data.relationPlace
+			relationship.meta.startDate = steps.getStepByName("Relationship").data.relationDate
+			relationship.meta.place = steps.getStepByName("Relationship").data.relationPlace
 
 			geneatree.emit("relationship added", relationship)
 			geneatree.emit("individual unselect", geneatree.trees.selected.selectedIndividual)
@@ -53,9 +53,9 @@ class AddSpouseBinding extends Binding {
 			geneatree.emit("individual added", individual)
 		})
 
-		_form.listen("submitted", data => steps.emit("stepNext", data))
+		individualForm.listen("submitted", data => steps.emit("stepNext", data))
 
-		_form_.listen("submitted", data => steps.emit("stepNext", data))
+		relationshipForm.listen("submitted", data => steps.emit("stepNext", data))
 
 		this.run(StepsModel, { binding: new StepsBinding({ steps }) })
 

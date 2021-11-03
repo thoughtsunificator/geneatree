@@ -20,11 +20,9 @@ class IndividualBinding extends Binding {
 
 		const { geneatree, individual } = this.properties
 
-		this.root.id = "view-individual"
-
-		const _form = new Form()
+		const individualForm = new Form()
 		const tabs = new Tabs([
-			new Tab("Editer", FormModel(IndividualFormModel({ title: "Modifier un individu" })), FormBinding, { form: _form }),
+			new Tab("Editer", FormModel(IndividualFormModel({ title: "Modifier un individu" })), FormBinding, { form: individualForm }),
 			new Tab("Notes", TabNotesModel, TabNotesBinding),
 			new Tab("Relations", TabRelationshipsModel, TabRelationshipsBinding),
 			new Tab("Actions", TabActionsModel, TabActionsBinding)
@@ -34,13 +32,13 @@ class IndividualBinding extends Binding {
 			geneatree.emit("individual unselect", data)
 		})
 
-		tabs.listen("tab changed", tab => {
+		tabs.listen("tabChanged", tab => {
 			if(tab.name === "Editer") {
-				_form.emit("focus")
+				individualForm.emit("focus")
 			}
 		})
 
-		_form.listen("submitted", data => {
+		individualForm.listen("submitted", data => {
 			let individual_
 			if(individual !== null) {
 				individual_ = individual
@@ -52,10 +50,10 @@ class IndividualBinding extends Binding {
 
 		this.run(TabsModel, { binding: new TabsBinding({ tabs }) })
 
-		tabs.emit("tab set", "Editer")
+		tabs.emit("tabSet", "Editer")
 
-		_form.emit("load", geneatree.trees.selected.selectedIndividual)
-		_form.emit("focus")
+		individualForm.emit("load", geneatree.trees.selected.selectedIndividual)
+		individualForm.emit("focus")
 
 	}
 

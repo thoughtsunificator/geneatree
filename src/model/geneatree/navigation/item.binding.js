@@ -5,6 +5,15 @@ import { Binding } from "domodel"
  */
 class ItemBinding extends Binding {
 
+	/**
+	 * @param {object}    properties
+	 * @param {Geneatree} properties.geneatree
+	 * @param {string}    properties.path
+	 */
+	constructor(properties) {
+		super(properties)
+	}
+
 	onCreated() {
 
 		const { path, geneatree } = this.properties

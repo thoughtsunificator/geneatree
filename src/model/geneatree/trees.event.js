@@ -83,9 +83,6 @@ class TreesEventListener extends EventListener {
 		geneatree.trees.selected = data
 		data.emit("select")
 		geneatree.trees.list.filter(tree => tree !== data).forEach(tree => tree.emit("unselect"))
-		for(const individual of data.individuals) {
-			geneatree.emit("gridFill", { data: individual, x: individual.cell ? individual.cell.x : 0, y: individual.cell ? individual.cell.y : 0 })
-		}
 		this.root.style.display = ""
 		geneatree.emit("tree selected", data)
 	}

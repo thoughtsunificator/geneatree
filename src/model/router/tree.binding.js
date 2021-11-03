@@ -19,33 +19,33 @@ class TreeBinding extends Binding {
 
 		const { geneatree, tree } = this.properties
 
-		this.editForm = new Form()
+		this.individualForm = new Form()
 		const tabs = new Tabs([
-			new Tab("Editer", FormModel(TreeFormModel({ title: `Modifier un tree` })), FormBinding, { form: this.editForm }),
+			new Tab("Editer", FormModel(TreeFormModel({ title: `Modifier un tree` })), FormBinding, { form: this.individualForm }),
 			new Tab("Individus", TabIndividualsModel, TabIndividualsBinding),
 			new Tab("Actions", TabActionsModel, TabActionsBinding)
 		])
 
-		this.editForm.listen("submitted", data => {
+		this.individualForm.listen("submitted", data => {
 			geneatree.trees.emit("update", { tree: geneatree.trees.selected, form: data })
 			geneatree.router.emit("browse", { path: "/" })
 		})
 
 		tabs.listen("tabChanged", tab => {
 			if(tab.name === "Editer") {
-				this.editForm.emit("focus")
+				this.individualForm.emit("focus")
 			}
 		})
 
 		this.run(TabsModel, { binding: new TabsBinding({ tabs }) })
 
 		tabs.emit("tabSet", "Editer")
-		this.editForm.emit("load", tree.meta)
+		this.individualForm.emit("load", tree.meta)
 
 	}
 
 	async onRendered() {
-		this.editForm.emit("focus")
+		this.individualForm.emit("focus")
 	}
 
 }

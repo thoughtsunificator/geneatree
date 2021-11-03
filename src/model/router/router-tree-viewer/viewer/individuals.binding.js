@@ -1,5 +1,5 @@
 import { Core, Binding } from "domodel"
-import { GridModel, GridBinding } from "@domodel/grid"
+// import { GridModel, GridBinding } from "@domodel/grid"
 
 import Log from "/object/log.js"
 
@@ -43,7 +43,11 @@ class IndividualsBinding extends Binding {
 			}
 		})
 
-		this.run(GridModel, { parentNode: this.identifier.list, binding: new GridBinding({ grid: geneatree.grid }) })
+		// this.run(GridModel, { parentNode: this.identifier.list, binding: new GridBinding({ grid: geneatree.grid }) })
+
+		// for(const individual of tree.individuals) {
+		// 	geneatree.emit("gridFill", { data: individual, x: individual.cell ? individual.cell.x : 0, y: individual.cell ? individual.cell.y : 0 })
+		// }
 
 	}
 

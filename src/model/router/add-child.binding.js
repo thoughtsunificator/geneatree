@@ -3,9 +3,9 @@ import { Step, Steps, StepsModel, StepsBinding } from "@domodel/steps"
 import { Form, FormModel, FormBinding } from "@domodel/form"
 
 import IndividualFormModel from "/model/form/individual.js"
-import AddChildModel from "./add-child/form.js"
+import AddChildModel from "./steps-add-child/form.js"
 
-import AddChildFormBinding from "./add-child/form.binding.js"
+import AddChildFormBinding from "./steps-add-child/form.binding.js"
 
 import Relationship from "/object/relationship.js"
 import RelationshipIndividual from "/object/relationship-individual.js"
@@ -19,19 +19,19 @@ class AddChildBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		const _form = new Form()
-		const _form_ = new Form()
+		const individualForm = new Form()
+		const relationshipForm = new Form()
 
 		const steps = new Steps([
-			new Step("Individu", FormModel(IndividualFormModel({ title: "Enfant" })), FormBinding, { form: _form }),
-			new Step("Relation", FormModel(AddChildModel), AddChildFormBinding, { form: _form_ })
+			new Step("Individu", FormModel(IndividualFormModel({ title: "Enfant" })), FormBinding, { form: individualForm }),
+			new Step("Relationship", FormModel(AddChildModel), AddChildFormBinding, { form: relationshipForm })
 		])
 
 		steps.listen("stepChanged", data => {
 			if(data.name === "Individu") {
-				_form.emit("focus")
-			} else if(data.name === "Relation") {
-				_form_.emit("focus")
+				individualForm.emit("focus")
+			} else if(data.name === "Relationship") {
+				relationshipForm.emit("focus")
 			}
 		})
 
@@ -56,9 +56,9 @@ class AddChildBinding extends Binding {
 			individual.emit("node animate")
 		})
 
-		_form.listen("submitted", data => steps.emit("stepNext", data))
+		individualForm.listen("submitted", data => steps.emit("stepNext", data))
 
-		_form_.listen("submitted", data => steps.emit("stepNext", data))
+		relationshipForm.listen("submitted", data => steps.emit("stepNext", data))
 
 		this.run(StepsModel, { binding: new StepsBinding({ steps }) })
 

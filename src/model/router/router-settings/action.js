@@ -1,4 +1,4 @@
-export default data => ({
+export default {
 	tagName: "div",
 	style: "display: grid; grid-gap: 5px; background-color: #b29e9e; padding: 10px;",
 	children: [
@@ -10,4 +10,4 @@ export default data => ({
 			textContent: "Vider la base de donnée locale"
 		}
 	]
-})
+}

@@ -6,7 +6,7 @@ export default {
 	children: [
 		{
 			tagName: "h3",
-			textContent: "Relation",
+			textContent: "Relationship",
 			className: "title"
 		},
 		{
