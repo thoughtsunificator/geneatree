@@ -27,13 +27,13 @@ class ExplorerBinding extends Binding {
 		geneatree.explorer.emit("coordinatesSet", { x: tree.viewer.x, y: tree.viewer.y })
 		geneatree.explorer.emit("scaleSet", tree.viewer.scale)
 
-		this.root.ownerDocument.defaultView.addEventListener("mouseup", () => {
+		this.root.addEventListener("mouseup", () => {
 			if(tree.viewer.dragging.started) {
 				geneatree.explorer.emit("dragEnd")
 			}
 		})
 
-		this.root.ownerDocument.defaultView.addEventListener("mousemove", event => {
+		this.root.addEventListener("mousemove", event => {
 			if(tree.viewer.dragging.started) {
 				const { clientX, clientY } = event
 				const diffX = Math.abs(clientX - tree.viewer.dragging.clientX)
@@ -57,7 +57,7 @@ class ExplorerBinding extends Binding {
 			}
 		})
 
-		this.root.ownerDocument.defaultView.addEventListener("resize", () => {
+		this.root.addEventListener("resize", () => {
 			if(tree.individuals.length >= 1) {
 				geneatree.explorer.emit("dragReset")
 			}
