@@ -1,4 +1,4 @@
-import Relationship from "/object/relationship.js"
+import Relationship from "../../../object/relationship.js"
 
 export default {
 	tagName: "div",

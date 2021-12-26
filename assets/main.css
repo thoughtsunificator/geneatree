@@ -1,5 +1,0 @@
-@import "css-generics";
-@import "@domodel/paginator";
-@import "@domodel/steps";
-@import "@domodel/tabs";
-@import-glob "**/*.css";

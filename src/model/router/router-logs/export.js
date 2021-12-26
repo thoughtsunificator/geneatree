@@ -1,4 +1,4 @@
-import { LOGS_FORMATS_EXPORT } from "/model/geneatree.binding.js"
+import { LOGS_FORMATS_EXPORT } from "../../../model/geneatree.binding.js"
 import { FormModel } from "@domodel/form"
 
 export default data => FormModel({

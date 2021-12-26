@@ -1,4 +1,4 @@
-import Log from "/object/log.js"
+import Log from "../../../object/log.js"
 
 export default data => ({
 	tagName: "div",

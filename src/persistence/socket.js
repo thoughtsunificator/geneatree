@@ -2,8 +2,6 @@ import Trees from "./socket/trees.js"
 import Individuals from "./socket/individuals.js"
 import Notes from "./socket/notes.js"
 
-import config from ":config"
-
 import Log from "../object/log.js"
 
 export const SOCKET_STATE_INITIAL = "SOCKET_STATE_INITIAL"
@@ -19,7 +17,7 @@ function connect(properties) {
 	geneatree.emit("log", { type: Log.TYPE.DEBUG, message: `[persistence:socket] Connecting...` })
 
 	geneatree.socketState = SOCKET_STATE_CONNECTING
-	const socket = new WebSocket(config.SOCKET_URL)
+	const socket = new WebSocket(window.SOCKET_URL)
 
 	const listeners = []
 

@@ -2,13 +2,13 @@ import { Core, Observable, Binding } from "domodel"
 import { Step, Steps, StepsModel, StepsBinding } from "@domodel/steps"
 import { Form, FormModel, FormBinding } from "@domodel/form"
 
-import IndividualFormModel from "/model/form/individual.js"
+import IndividualFormModel from "../../model/form/individual.js"
 import AddChildModel from "./steps-add-child/form.js"
 
 import AddChildFormBinding from "./steps-add-child/form.binding.js"
 
-import Relationship from "/object/relationship.js"
-import RelationshipIndividual from "/object/relationship-individual.js"
+import Relationship from "../../object/relationship.js"
+import RelationshipIndividual from "../../object/relationship-individual.js"
 
 /**
  * @global

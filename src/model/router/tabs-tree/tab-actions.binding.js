@@ -2,7 +2,7 @@ import { Core, Observable, Binding } from "domodel"
 import { Form, FormModel, FormBinding } from "@domodel/form"
 
 import TreeExportFormModel from "../export-tree/form.js"
-import { TREE_FORMATS_EXPORT } from "/model/geneatree.binding.js"
+import { TREE_FORMATS_EXPORT } from "../../../model/geneatree.binding.js"
 
 
 /**

@@ -1,5 +1,5 @@
-import Geneatree from "/object/geneatree.js"
-import { THEMES } from "/model/geneatree.binding.js"
+import Geneatree from "../../../object/geneatree.js"
+import { THEMES } from "../../../model/geneatree.binding.js"
 import { FormModel } from '@domodel/form'
 
 const INCLUDE_SETTINGS = ["offline", "minimap", "osd"]

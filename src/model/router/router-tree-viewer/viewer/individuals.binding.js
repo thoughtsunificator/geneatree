@@ -1,7 +1,7 @@
 import { Core, Binding } from "domodel"
 // import { GridModel, GridBinding } from "@domodel/grid"
 
-import Log from "/object/log.js"
+import Log from "../../../../object/log.js"
 
 import IndividualsEventListener from "./individuals.event.js"
 

@@ -2,7 +2,7 @@ import { Core, Observable, Binding } from "domodel"
 import { Tabs, Tab, TabsModel, TabsBinding } from "@domodel/tabs"
 import { Form, FormModel, FormBinding } from "@domodel/form"
 
-import TreeFormModel from "/model/form/tree.js"
+import TreeFormModel from "../../model/form/tree.js"
 import TabActionsModel from "./tabs-tree/tab-actions.js"
 import TabIndividualsModel from "./tabs-tree/tab-individuals.js"
 

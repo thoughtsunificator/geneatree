@@ -4,7 +4,7 @@ import MessageModel from "./osd/message.js"
 
 import MessageBinding from "./osd/message.binding.js"
 
-import Log from "/object/log.js"
+import Log from "../../object/log.js"
 
 /**
  * @global

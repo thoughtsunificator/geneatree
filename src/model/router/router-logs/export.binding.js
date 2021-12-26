@@ -1,7 +1,7 @@
 import { Binding } from "domodel"
 import { Form, FormBinding } from "@domodel/form"
 
-import Log from "/object/log.js"
+import Log from "../../../object/log.js"
 
 /**
  * @global

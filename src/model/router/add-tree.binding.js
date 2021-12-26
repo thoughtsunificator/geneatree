@@ -2,8 +2,8 @@ import { Core, Observable, Binding } from "domodel"
 import { Step, Steps, StepsModel, StepsBinding } from "@domodel/steps"
 import { Form, FormModel, FormBinding } from "@domodel/form"
 
-import TreeFormModel from "/model/form/tree.js"
-import IndividualFormModel from "/model/form/individual.js"
+import TreeFormModel from "../../model/form/tree.js"
+import IndividualFormModel from "../../model/form/individual.js"
 
 /**
  * @global

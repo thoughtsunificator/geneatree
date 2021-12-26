@@ -4,11 +4,11 @@ import { Form, FormModel, FormBinding } from "@domodel/form"
 import { Parser } from "@thoughtsunificator/gedcom-parser"
 
 import TreeImportFileModel from "./steps-import-tree/form.js"
-import TreeFormModel from "/model/form/tree.js"
+import TreeFormModel from "../../model/form/tree.js"
 
 import StepFileBinding from "./steps-import-tree/step-file.binding.js"
 
-import { TREE_FORMATS_IMPORT } from "/model/geneatree.binding.js"
+import { TREE_FORMATS_IMPORT } from "../../model/geneatree.binding.js"
 
 /**
  * @global

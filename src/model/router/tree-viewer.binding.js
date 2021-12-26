@@ -7,7 +7,7 @@ import ViewerModel from "./router-tree-viewer/viewer.js"
 import HomeBinding from "./router-tree-viewer/home.binding.js"
 import ViewerBinding from "./router-tree-viewer/viewer.binding.js"
 
-import Log from "/object/log.js"
+import Log from "../../object/log.js"
 
 /**
  * @global

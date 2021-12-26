@@ -5,7 +5,7 @@ import LogModel from "./logs/log.js"
 
 import LogBinding from "./logs/log.binding.js"
 
-import Log from "/object/log.js"
+import Log from "../../../object/log.js"
 
 /**
  * @global

@@ -1,6 +1,6 @@
 import { EventListener } from "domodel"
 
-import Log from "/object/log.js"
+import Log from "../../object/log.js"
 
 /**
  * @global

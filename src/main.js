@@ -1,14 +1,14 @@
-import "assets/main.css"
+import "./main.css"
 
 import { Core } from "domodel"
 
-import GeneatreeModel from "/model/geneatree.js"
-import GeneatreeBinding from "/model/geneatree.binding.js"
+import GeneatreeModel from "./model/geneatree.js"
+import GeneatreeBinding from "./model/geneatree.binding.js"
 
-import Geneatree from "/object/geneatree.js"
-import Log from "/object/log.js"
+import Geneatree from "./object/geneatree.js"
+import Log from "./object/log.js"
 
-import Persistence from "/persistence/persistence.js"
+import Persistence from "./persistence/persistence.js"
 
 window.addEventListener("load", function() {
 
