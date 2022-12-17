@@ -13,9 +13,9 @@ class TreeEventListener extends EventListener {
 		this.root.classList.remove("active")
 	}
 
-	update(data) {
-		this.identifier.name.textContent = data.tree.meta.name
-		this.identifier.name.title = data.tree.meta.name
+	update() {
+		this.identifier.name.textContent = this.properties.tree.meta.name
+		this.identifier.name.title = this.properties.tree.meta.name
 	}
 
 	remove() {

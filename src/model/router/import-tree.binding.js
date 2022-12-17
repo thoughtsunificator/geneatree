@@ -26,7 +26,7 @@ class ImportTreeBinding extends Binding {
 			new Step("Tree", FormModel(TreeFormModel({ title: `Tree` })), FormBinding, { form: treeForm})
 		])
 
-		steps.listen("stepChanged", data => {
+		this.listen(steps, "stepChanged", data => {
 			if(data.name === "Fichier") {
 				fileForm.emit("focus")
 			} else if(data.name === "Tree") {
@@ -34,15 +34,15 @@ class ImportTreeBinding extends Binding {
 			}
 		})
 
-		steps.listen("done", () => {
+		this.listen(steps, "done", () => {
 			console.log(steps.getStepByName("Fichier").data)
 			console.log(Parser.parse(steps.getStepByName("Fichier").data))
 			// parse data
-			// geneatree.emit("tree add", [{ meta: data[1] }, []])
-			// geneatree.emit("tree select", geneatree.trees.list[geneatree.trees.list.length - 1])
+			// geneatree.emit("treeAdd", [{ meta: data[1] }, []])
+			// geneatree.emit("treeSelect", geneatree.trees.list[geneatree.trees.list.length - 1])
 		})
 
-		treeForm.listen("submitted", data => steps.emit("stepNext", data))
+		this.listen(treeForm, "submitted", data => steps.emit("stepNext", data))
 
 		this.run(StepsModel, { binding: new StepsBinding({ steps }) })
 

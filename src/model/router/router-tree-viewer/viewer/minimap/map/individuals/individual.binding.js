@@ -17,7 +17,7 @@ class IndividualBinding extends Binding {
 
 		const { geneatree, individual } = this.properties
 
-		individual.listen("update", () => {
+		this.listen(individual, "update", () => {
 			for(const key in individual.meta) {
 				if(key === "gender") {
 					this.root.classList.remove("unknown", "man", "woman", "other") // FIXME pass old value and use replace instead
@@ -28,11 +28,11 @@ class IndividualBinding extends Binding {
 			}
 		})
 
-		individual.listen("remove", () => {
+		this.listen(individual, "remove", () => {
 			this.root.remove()
 		})
 
-		individual.listen("node remove", () => {
+		this.listen(individual, "nodeRemove", () => {
 			this.root.remove()
 		})
 

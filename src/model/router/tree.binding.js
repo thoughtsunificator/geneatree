@@ -26,12 +26,12 @@ class TreeBinding extends Binding {
 			new Tab("Actions", TabActionsModel, TabActionsBinding)
 		])
 
-		this.individualForm.listen("submitted", data => {
+		this.listen(this.individualForm, "submitted", data => {
 			geneatree.trees.emit("update", { tree: geneatree.trees.selected, form: data })
 			geneatree.router.emit("browse", { path: "/" })
 		})
 
-		tabs.listen("tabChanged", tab => {
+		this.listen(tabs, "tabChanged", tab => {
 			if(tab.name === "Editer") {
 				this.individualForm.emit("focus")
 			}

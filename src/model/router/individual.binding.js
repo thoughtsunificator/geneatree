@@ -28,32 +28,32 @@ class IndividualBinding extends Binding {
 			new Tab("Actions", TabActionsModel, TabActionsBinding)
 		])
 
-		this.listen(geneatree, "individual removed", data => {
-			geneatree.emit("individual unselect", data)
+		this.listen(geneatree, "individualRemoved", data => {
+			geneatree.emit("individualUnselect", data)
 		})
 
-		tabs.listen("tabChanged", tab => {
+		this.listen(tabs, "tabChanged", tab => {
 			if(tab.name === "Editer") {
 				individualForm.emit("focus")
 			}
 		})
 
-		individualForm.listen("submitted", data => {
+		this.listen(individualForm, "submitted", data => {
 			let individual_
 			if(individual !== null) {
 				individual_ = individual
 			} else {
 				individual_ = geneatree.trees.selected.selectedIndividual
 			}
-			geneatree.emit("individual update", { individual: individual_, form: data })
+			geneatree.emit("individualUpdate", { individual: individual_, form: data })
 		})
 
 		this.run(TabsModel, { binding: new TabsBinding({ tabs }) })
 
 		tabs.emit("tabSet", "Editer")
 
-		individualForm.emit("load", geneatree.trees.selected.selectedIndividual)
-		individualForm.emit("focus")
+		this.emit(individualForm, "load", geneatree.trees.selected.selectedIndividual)
+		this.emit(individualForm, "focus")
 
 	}
 

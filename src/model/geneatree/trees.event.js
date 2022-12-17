@@ -9,10 +9,11 @@ class TreesEventListener extends EventListener {
 
 	/**
 	 * @event TreesEventListener#add
+	 * @property {array} data
 	 */
 	add(data) {
 		const { geneatree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] tree add", data })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] [tree] add", data })
 		const tree = geneatree.trees.add(data[0].meta)
 		if(data[0].type === "online") {
 			tree.networkId = data[0]._id
@@ -44,69 +45,104 @@ class TreesEventListener extends EventListener {
 			}
 		}
 		geneatree.trees.emit("listAdd", tree)
-		geneatree.emit("tree added", tree)
+		geneatree.trees.emit("added", tree)
 	}
 
 	/**
+	 * @event TreesEventListener#listAdd
+	 * @property {Tree} data
+	*/
+
+	/**
+	 * @event TreesEventListener#added
+	 * @property {Tree} data
+	*/
+
+	/**
 	 * @event TreesEventListener#update
+	 * @property {Tree} data
 	 */
 	update(data) {
 		const { geneatree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] tree update", data })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] [tree] update", data })
 		for(const key in data.form) {
 			data.tree.meta[key] = data.form[key]
 		}
 		data.tree.emit("update")
-		geneatree.emit("tree updated", data)
+		geneatree.trees.emit("updated", data)
 	}
+
+	/**
+	 * @event TreesEventListener#updated
+	 * @property {Tree} data
+	*/
 
 	/**
 	 * @event TreesEventListener#remove
+	 * @property {Tree} data
 	 */
 	remove(data) {
 		const { geneatree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] tree remove", data })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] [tree] remove", data })
 		geneatree.removeTree(data)
 		data.emit("remove")
-		geneatree.emit("tree removed", data)
+		geneatree.trees.emit("removed", data)
 	}
 
 	/**
+	 * @event TreesEventListener#removed
+	 * @property {Tree} data
+	*/
+
+	/**
 	 * @event TreesEventListener#select
+	 * @property {Tree} data
 	 */
 	select(data) {
 		const { geneatree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] tree select", data })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] [tree] select", data })
 		if(geneatree.trees.selected !== null) {
-			geneatree.emit("tree unselect", geneatree.trees.selected)
+			geneatree.emit("treeUnselect", geneatree.trees.selected)
 		}
 		geneatree.trees.selected = data
 		data.emit("select")
 		geneatree.trees.list.filter(tree => tree !== data).forEach(tree => tree.emit("unselect"))
 		this.root.style.display = ""
-		geneatree.emit("tree selected", data)
+		geneatree.trees.emit("selected", data)
 	}
+
+	/**
+	 * @event TreesEventListener#selected
+	 * @property {Tree} data
+	*/
 
 	/**
 	 * @event TreesEventListener#unselect
+	 * @property {Tree} data
 	 */
 	unselect(data) {
 		const { geneatree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] tree unselect", data })
-		geneatree.trees.selected.individuals.forEach(individual => individual.emit("node remove"))
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] [tree] unselect", data })
+		geneatree.trees.selected.individuals.forEach(individual => individual.emit("nodeRemove"))
 		geneatree.trees.selected.selectedIndividual = null
 		geneatree.trees.selected = null
 		data.emit("unselect")
-		data.individuals.forEach(individual => individual.emit("node remove"))
-		geneatree.emit("tree unselected", data)
+		data.individuals.forEach(individual => individual.emit("nodeRemove"))
+		geneatree.trees.emit("unselected", data)
 	}
 
 	/**
+	 * @event TreesEventListener#unselected
+	 * @property {Tree} data
+	*/
+
+	/**
 	 * @event TreesEventListener#toggle
+	 * @property {Tree} data
 	 */
 	toggle(data) {
 		const { geneatree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] tree toggle", data })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] [tree] toggle", data })
 		if(data.toggle === true) {
 			this.root.style.display = "grid"
 		} else {

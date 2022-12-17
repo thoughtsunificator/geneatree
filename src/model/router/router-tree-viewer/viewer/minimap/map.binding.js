@@ -32,7 +32,7 @@ class MapBinding extends Binding {
 
 		this.root.addEventListener("click", event => {
 			const viewerPosition = this.getViewerPosition(event.clientX, event.clientY)
-			geneatree.emit("tree viewer drag update", { x: viewerPosition.x, y: viewerPosition.y })
+			geneatree.emit("treeViewerDragUpdate", { x: viewerPosition.x, y: viewerPosition.y })
 		})
 
 		this.root.addEventListener("mousedown", () => {
@@ -48,7 +48,7 @@ class MapBinding extends Binding {
 		this.root.addEventListener("mousemove", event => {
 			if(_dragging) {
 				const viewerPosition = this.getViewerPosition(event.clientX, event.clientY)
-				geneatree.emit("tree viewer drag update", { x: viewerPosition.x, y: viewerPosition.y })
+				geneatree.emit("treeViewerDragUpdate", { x: viewerPosition.x, y: viewerPosition.y })
 			}
 		})
 

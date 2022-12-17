@@ -17,14 +17,14 @@ class CursorBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		this.listen(geneatree, "tree viewer coordinates updated", data => {
+		this.listen(geneatree, "treeViewerCoordinatesUpdated", data => {
 			const xPercent = (data.x / this.root.parentNode.parentNode.parentNode.offsetWidth) * 100
 			const yPercent = (data.y / this.root.parentNode.parentNode.parentNode.offsetHeight) * 100
 			const cursorX = (100 / 100) * xPercent
 			const cursorY = (50 / 100) * yPercent
 			this.root.style.left = cursorX + "px"
 			this.root.style.top = cursorY + "px"
-			geneatree.emit("tree viewer minimap coordinates updated", { xPercent, yPercent, cursorY, cursorX })
+			geneatree.emit("treeViewerMinimapCoordinatesUpdated", { xPercent, yPercent, cursorY, cursorX })
 		})
 
 	}

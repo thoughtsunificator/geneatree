@@ -12,7 +12,7 @@ export default class extends ItemBinding {
 
 		const { application: geneatree, individual, relationship, page } = this.properties
 
-		individual.listen("update", () => {
+		this.listen(individual, "update", () => {
 			for(const key in individual.meta) {
 				if(key === "gender") {
 					this.identifier.self.classList.remove("unknown", "man", "woman", "other")

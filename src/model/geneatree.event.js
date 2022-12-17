@@ -1,24 +1,28 @@
 import { EventListener } from "domodel"
 
-import IndividualModel from "./router/router-tree-viewer/viewer/individuals/individual.js"
-
-import IndividualBinding from "./router/router-tree-viewer/viewer/individuals/individual.binding.js"
+import { THEMES } from "./geneatree.binding.js"
 
 /**
  * @global
  */
 class GeneatreeEventListener extends EventListener {
 
-	gridFill(data) {
-		console.log(data)
-		const { geneatree } = this.properties
-		geneatree.grid.emit("fill", {
-			x: data.x,
-			y: data.y,
-			data: data.data,
-			model: IndividualModel(data.data),
-			binding: new IndividualBinding({ geneatree, individual: data.data })
-		})
+	/**
+	 * @event GeneatreeEventListener#treeFilter
+	 * @property {string} data
+	 */
+	
+	/**
+	 * @event GeneatreeEventListener#treeFilterReset
+	 */
+
+
+	settingsSaved() {
+		const className = `theme-${this.properties.geneatree.settings.theme}`
+		if(!this.root.classList.contains(className)) {
+			this.root.classList.remove(...THEMES.map(theme => `theme-${theme}`))
+			this.root.classList.add(className)
+		}
 	}
 
 }

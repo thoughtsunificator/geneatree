@@ -44,28 +44,28 @@ class IndividualBinding extends Binding {
 
 		this.listen(individual, "remove", () => {
 			if(geneatree.trees.selected.selectedIndividual === individual) {
-				geneatree.trees.selected.individuals.filter(individual_ => individual_ !== individual).forEach(individual_ => individual_.emit("node show"))
+				geneatree.trees.selected.individuals.filter(individual_ => individual_ !== individual).forEach(individual_ => individual_.emit("nodeShow"))
 			}
 			this.root.remove()
 		})
 
-		this.listen(individual, "node remove", () => {
+		this.listen(individual, "nodeRemove", () => {
 			this.root.remove()
 		})
 
-		this.listen(individual, "node show", () => {
+		this.listen(individual, "nodeShow", () => {
 			this.root.style.visibility = ""
 		})
 
-		this.listen(individual, "node hide", () => {
+		this.listen(individual, "nodeHide", () => {
 			this.root.style.visibility = "hidden"
 		})
 
-		this.listen(individual, "node focus", () => {
+		this.listen(individual, "nodeFocus", () => {
 			this.identifier.self.focus()
 		})
 
-		this.listen(individual, "node animate", () => {
+		this.listen(individual, "nodeAnimate", () => {
 			const step = 2.5
 			const max = 100
 			let value = max
@@ -83,7 +83,7 @@ class IndividualBinding extends Binding {
 			if(geneatree.trees.selected.selectedIndividual === individual) {
 				geneatree.router.emit("browse", { path: "/individual", properties: { individual } })
 			} else {
-				geneatree.emit("individual select", individual)
+				geneatree.emit("individualSelect", individual)
 			}
 		})
 
@@ -97,11 +97,11 @@ class IndividualBinding extends Binding {
 
 		const { geneatree, individual } = this.properties
 
-		individual.listen("node center", () => {
+		this.listen(individual, "nodeCenter", () => {
 			const rect = this.root.getBoundingClientRect()
 			const x = Math.abs(geneatree.trees.selected.viewer.x - rect.x)
 			const y = Math.abs(geneatree.trees.selected.viewer.y - rect.y)
-			geneatree.emit("tree viewer focus", { x, y })
+			geneatree.emit("treeViewerFocus", { x, y })
 		})
 
 	}

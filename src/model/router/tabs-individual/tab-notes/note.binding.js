@@ -11,8 +11,8 @@ class NoteBinding extends ItemBinding {
 
 		const { application: geneatree, individual, note, page } = this.properties
 
-		this.identifier.edit.addEventListener("click", () => geneatree.emit("individual notes update popup", note))
-		this.identifier.remove.addEventListener("click", () => geneatree.emit("individual notes remove", note))
+		this.identifier.edit.addEventListener("click", () => geneatree.emit("individualNotesUpdatePopup", note))
+		this.identifier.remove.addEventListener("click", () => geneatree.emit("individualNotesRemove", note))
 
 	}
 

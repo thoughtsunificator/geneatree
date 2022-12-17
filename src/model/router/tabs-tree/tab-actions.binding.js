@@ -31,18 +31,18 @@ class TabActionsBinding extends Binding {
 
 		const _form = new Form()
 
-		tab.listen("unset", () => {
+		this.listen(tab, "unset", () => {
 			this.setView(TabActionsBinding.MAIN_VIEW)
 		})
 
-		_form.listen("submitted", data => {
+		this.listen(_form, "submitted", data => {
 			console.log(data)
 		})
 
 		this.identifier.export.addEventListener("click", () => {
 			this.setView("export")
 		})
-		this.identifier.delete.addEventListener("click", () => geneatree.emit("tree remove", geneatree.trees.selected))
+		this.identifier.delete.addEventListener("click", () => geneatree.emit("treeRemove", geneatree.trees.selected))
 		this.identifier.back.addEventListener("click", () => {
 			this.setView(TabActionsBinding.MAIN_VIEW)
 		})

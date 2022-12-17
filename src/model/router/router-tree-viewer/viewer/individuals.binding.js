@@ -1,7 +1,6 @@
 import { Core, Binding } from "domodel"
-// import { GridModel, GridBinding } from "@domodel/grid"
-
-import Log from "../../../../object/log.js"
+import GridModel from "./grid.js"
+import GridBinding from "./grid.binding.js"
 
 import IndividualsEventListener from "./individuals.event.js"
 
@@ -33,22 +32,17 @@ class IndividualsBinding extends Binding {
 
 		this.identifier.focusOne.addEventListener("focus", () => {
 			if(tree !== null && tree.individuals.length >= 1) {
-				tree.individuals[tree.individuals.length - 1].emit("node focus")
+				tree.individuals[tree.individuals.length - 1].emit("nodeFocus")
 			}
 		})
 
 		this.identifier.focusTwo.addEventListener("focus", () => {
 			if(tree !== null && tree.individuals.length >= 1) {
-				tree.individuals[0].emit("node focus")
+				tree.individuals[0].emit("nodeFocus")
 			}
 		})
 
-		// this.run(GridModel, { parentNode: this.identifier.list, binding: new GridBinding({ grid: geneatree.grid }) })
-
-		// for(const individual of tree.individuals) {
-		// 	geneatree.emit("gridFill", { data: individual, x: individual.cell ? individual.cell.x : 0, y: individual.cell ? individual.cell.y : 0 })
-		// }
-
+		this.run(GridModel, { parentNode: this.identifier.list, binding: new GridBinding() })
 	}
 
 }

@@ -27,7 +27,7 @@ class AddSpouseBinding extends Binding {
 			new Step("Relationship", FormModel(AddSpouseModel), AddSpouseFormBinding, { form: relationshipForm})
 		])
 
-		steps.listen("stepChanged", data => {
+		this.listen(steps, "stepChanged", data => {
 			if(data.name === "Individu") {
 				individualForm.emit("focus")
 			} else if(data.name === "Relationship") {
@@ -35,7 +35,7 @@ class AddSpouseBinding extends Binding {
 			}
 		})
 
-		steps.listen("done", () => {
+		this.listen(steps, "done", () => {
 			const individual = geneatree.trees.selected.addIndividual(steps.getStepByName("Individu").data)
 			const x = geneatree.trees.selected.selectedIndividual.cell.x
 			const y = geneatree.trees.selected.selectedIndividual.cell.y + 1
@@ -47,15 +47,12 @@ class AddSpouseBinding extends Binding {
 			relationship.meta.startDate = steps.getStepByName("Relationship").data.relationDate
 			relationship.meta.place = steps.getStepByName("Relationship").data.relationPlace
 
-			geneatree.emit("relationship added", relationship)
-			geneatree.emit("individual unselect", geneatree.trees.selected.selectedIndividual)
-			geneatree.emit("gridFill", { data: individual, x, y })
-			geneatree.emit("individual added", individual)
+			geneatree.emit("relationshipAdded", relationship)
 		})
 
-		individualForm.listen("submitted", data => steps.emit("stepNext", data))
+		this.listen(individualForm, "submitted", data => steps.emit("stepNext", data))
 
-		relationshipForm.listen("submitted", data => steps.emit("stepNext", data))
+		this.listen(relationshipForm, "submitted", data => steps.emit("stepNext", data))
 
 		this.run(StepsModel, { binding: new StepsBinding({ steps }) })
 

@@ -21,7 +21,7 @@ class FilterBinding extends Binding {
 
 		this.identifier.input.addEventListener("input", event => {
 			if(geneatree.trees.list.length >= 1) {
-				geneatree.emit("tree filter", event.target.value)
+				geneatree.emit("treeFilter", event.target.value)
 			}
 		})
 

@@ -10,11 +10,11 @@ export default properties => {
 		geneatree.settings = JSON.parse(localStorage.getItem("settings"))
 	}
 
-	geneatree.listen("settings set", data => {
-		geneatree.emit("log" , { type: Log.TYPE.DEBUG, message: "[ui] settings set", data })
+	geneatree.listen("settingsSet", data => {
+		geneatree.emit("log" , { type: Log.TYPE.DEBUG, message: "[ui] settingsSet", data })
 		geneatree.settings = {...geneatree.settings, ...data }
 		localStorage.setItem("settings", JSON.stringify(geneatree.settings))
-		geneatree.emit("settings saved")
+		geneatree.emit("settingsSaved")
 	})
 
 }

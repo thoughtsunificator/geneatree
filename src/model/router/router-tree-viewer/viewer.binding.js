@@ -13,7 +13,7 @@ class HomeBinding extends Binding {
 			const { width, height } = this.root.getBoundingClientRect()
 			tree.viewer.width = width
 			tree.viewer.height = height
-			geneatree.emit("tree viewer resized", { width, height })
+			geneatree.explorer.emit("resized", { width, height })
 		})
 
 		resizeObserver.observe(this.root)

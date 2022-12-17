@@ -10,7 +10,7 @@ class ActionBinding extends Binding {
 		const { geneatree } = this.properties
 
 		this.identifier.deleteOfflineData.addEventListener("click", () => {
-			geneatree.emit("persistence indexeddb clear")
+			geneatree.emit("persistenceIndexeddbClear")
 		})
 
 	}

@@ -20,7 +20,7 @@ class ExportBinding extends FormBinding {
 
 		const { geneatree } = this.properties
 
-		this.properties.form.listen("submitted", data => {
+		this.listen(this.properties.form, "submitted", data => {
 			const logs = geneatree.logs.map(log => ({
 				message: log.message,
 				data: log.data,

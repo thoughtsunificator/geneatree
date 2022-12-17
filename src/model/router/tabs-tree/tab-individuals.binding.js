@@ -37,12 +37,12 @@ class TabIndividuals extends Binding {
 
 		this.paginator = new Paginator(5)
 
-		tab.listen("set", () => this.render(this.properties.geneatree.trees.selected.individuals))
+		this.listen(tab, "set", () => this.render(this.properties.geneatree.trees.selected.individuals))
 
-		this.listen(geneatree, "individual added", () => this.render(this.properties.geneatree.trees.selected.individuals))
-		this.listen(geneatree, "tree selected", () => this.render(this.properties.geneatree.trees.selected.individuals))
-		this.listen(geneatree, "individual removed", () => this.render(this.properties.geneatree.trees.selected.individuals))
-		this.listen(geneatree, "individual updated", () => this.render(this.properties.geneatree.trees.selected.individuals))
+		this.listen(geneatree, "treeSelected", () => this.render(this.properties.geneatree.trees.selected.individuals))
+		this.listen(geneatree.individuals, "added", () => this.render(this.properties.geneatree.trees.selected.individuals))
+		this.listen(geneatree.individuals, "removed", () => this.render(this.properties.geneatree.trees.selected.individuals))
+		this.listen(geneatree.individuals, "updated", () => this.render(this.properties.geneatree.trees.selected.individuals))
 
 		this.identifier.searchInput.addEventListener("input", event => {
 			const individualsList = geneatree.trees.selected.findIndividuals({ query: event.target.value })

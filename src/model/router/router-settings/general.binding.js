@@ -18,9 +18,9 @@ class GeneralBinding extends FormBinding {
 
 		const { geneatree } = this.properties
 
-		this.properties.form.listen("submitted", data => {
-			geneatree.emit("settings set", data)
-			geneatree.emit("tree viewer osd set", { text: "Settings updated", type: "info", duration: 1500 })
+		this.listen(this.properties.form, "submitted", data => {
+			geneatree.emit("settingsSet", data)
+			geneatree.emit("osdSet", { text: "Settings updated", type: "info", duration: 1500 })
 		})
 
 		this.properties.form.emit("load", geneatree.settings)

@@ -9,10 +9,13 @@ class ExplorerEventListener extends EventListener {
 
 	/**
 	 * @event ExplorerEventListener#dragStart
+	 * @property {object} data
+	 * @property {number} data.clientX
+	 * @property {number} data.clientY
 	 */
 	dragStart(data) {
 		const { geneatree, tree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] tree viewer drag start",  data })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] [viewer] [explorer] drag start" })
 		tree.viewer.dragging.clientX = data.clientX
 		tree.viewer.dragging.clientY = data.clientY
 		tree.viewer.dragging.started = true
@@ -23,7 +26,7 @@ class ExplorerEventListener extends EventListener {
 	 */
 	dragEnd() {
 		const { geneatree, tree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] tree viewer drag end" })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] [viewer] [explorer] drag end" })
 		tree.viewer.dragging.clientX = null
 		tree.viewer.dragging.clientY = null
 		tree.viewer.dragging.moved = false
@@ -32,10 +35,13 @@ class ExplorerEventListener extends EventListener {
 
 	/**
 	 * @event ExplorerEventListener#dragUpdate
+	 * @property {object} data
+	 * @property {number} data.x
+	 * @property {number} data.y
 	 */
 	dragUpdate(data) {
 		const { geneatree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] tree viewer drag update" })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] [viewer] [explorer] drag update" })
 		geneatree.explorer.emit("coordinatesSet", {x: data.x, y: data.y})
 	}
 
@@ -44,7 +50,7 @@ class ExplorerEventListener extends EventListener {
 	 */
 	dragReset() {
 		const { geneatree, tree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] tree viewer drag reset" })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] [viewer] [explorer] drag reset" })
 		tree.viewer.dragging.clientX = null
 		tree.viewer.dragging.clientY = null
 		tree.viewer.dragging.moved = false
@@ -54,6 +60,7 @@ class ExplorerEventListener extends EventListener {
 
 	/**
 	 * @event ExplorerEventListener#dragToggle
+	 * @property {boolean} data
 	 */
 	dragToggle(data) {
 		const { geneatree, tree } = this.properties
@@ -62,10 +69,13 @@ class ExplorerEventListener extends EventListener {
 
 	/**
 	 * @event ExplorerEventListener#coordinatesSet
+	 * @property {object} data
+	 * @property {number} data.x
+	 * @property {number} data.y
 	 */
 	coordinatesSet(data) {
 		const { geneatree, tree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] tree viewer coordinatesSet",  data })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] [viewer] [explorer] coordinatesSet" })
 		if(tree !== null) {
 			tree.viewer.x = data.x
 			tree.viewer.y = data.y
@@ -74,19 +84,21 @@ class ExplorerEventListener extends EventListener {
 
 	/**
 	 * @event ExplorerEventListener#zoom
+	 * @property {number} data
 	 */
 	zoom(data) {
 		const { geneatree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] tree viewer zoom",  data })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] [viewer] [explorer] zoom" })
 		geneatree.explorer.emit("scale set", data)
 	}
 
 	/**
 	 * @event ExplorerEventListener#scaleSet
+	 * @property {number} data
 	 */
 	scaleSet(data) {
 		const { geneatree, tree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] tree viewer scale set",  data })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] [viewer] [explorer] scale set" })
 		tree.viewer.scale = data
 	}
 
@@ -95,16 +107,19 @@ class ExplorerEventListener extends EventListener {
 	 */
 	scaleReset() {
 		const { geneatree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] tree viewer scale reset" })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] [viewer] [explorer] scale reset" })
 		geneatree.explorer.emit("scale set", 1)
 	}
 
 	/**
 	 * @event ExplorerEventListener#focus
+	 * @property {object} data
+	 * @property {number} data.x
+	 * @property {number} data.y
 	 */
 	focus(data) {
 		const { geneatree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] tree viewer focus",  data })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] [viewer] [explorer] focus" })
 		const rect = this.root.getBoundingClientRect()
 		let diffViewerX = data.x - rect.x
 		let diffViewerY = data.y - rect.y

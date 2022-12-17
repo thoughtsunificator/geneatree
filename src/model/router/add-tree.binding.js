@@ -21,7 +21,7 @@ class AddTreeBinding extends Binding {
 			new Step("Decujus", FormModel(IndividualFormModel({ title: "Decujus" })), FormBinding, { form: decujusForm })
 		])
 
-		steps.listen("stepChanged", data => {
+		this.listen(steps, "stepChanged", data => {
 			if(data.name === "Tree") {
 				this.treeForm.emit("focus")
 			} else if(data.name === "Decujus") {
@@ -29,14 +29,14 @@ class AddTreeBinding extends Binding {
 			}
 		})
 
-		steps.listen("done", () => {
+		this.listen(steps, "done", () => {
 			geneatree.trees.emit("add", [{ meta: steps.getStepByName("Tree").data }, [{ meta: steps.getStepByName("Decujus").data }]])
 			geneatree.trees.emit("select", geneatree.trees.list[geneatree.trees.list.length - 1])
 			geneatree.router.emit("browse", { path: "/" })
 		})
 
-		this.treeForm.listen("submitted", data => steps.emit("stepNext", data))
-		decujusForm.listen("submitted", data => steps.emit("stepNext", data))
+		this.listen(this.treeForm, "submitted", data => steps.emit("stepNext", data))
+		this.listen(decujusForm, "submitted", data => steps.emit("stepNext", data))
 
 		this.run(StepsModel, { binding: new StepsBinding({ steps }) })
 

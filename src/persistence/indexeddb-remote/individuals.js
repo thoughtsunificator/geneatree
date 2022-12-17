@@ -2,19 +2,19 @@ export default properties => {
 
 	const { listeners, database } = properties
 
-	listeners.push({ query: "individual add", callback: (data) => {
+	listeners.push({ query: "individualAdd", callback: (data) => {
 		const { id, ...data_ } = data
 		const response = database.transaction(['individuals'], 'readwrite').objectStore('individuals').add(data_)
 		response.addEventListener("success", event => {
-			self.postMessage({ query: "individual added", data: { id, offlineId: event.target.result, tree: data.tree } })
+			self.postMessage({ query: "individualAdded", data: { id, offlineId: event.target.result, tree: data.tree } })
 		})
 	}})
 
-	listeners.push({ query: "individual update", callback: data => {
+	listeners.push({ query: "individualUpdate", callback: data => {
 		database.transaction(['individuals'], 'readwrite').objectStore('individuals').put(data)
 	}})
 
-	listeners.push({ query: "individual remove", callback: data => {
+	listeners.push({ query: "individualRemove", callback: data => {
 		database.transaction(['individuals'], 'readwrite').objectStore('individuals').delete(data.offlineId)
 	}})
 

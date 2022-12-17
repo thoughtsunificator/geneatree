@@ -2,7 +2,7 @@ export default properties => {
 
 	const { geneatree, worker, listeners } = properties
 
-	geneatree.listen("persistence indexeddb clear", data => {
+	geneatree.listen("persistenceIndexeddbClear", data => {
 		worker.postMessage({ query: "clear" })
 	})
 

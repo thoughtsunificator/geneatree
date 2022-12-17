@@ -17,11 +17,11 @@ class InformationBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		this.listen(geneatree, "tree viewer coordinates updated", data => {
+		this.listen(geneatree, "treeViewerCoordinatesUpdated", data => {
 			this.identifier.coordinates.textContent = `${parseInt(data.x)}, ${parseInt(data.y)}`
 		})
 
-		this.listen(geneatree, "tree viewer scale updated", data => {
+		this.listen(geneatree, "treeViewerScaleUpdated", data => {
 			this.identifier.scale.textContent = `x${parseFloat(data).toFixed(2)}`
 		})
 

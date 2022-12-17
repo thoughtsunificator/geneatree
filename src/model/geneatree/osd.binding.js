@@ -23,8 +23,8 @@ class OSDBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		this.listen(geneatree, "tree viewer osd set", data => {
-			geneatree.emit("log" , { type: Log.TYPE.DEBUG, message: "[ui] tree viewer osd set", data })
+		this.listen(geneatree, "osdSet", data => {
+			geneatree.emit("log" , { type: Log.TYPE.DEBUG, message: "[ui] osdSet", data })
 			if(!geneatree.settings.osd) {
 				return
 			}

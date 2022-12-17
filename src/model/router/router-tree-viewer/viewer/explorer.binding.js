@@ -69,7 +69,7 @@ class ExplorerBinding extends Binding {
 					geneatree.explorer.emit("dragReset")
 					geneatree.explorer.emit("scaleReset")
 				} else if(event.button === 0 && !tree.viewer.dragging.moved && tree.selectedIndividual !== null && event.target === this.root) {
-					geneatree.explorer.emit("individual unselect", tree.selectedIndividual)
+					geneatree.explorer.emit("individualUnselect", tree.selectedIndividual)
 				}
 			}
 		})

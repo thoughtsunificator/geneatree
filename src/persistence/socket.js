@@ -45,17 +45,17 @@ function connect(properties) {
 		geneatree.socketState = SOCKET_STATE_CONNECTED
 		geneatree.emit("log", { type: Log.TYPE.INFO, message: `Connected to server` })
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[persistence:socket] Connected" })
-		geneatree.emit("tree viewer osd set", { text: "Connected to server",  type: "info", duration: 2500 })
+		geneatree.emit("osdSet", { text: "Connected to server",  type: "info", duration: 2500 })
 	})
 
 	socket.addEventListener("error", event => {
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[persistence:socket] An error occured", data: event })
 		if(geneatree.socketState === SOCKET_STATE_CONNECTED) {
 			geneatree.emit("log", { type: Log.TYPE.ERROR, message: `Disconnected from server` })
-			geneatree.emit("tree viewer osd set", { text: "Disconnected from server", type: "info", duration: 2500 })
+			geneatree.emit("osdSet", { text: "Disconnected from server", type: "info", duration: 2500 })
 		} else if(geneatree.socketState === SOCKET_STATE_CONNECTING) {
 			geneatree.emit("log", { type: Log.TYPE.ERROR, message: `Failed to connect to server` })
-			geneatree.emit("tree viewer osd set", { text: "Failed to connect to server",  type: "error", duration: 3500 })
+			geneatree.emit("osdSet", { text: "Failed to connect to server",  type: "error", duration: 3500 })
 		}
 	})
 
@@ -63,7 +63,7 @@ function connect(properties) {
 		if(geneatree.socketState === SOCKET_STATE_CONNECTED) {
 			geneatree.emit("log", { type: Log.TYPE.INFO, message: "Disconnected from server" })
 			geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[persistence:socket] Disconnected" })
-			geneatree.emit("tree viewer osd set", { text: "Connection to the server was terminated", type: "info", duration: 3500 })
+			geneatree.emit("osdSet", { text: "Connection to the server was terminated", type: "info", duration: 3500 })
 		}
 		geneatree.socketState = SOCKET_STATE_DISCONNECTED
 	})
@@ -88,7 +88,7 @@ export default properties => {
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: `[persistence:socket] Offline mode: Skipping socket` })
 	}
 
-	geneatree.listen("settings saved", () => {
+	geneatree.listen("settingsSaved", () => {
 		if(_offline && !geneatree.settings.offline) {
 			geneatree.emit("log", { type: Log.TYPE.INFO, message: `Offline mode set to disabled` })
 			geneatree.emit("log", { type: Log.TYPE.DEBUG, message: `[persistence:socket] Offline mode disabled: Connecting...` })

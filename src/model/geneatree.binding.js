@@ -38,20 +38,12 @@ class GeneatreeBinding extends Binding {
 
 		this.identifier.treesToggle.addEventListener("click", () => geneatree.trees.emit("toggle", { toggle: !geneatree.trees.toggled }))
 
-		this.listen(geneatree, "settings saved", () => {
-			const className = `theme-${geneatree.settings.theme}`
-			if(!this.root.classList.contains(className)) {
-				this.root.classList.remove(...THEMES.map(theme => `theme-${theme}`))
-				this.root.classList.add(className)
-			}
-		})
-
-		geneatree.trees.listen("add", async data => {
+		this.listen(geneatree.trees, "add", async data => {
 			this.identifier.treesToggle.style.display = ""
 			geneatree.trees.emit("toggle", { toggle: true })
 		})
 
-		geneatree.trees.listen("remove", async data => {
+		this.listen(geneatree.trees, "remove", async data => {
 			if(geneatree.trees.length === 0) {
 				this.identifier.treesToggle.style.display = "none"
 				geneatree.trees.emit("toggle", { toggle: false })
@@ -66,10 +58,7 @@ class GeneatreeBinding extends Binding {
 			}
 		})
 
-		this.listen(geneatree, "treeViewerDragStarted", () => this.root.style.userSelect = "none")
-		this.listen(geneatree, "treeViewerDragEnded", () => this.root.style.userSelect = "")
-
-		geneatree.router.listen("browse", data => {
+		this.listen(geneatree.router, "browse", data => {
 			if(data.path === "/") {
 				this.identifier.router.classList.add("viewer")
 				if(geneatree.trees.list.length >= 1) {
@@ -79,6 +68,14 @@ class GeneatreeBinding extends Binding {
 				this.identifier.router.classList.remove("viewer")
 				geneatree.trees.emit("toggle", { toggle: false })
 			}
+		})
+
+		this.listen(geneatree.explorer, "dragStarted", () => {
+			this.root.style.userSelect = "none"
+		})
+			
+		this.listen(geneatree.explorer, "dragEnded", () => {
+			this.root.style.userSelect = ""
 		})
 
 		this.run(RouterModel, {

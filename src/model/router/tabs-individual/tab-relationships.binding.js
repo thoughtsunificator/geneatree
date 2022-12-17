@@ -56,17 +56,17 @@ class TabRelationshipsBinding extends Binding {
 
 		this.paginator = new Paginator(3)
 
-		this.listen(geneatree, "individual selected", () => {
+		this.listen(geneatree, "individualSelected", () => {
 			_individual = geneatree.trees.selected.selectedIndividual
 			this.render(geneatree.trees.selected.findRelationships({ individual: _individual }))
 		})
-		this.listen(geneatree, "relationship added", () => this.render(geneatree.trees.selected.findRelationships({ individual: _individual })))
-		this.listen(geneatree, "relationship updated", () => this.render(geneatree.trees.selected.findRelationships({ individual: _individual })))
-		this.listen(geneatree, "relationship removed", () => this.render(geneatree.trees.selected.findRelationships({ individual: _individual })))
-		tab.listen("unset", () => {
+		this.listen(geneatree, "relationshipAdded", () => this.render(geneatree.trees.selected.findRelationships({ individual: _individual })))
+		this.listen(geneatree, "relationshipUpdated", () => this.render(geneatree.trees.selected.findRelationships({ individual: _individual })))
+		this.listen(geneatree, "relationshipRemoved", () => this.render(geneatree.trees.selected.findRelationships({ individual: _individual })))
+		this.listen(tab, "unset", () => {
 			this.setView(TabRelationshipsBinding.MAIN_VIEW)
 		})
-		tab.listen("set", () => {
+		this.listen(tab, "set", () => {
 			this.setView(TabRelationshipsBinding.MAIN_VIEW)
 			this.render(geneatree.trees.selected.findRelationships({ individual: _individual }))
 		})

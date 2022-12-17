@@ -27,19 +27,19 @@ class TabActionsBinding extends Binding {
 
 		const _form = new Form()
 
-		_form.listen("submitted", data => {
+		this.listen(_form, "submitted", data => {
 			console.log(data)
 		})
 
-		tab.listen("unset", () => {
+		this.listen(tab, "unset", () => {
 			this.setView(TabActionsBinding.MAIN_VIEW)
 		})
 
-		this.listen(geneatree, "individual selected", individual => {
+		this.listen(geneatree, "individualSelected", individual => {
 			this.identifier.delete.disabled = individual.meta.decujus
 		})
 
-		this.identifier.delete.addEventListener("click", () => geneatree.emit("individual remove", geneatree.trees.selected.selectedIndividual))
+		this.identifier.delete.addEventListener("click", () => geneatree.emit("individualRemove", geneatree.trees.selected.selectedIndividual))
 		this.identifier.back.addEventListener("click", () => {
 			this.setView(TabActionsBinding.MAIN_VIEW)
 		})

@@ -12,8 +12,8 @@
 	"homepage": "https://github.com/thoughtsunificator/geneatree#readme",
 	"author": "Romain Lebesle <oss@thoughtsunificator.me> (https://thoughtsunificator.me)",
 	"scripts": {
-		"start": "rollup --config rollup.config.mjs --watch --environment BUILD:development",
-		"build": "rollup --config rollup.config.mjs --environment BUILD:production",
+		"start": "rollup --config rollup.config.js --watch --environment BUILD:development",
+		"build": "rollup --config rollup.config.js --environment BUILD:production",
 		"test": "web-test-runner \"test/**/*.test.js\" --node-resolve",
 		"generate-docs": "jsdoc --configure .jsdoc.json --verbose",
 		"eslint": "eslint 'src/**/*.js'",
@@ -21,8 +21,8 @@
 	},
 	"devDependencies": {
 		"@esm-bundle/chai": "^4.3.4-fix.0",
-		"@rollup/plugin-alias": "^3.1.2",
-		"@rollup/plugin-node-resolve": "^13.1.1",
+		"@rollup/plugin-node-resolve": "^15.0.1",
+		"@rollup/plugin-terser": "^0.2.0",
 		"@thoughtsunificator/rollup-plugin-window-env": "^1.0.7",
 		"@web/test-runner": "^0.13.22",
 		"docdash": "^1.2.0",
@@ -35,12 +35,12 @@
 		"postcss": "^8.4.5",
 		"postcss-easy-import": "^3.0.0",
 		"postcss-import": "^14.0.2",
-		"rollup": "^2.61.1",
+		"rollup": "^3.7.5",
 		"rollup-plugin-copy-watch": "^0.0.1",
 		"rollup-plugin-livereload": "^2.0.5",
-		"rollup-plugin-postcss": "^4.0.0",
-		"rollup-plugin-serve": "^1.1.0",
-		"rollup-plugin-terser": "^7.0.2",
+		"rollup-plugin-postcss": "^4.0.2",
+		"rollup-plugin-serve": "^2.0.2",
+		"rollup-plugin-worker-factory": "^0.5.7",
 		"stylelint": "^14.1.0",
 		"stylelint-config-standard": "^24.0.0"
 	},
@@ -53,6 +53,6 @@
 		"@thoughtsunificator/gedcom-parser": "^1.0.8",
 		"@thoughtsunificator/grid": "^1.0.11",
 		"css-generics": "^1.0.8",
-		"domodel": "^1.0.51"
+		"domodel": "^1.0.56"
 	}
 }
