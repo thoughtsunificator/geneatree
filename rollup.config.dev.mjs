@@ -50,7 +50,7 @@ export default {
 		}),
 		serve({
 			contentBase: "dist/dev/public",
-			port: 3000
+			port: process.env.PORT || 3000
 		}),
 		livereload('dist/dev/public')
 	]
