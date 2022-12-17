@@ -3,7 +3,6 @@ export default properties => {
 	const { geneatree, worker, listeners } = properties
 
 	listeners.push({ query: "treesLoad", callback: data => {
-		console.log(data)
 		const trees = data.trees.map(tree => {
 			tree.individuals = data.individuals.filter(individual => individual.tree.toString() === tree.id.toString())
 			tree.individuals = tree.individuals.map(individual => {
