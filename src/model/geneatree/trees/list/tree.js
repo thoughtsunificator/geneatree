@@ -5,6 +5,10 @@ export default data => ({
 	children: [
 		{
 			tagName: "div",
+			textContent: "🌳"
+		},
+		{
+			tagName: "div",
 			identifier: "name",
 			style: "overflow: hidden",
 			textContent: data.meta.name,

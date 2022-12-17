@@ -21,7 +21,7 @@
 
 #trees .tree {
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) auto;
+	grid-template-columns: 25px minmax(0, 1fr) auto;
 	color: rgb(242, 242, 242);
 	border-bottom: 2px solid rgba(0, 0, 0, 0.22);
 	box-shadow: rgba(255, 255, 255, 0.24) 0px 1px;

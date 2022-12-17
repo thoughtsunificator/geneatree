@@ -7,7 +7,7 @@ class FilterEventListener extends EventListener {
 
 	treeFilter(data) {
 		const { geneatree } = this.properties
-		const treesList = geneatree.trees.list.find(data)
+		const treesList = geneatree.trees.find(data)
 		geneatree.trees.list.filter(tree => treesList.includes(tree) === false).forEach(tree => tree.emit("tabHide"))
 		treesList.forEach(tree => tree.emit("tabShow"))
 		geneatree.emit("treeFiltered", { trees: treesList, query: data })

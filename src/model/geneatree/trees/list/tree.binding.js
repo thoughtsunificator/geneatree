@@ -21,6 +21,7 @@ class TreeBinding extends Binding {
 
 		this.root.addEventListener('focus', () => {
 			if(geneatree.trees.selected !== tree) {
+				console.log(tree)
 				geneatree.trees.emit("select", tree)
 			}
 		})

@@ -22,18 +22,6 @@ class ExplorerEventListener extends EventListener {
 	}
 
 	/**
-	 * @event ExplorerEventListener#dragEnd
-	 */
-	dragEnd() {
-		const { geneatree, tree } = this.properties
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] [viewer] [explorer] drag end" })
-		tree.viewer.dragging.clientX = null
-		tree.viewer.dragging.clientY = null
-		tree.viewer.dragging.moved = false
-		tree.viewer.dragging.started = false
-	}
-
-	/**
 	 * @event ExplorerEventListener#dragUpdate
 	 * @property {object} data
 	 * @property {number} data.x
@@ -43,6 +31,18 @@ class ExplorerEventListener extends EventListener {
 		const { geneatree } = this.properties
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] [viewer] [explorer] drag update" })
 		geneatree.explorer.emit("coordinatesSet", {x: data.x, y: data.y})
+	}
+
+	/**
+	 * @event ExplorerEventListener#dragEnd
+	 */
+	dragEnd() {
+		const { geneatree, tree } = this.properties
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message:  "[ui] [viewer] [explorer] drag end" })
+		tree.viewer.dragging.clientX = null
+		tree.viewer.dragging.clientY = null
+		tree.viewer.dragging.moved = false
+		tree.viewer.dragging.started = false
 	}
 
 	/**
@@ -63,7 +63,7 @@ class ExplorerEventListener extends EventListener {
 	 * @property {boolean} data
 	 */
 	dragToggle(data) {
-		const { geneatree, tree } = this.properties
+		const { tree } = this.properties
 		tree.viewer.dragging.toggled = data
 	}
 
