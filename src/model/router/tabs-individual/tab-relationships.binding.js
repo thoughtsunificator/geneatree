@@ -56,7 +56,7 @@ class TabRelationshipsBinding extends Binding {
 
 		this.paginator = new Paginator(3)
 
-		this.listen(geneatree, "individualSelected", () => {
+		this.listen(geneatree.individuals, "selected", () => {
 			_individual = geneatree.trees.selected.selectedIndividual
 			this.render(geneatree.trees.selected.findRelationships({ individual: _individual }))
 		})

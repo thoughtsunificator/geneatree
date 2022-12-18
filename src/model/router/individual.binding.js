@@ -28,8 +28,8 @@ class IndividualBinding extends Binding {
 			new Tab("Actions", TabActionsModel, TabActionsBinding)
 		])
 
-		this.listen(geneatree, "individualRemoved", data => {
-			geneatree.emit("individualUnselect", data)
+		this.listen(geneatree.individuals, "removed", data => {
+			geneatree.individuals.emit("unselect", data)
 		})
 
 		this.listen(tabs, "tabChanged", tab => {
@@ -45,7 +45,7 @@ class IndividualBinding extends Binding {
 			} else {
 				individual_ = geneatree.trees.selected.selectedIndividual
 			}
-			geneatree.emit("individualUpdate", { individual: individual_, form: data })
+			geneatree.individuals.emit("update", { individual: individual_, form: data })
 		})
 
 		this.run(TabsModel, { binding: new TabsBinding({ tabs }) })

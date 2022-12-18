@@ -22,7 +22,6 @@
 	"devDependencies": {
 		"@esm-bundle/chai": "^4.3.4-fix.0",
 		"@rollup/plugin-node-resolve": "^15.0.1",
-		"@rollup/plugin-terser": "^0.2.0",
 		"@thoughtsunificator/rollup-plugin-window-env": "^1.0.7",
 		"@web/test-runner": "^0.13.22",
 		"docdash": "^1.2.0",
@@ -52,6 +51,7 @@
 		"@domodel/tabs": "^1.0.16",
 		"@thoughtsunificator/gedcom-parser": "^1.0.8",
 		"@thoughtsunificator/grid": "^1.0.11",
+		"@wwa/rollup-plugin-terser": "^1.0.1",
 		"css-generics": "^1.0.8",
 		"domodel": "^1.0.56"
 	}

@@ -16,11 +16,9 @@ self.addEventListener("message", event => {
 		self.postMessage({ query: "log", data: { type: "debug", message : `[persistence:indexeddb-remote] Unrecognized query: ${query}`} })
 	}
 })
-
 _listeners.push({ query: "initialize", callback: (data) => {
 	const listenerIndex = _listeners.findIndex(listener => listener.query === "initialize")
 	_listeners.splice(listenerIndex, 1)
-	
 	const _databaseRequest = indexedDB.open(data.databaseName, data.databaseVersion)
 	_databaseRequest.addEventListener("success", async () => {
 		const database = _databaseRequest.result

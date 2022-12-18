@@ -35,11 +35,11 @@ class TabActionsBinding extends Binding {
 			this.setView(TabActionsBinding.MAIN_VIEW)
 		})
 
-		this.listen(geneatree, "individualSelected", individual => {
+		this.listen(geneatree.individuals, "selected", individual => {
 			this.identifier.delete.disabled = individual.meta.decujus
 		})
 
-		this.identifier.delete.addEventListener("click", () => geneatree.emit("individualRemove", geneatree.trees.selected.selectedIndividual))
+		this.identifier.delete.addEventListener("click", () => geneatree.individuals.emit("remove", geneatree.trees.selected.selectedIndividual))
 		this.identifier.back.addEventListener("click", () => {
 			this.setView(TabActionsBinding.MAIN_VIEW)
 		})

@@ -13,7 +13,7 @@ export default properties => {
 		})
 		for(const tree of trees) {
 			tree.individuals[0].networkId = tree.individuals[0]._id
-			geneatree.emit("treeAdd", [{ type: "online", _id: tree._id, meta: tree.meta }, tree.individuals])
+			geneatree.trees.emit("add", [{ type: "online", _id: tree._id, meta: tree.meta }, tree.individuals])
 		}
 		geneatree.emit("socketTreesLoaded")
 	}})

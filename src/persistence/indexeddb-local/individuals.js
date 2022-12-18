@@ -14,13 +14,13 @@ export default properties => {
 		}
 	})
 
-	geneatree.listen("individualUpdated", data => {
+	geneatree.individuals.listen("updated", data => {
 		if(data.offlineId !== -1) {
 			worker.postMessage({ query: "individualUpdate", data: { id: data.individual.offlineId, tree: data.individual.tree.offlineId, meta: data.form, x: data.individual.cellX, y: data.individual.cellY } })
 		}
 	})
 
-	geneatree.listen("individualRemoved", data => {
+	geneatree.individuals.listen("removed", data => {
 		if(data.offlineId !== -1) {
 			worker.postMessage({ query: "individualRemove", data: { offlineId: data.offlineId, tree: data.tree.offlineId } })
 		}

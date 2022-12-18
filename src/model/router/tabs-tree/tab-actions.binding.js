@@ -42,7 +42,7 @@ class TabActionsBinding extends Binding {
 		this.identifier.export.addEventListener("click", () => {
 			this.setView("export")
 		})
-		this.identifier.delete.addEventListener("click", () => geneatree.emit("treeRemove", geneatree.trees.selected))
+		this.identifier.delete.addEventListener("click", () => geneatree.trees.emit("remove", geneatree.trees.selected))
 		this.identifier.back.addEventListener("click", () => {
 			this.setView(TabActionsBinding.MAIN_VIEW)
 		})

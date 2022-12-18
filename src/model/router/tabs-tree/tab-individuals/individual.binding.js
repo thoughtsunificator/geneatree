@@ -14,7 +14,7 @@ class IndividualBinding extends ItemBinding {
 		this.root.addEventListener("click", () => {
 			popup.emit("hide")
 			popup.emit("reset")
-			geneatree.emit("individualSelect", individual)
+			geneatree.individuals.emit("select", individual)
 			individual.emit("nodeCenter")
 		})
 

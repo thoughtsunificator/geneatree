@@ -9,19 +9,19 @@ export default properties => {
 		note.networkId = data.networkId
 	}})
 
-	geneatree.listen("individualNotesAdded", data => {
+	geneatree.individuals.listen("notesAdded", data => {
 		if(socket.readyState === 1 && data.networkId === -1 && data.offlineId === -1) {
-			socket.send(JSON.stringify({ query: "individualNotesAadd", data: { id: data.id, individual: data.individual.networkId, title: data.title, content: data.content, author: data.author, date: data.date } }))
+			socket.send(JSON.stringify({ query: "individualNotesAdd", data: { id: data.id, individual: data.individual.networkId, title: data.title, content: data.content, author: data.author, date: data.date } }))
 		}
 	})
 
-	geneatree.listen("individualNotesUpdated", data => {
+	geneatree.individuals.listen("notesUpdated", data => {
 		if(socket.readyState === 1 && data.networkId !== -1) {
 			socket.send(JSON.stringify({ query: "individualNotesUpdate", data: { networkId: data.note.networkId, form : data.form } }))
 		}
 	})
 
-	geneatree.listen("individualNotesRemoved", data => {
+	geneatree.individuals.listen("notesRemoved", data => {
 		if(socket.readyState === 1 && data.networkId !== -1) {
 			socket.send(JSON.stringify({ query: "individualNotesRemove", data: { networkId: data.networkId } }))
 		}

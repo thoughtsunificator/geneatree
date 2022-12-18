@@ -38,8 +38,8 @@ class ImportTreeBinding extends Binding {
 			console.log(steps.getStepByName("Fichier").data)
 			console.log(Parser.parse(steps.getStepByName("Fichier").data))
 			// parse data
-			// geneatree.emit("treeAdd", [{ meta: data[1] }, []])
-			// geneatree.emit("treeSelect", geneatree.trees.list[geneatree.trees.list.length - 1])
+			// geneatree.trees.emit("add", [{ meta: data[1] }, []])
+			// geneatree.trees.emit("select", geneatree.trees.list[geneatree.trees.list.length - 1])
 		})
 
 		this.listen(treeForm, "submitted", data => steps.emit("stepNext", data))

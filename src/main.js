@@ -10,9 +10,10 @@ import Log from "./object/log.js"
 
 import Persistence from "./persistence/persistence.js"
 
-window.addEventListener("load", function() {
+function boot(message) {
 
 	const geneatree = new Geneatree()
+	const binding = new GeneatreeBinding({ geneatree })
 
 	geneatree.listen("log", data => {
 		const { message = null, type = Log.TYPE.INFO } = data
@@ -32,13 +33,25 @@ window.addEventListener("load", function() {
 		geneatree.emit("log removed", data)
 	})
 
+	geneatree.listen("reboot", data => {
+		binding.remove()
+		boot(data)
+	})
+
 	geneatree.emit("log", { message: "Application started" })
 
 	Persistence({ geneatree })
 
 	Core.run(GeneatreeModel, {
-		binding: new GeneatreeBinding({ geneatree }),
+		binding,
 		parentNode: document.body
 	})
 
+	if(message) {
+		geneatree.emit("osdSet", message)
+	}
+}
+
+window.addEventListener("load", function() {
+	boot()
 })

@@ -36,15 +36,6 @@ class PlaceholderBinding extends Binding {
 	render() {
 		if(this.properties.geneatree.trees.selected !== null) {
 			this.root.style.display = "none"
-		} else {
-			this.root.style.display = ""
-			if(this.properties.geneatree.trees.list.length >= 1) {
-				this.identifier.addTree.style.display = "none"
-				this.identifier.selectTree.style.display = "grid"
-			} else {
-				this.identifier.addTree.style.display = "grid"
-				this.identifier.selectTree.style.display = "none"
-			}
 		}
 	}
 

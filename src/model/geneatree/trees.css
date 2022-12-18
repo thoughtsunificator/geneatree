@@ -43,15 +43,10 @@
 }
 
 #trees .edit-icon {
-	opacity: 0.5;
 	background-color: transparent;
 	border: 0;
 	padding: 0;
 	font-size: 0.85em;
-}
-
-#trees .tree.active .edit-icon:hover {
-	opacity: 0.8;
 }
 
 #trees .tree:not(.active) .edit-icon {

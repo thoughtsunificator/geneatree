@@ -12,7 +12,7 @@ class IndividualsEventListener extends EventListener {
 	select(data) {
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualSelect", data })
 		if(geneatree.trees.selected.selectedIndividual !== null) {
-			geneatree.emit("individualUnselect", geneatree.trees.selected.selectedIndividual)
+			geneatree.individuals.emit("unselect", geneatree.trees.selected.selectedIndividual)
 		}
 		geneatree.trees.selected.selectedIndividual = data
 		data.emit("select")
@@ -32,7 +32,7 @@ class IndividualsEventListener extends EventListener {
 	 * @property {Individual} data
 	 */
 	unselect(data) {
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualUnselect", data })
+		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] unselect", data })
 		data.tree.selectedIndividual = null
 		data.emit("unselect")
 		data.tree.individuals.filter(individual => individual !== data).forEach(individual => individual.emit("nodeShow"))

@@ -63,17 +63,17 @@ class TabNotesBinding extends Binding {
 			this.setView(TabNotesBinding.MAIN_VIEW)
 			_noteForm.emit("clear")
 			if(_note !== null) {
-				geneatree.emit("individualNotesUpdate", { individual: geneatree.trees.selected.selectedIndividual, note: _note, form: data })
+				geneatree.individuals.emit("notesUpdate", { individual: geneatree.trees.selected.selectedIndividual, note: _note, form: data })
 			} else {
-				geneatree.emit("individualNotesAdd", { individual: geneatree.trees.selected.selectedIndividual, form: data })
+				geneatree.individuals.emit("notesAdd", { individual: geneatree.trees.selected.selectedIndividual, form: data })
 			}
 		})
 
-		this.listen(geneatree, "individualSelected", () => this.render(geneatree.trees.selected.selectedIndividual.notes))
-		this.listen(geneatree, "individualNotesAdded", () => this.render(geneatree.trees.selected.selectedIndividual.notes))
-		this.listen(geneatree, "individualNotesRemoved", () => this.render(geneatree.trees.selected.selectedIndividual.notes))
-		this.listen(geneatree, "individualNotesUpdated", () => this.render(geneatree.trees.selected.selectedIndividual.notes))
-		this.listen(geneatree, "individualNotesUpdatePopup", data => {
+		this.listen(geneatree.individuals, "selected", () => this.render(geneatree.trees.selected.selectedIndividual.notes))
+		this.listen(geneatree.individuals, "notesAdded", () => this.render(geneatree.trees.selected.selectedIndividual.notes))
+		this.listen(geneatree.individuals, "notesRemoved", () => this.render(geneatree.trees.selected.selectedIndividual.notes))
+		this.listen(geneatree.individuals, "notesUpdated", () => this.render(geneatree.trees.selected.selectedIndividual.notes))
+		this.listen(geneatree.individuals, "notesUpdatePopup", data => {
 			_note = data
 			this.setView("addNote")
 			_noteForm.emit("load", {

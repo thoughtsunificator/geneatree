@@ -8,7 +8,6 @@ export default data => ({
 			children: [
 				{
 					tagName: "div",
-					identifier: "addTree",
 					style: "display: grid; grid-gap: 5px",
 					children: [
 						{
@@ -29,18 +28,7 @@ export default data => ({
 							textContent: "Import existing tree"
 						}
 					]
-				},
-				{
-					tagName: "div",
-					identifier: "selectTree",
-					children: [
-						{
-							tagName: "p",
-							style: "text-align: center; color: white; padding: 15px 0;",
-							innerHTML: "Select a tree."
-						}
-					]
-				}
+				}				
 			]
 		}
 	]

@@ -5,7 +5,7 @@ export default data => ({
 	children: [
 		{
 			tagName: "div",
-			textContent: "🌳"
+			textContent: "🌲"
 		},
 		{
 			tagName: "div",

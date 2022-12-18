@@ -83,7 +83,7 @@ class IndividualBinding extends Binding {
 			if(geneatree.trees.selected.selectedIndividual === individual) {
 				geneatree.router.emit("browse", { path: "/individual", properties: { individual } })
 			} else {
-				geneatree.emit("individualSelect", individual)
+				geneatree.individuals.emit("select", individual)
 			}
 		})
 

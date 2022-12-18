@@ -7,7 +7,7 @@ export default {
 			type: "button",
 			className: "button-danger",
 			identifier: "deleteOfflineData",
-			textContent: "Vider la base de donnée locale"
+			textContent: "🗑️ Vider la base de donnée locale"
 		}
 	]
 }

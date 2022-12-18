@@ -84,9 +84,10 @@ class TreesEventListener extends EventListener {
 	remove(data) {
 		const { geneatree } = this.properties
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] [tree] remove", data })
-		geneatree.removeTree(data)
+		geneatree.trees.remove(data)
 		data.emit("remove")
 		geneatree.trees.emit("removed", data)
+		geneatree.router.emit("browse", { path: "/" })
 	}
 
 	/**
@@ -102,7 +103,7 @@ class TreesEventListener extends EventListener {
 		const { geneatree } = this.properties
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] [tree] select", data })
 		if(geneatree.trees.selected !== null) {
-			geneatree.emit("treeUnselect", geneatree.trees.selected)
+			geneatree.trees.emit("unselect", geneatree.trees.selected)
 		}
 		geneatree.trees.selected = data
 		data.emit("select")
