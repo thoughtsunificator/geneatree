@@ -1,5 +1,7 @@
 import { Binding } from "domodel"
 
+import IndividualEventListener from "./individual.event.js"
+
 /**
  * @global
  */
@@ -11,7 +13,7 @@ class IndividualBinding extends Binding {
 	 * @param {Individual} properties.individual
 	 */
 	constructor(properties) {
-		super(properties)
+		super(properties, new IndividualEventListener(properties.individual))
 	}
 
 	onCreated() {
@@ -20,76 +22,17 @@ class IndividualBinding extends Binding {
 
 		individual.cell = cell
 
-		this.listen(individual, "select", () => {
-			this.root.classList.add("selected")
-		})
-
-		this.listen(individual, "unselect", () => {
-			this.root.classList.remove("selected")
-		})
-
-		this.listen(individual, "update", () => {
-			for(const key in individual.meta) {
-				if(key === "gender") {
-					this.identifier.self.classList.remove("unknown", "man", "woman", "other") // FIXME pass old value and use replace instead
-					this.identifier.self.classList.add(individual.meta[key])
-				} else if(key in this.identifier) {
-					this.identifier[key].textContent = individual.meta[key]
-				}
-			}
-			this.identifier.name.textContent = [individual.meta.firstName, individual.meta.lastName].join(" ")
-			this.identifier.birth.textContent = (individual.meta.birthDate || individual.meta.birthPlace) && `° ${individual.meta.birthDate || "???"} (${individual.meta.birthPlace || "???"})`
-			this.identifier.death.textContent = (individual.meta.deathDate || individual.meta.deathPlace) && `+ ${individual.meta.deathDate || "???"} (${individual.meta.deathPlace || "???"})`
-		})
-
-		this.listen(individual, "remove", () => {
-			if(geneatree.trees.selected.selectedIndividual === individual) {
-				geneatree.trees.selected.individuals.filter(individual_ => individual_ !== individual).forEach(individual_ => individual_.emit("nodeShow"))
-			}
-			this.root.remove()
-		})
-
-		this.listen(individual, "nodeRemove", () => {
-			this.root.remove()
-		})
-
-		this.listen(individual, "nodeShow", () => {
-			this.root.style.visibility = ""
-		})
-
-		this.listen(individual, "nodeHide", () => {
-			this.root.style.visibility = "hidden"
-		})
-
-		this.listen(individual, "nodeFocus", () => {
-			this.identifier.self.focus()
-		})
-
-		this.listen(individual, "nodeAnimate", () => {
-			const step = 2.5
-			const max = 100
-			let value = max
-			const iterations = (max / step)
-			this.root.style.filter = `sepia(${value}%)`
-			for (let i = 0; i < iterations; i++) {
-				setTimeout(() => {
-					value -= step
-					this.root.style.filter = `sepia(${value}%)`
-				}, i * 50)
-			}
-		})
-
 		this.identifier.self.addEventListener("click", () => {
 			if(geneatree.trees.selected.selectedIndividual === individual) {
-				geneatree.router.emit("browse", { path: "/individual", properties: { individual } })
+				geneatree.router.emit("browse", { path: "/tree/individual", properties: { individual } })
 			} else {
 				geneatree.individuals.emit("select", individual)
 			}
 		})
 
-		this.identifier.addParent.addEventListener("click", () => geneatree.router.emit("browse", { path: "/addParent" }))
-		this.identifier.addSpouse.addEventListener("click", () => geneatree.router.emit("browse", { path: "/addSpouse" }))
-		this.identifier.addChild.addEventListener("click", () => geneatree.router.emit("browse", { path: "/addChild" }))
+		this.identifier.addParent.addEventListener("click", () => geneatree.router.emit("browse", { path: "/tree/add-parent" }))
+		this.identifier.addSpouse.addEventListener("click", () => geneatree.router.emit("browse", { path: "/tree/add-spouse" }))
+		this.identifier.addChild.addEventListener("click", () => geneatree.router.emit("browse", { path: "/tree/add-child" }))
 
 	}
 
