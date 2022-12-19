@@ -17,10 +17,6 @@ class PlaceholderBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		this.listen(geneatree.trees, "added", () => this.render())
-		this.listen(geneatree.trees, "selected", () => this.render())
-		this.listen(geneatree.trees, "removed", () => this.render())
-
 		this.identifier.createButton.addEventListener("click", () => {
 			geneatree.router.emit("browse", { path: "/tree/add" })
 		})
@@ -29,14 +25,6 @@ class PlaceholderBinding extends Binding {
 			geneatree.router.emit("browse", { path: "/tree/import" })
 		})
 
-		this.render()
-
-	}
-
-	render() {
-		if(this.properties.geneatree.trees.selected !== null) {
-			this.root.style.display = "none"
-		}
 	}
 
 }

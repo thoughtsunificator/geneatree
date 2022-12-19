@@ -1,3 +1,6 @@
+import GridModel from "./grid.js"
+import GridBinding from "./grid.binding.js"
+
 export default {
 	tagName: "div",
 	id: "tree-viewer-individuals",
@@ -9,8 +12,8 @@ export default {
 			tabIndex: 0
 		},
 		{
-			tagName: "div",
-			identifier:"list",
+			model: GridModel,
+			binding: GridBinding,
 		},
 		{
 			tagName: "div",

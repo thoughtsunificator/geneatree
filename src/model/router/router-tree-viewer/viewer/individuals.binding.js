@@ -1,6 +1,4 @@
 import { Core, Binding } from "domodel"
-import GridModel from "./grid.js"
-import GridBinding from "./grid.binding.js"
 
 import IndividualsEventListener from "./individuals.event.js"
 
@@ -41,8 +39,6 @@ class IndividualsBinding extends Binding {
 				tree.individuals[0].emit("nodeFocus")
 			}
 		})
-
-		this.run(GridModel, { parentNode: this.identifier.list, binding: new GridBinding() })
 	}
 
 }

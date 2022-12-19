@@ -2,9 +2,11 @@ import { Core, Binding } from 'domodel'
 
 export default class extends Binding {
     
-    async onCreated() {
+    onCreated() {
     
-        const { application } = this.properties
+        const { tree } = this.properties
+        
+        console.log(tree)
         
     }
 }

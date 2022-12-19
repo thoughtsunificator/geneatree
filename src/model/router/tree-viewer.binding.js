@@ -7,8 +7,6 @@ import ViewerModel from "./router-tree-viewer/viewer.js"
 import HomeBinding from "./router-tree-viewer/home.binding.js"
 import ViewerBinding from "./router-tree-viewer/viewer.binding.js"
 
-import Log from "../../object/log.js"
-
 /**
  * @global
  */
@@ -33,6 +31,10 @@ class TreeViewerBinding extends Binding {
 
 		this.run(RouterModel, {
 			binding: new RouterBinding({ router })
+		})
+
+		this.listen(geneatree.trees, "selected", () => {
+			router.emit("browse", { path: "/viewer", properties: { tree: geneatree.trees.selected } })
 		})
 
 		if(geneatree.trees.selected) {
