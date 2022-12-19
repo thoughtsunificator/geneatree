@@ -19,7 +19,6 @@ export default {
 			id: "router",
 			identifier: "router",
 			children: [
-
 				{
 					tagName: "button",
 					title: "Afficher ou masquer la liste des trees",
@@ -27,15 +26,16 @@ export default {
 					id: "trees-toggle",
 					textContent: "☰"
 				},
+				{
+					model: NavigationModel,
+					identifier: "navigation",
+					binding: NavigationBinding
+				}
 			]
 		},
 		{
 			model: OSDModel,
 			binding: OSDBinding,
-		},
-		{
-			model: NavigationModel,
-			binding: NavigationBinding
 		}
 	]
 }

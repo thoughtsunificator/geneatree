@@ -8,7 +8,9 @@ import GeneatreeBinding from "./model/geneatree.binding.js"
 import Geneatree from "./object/geneatree.js"
 import Log from "./object/log.js"
 
-import Persistence from "./persistence/persistence.js"
+import LocalStorage from "./persistence/local-storage.js"
+import Socket from "./persistence/socket.js"
+import IndexedDBLocal from "./persistence/indexeddb-local.js"
 
 function boot(message) {
 
@@ -40,8 +42,6 @@ function boot(message) {
 
 	geneatree.emit("log", { message: "Application started" })
 
-	Persistence({ geneatree })
-
 	Core.run(GeneatreeModel, {
 		binding,
 		parentNode: document.body
@@ -50,6 +50,10 @@ function boot(message) {
 	if(message) {
 		geneatree.emit("osdSet", message)
 	}
+
+	LocalStorage({ geneatree })
+	Socket({ geneatree })
+	IndexedDBLocal({ geneatree })
 }
 
 window.addEventListener("load", function() {

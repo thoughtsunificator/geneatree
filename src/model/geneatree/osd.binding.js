@@ -1,4 +1,4 @@
-import { Binding } from "domodel"
+import { Binding, Core } from "domodel"
 
 import MessageModel from "./osd/message.js"
 
@@ -28,7 +28,7 @@ class OSDBinding extends Binding {
 			if(!geneatree.settings.osd) {
 				return
 			}
-			this.run(MessageModel(data), { binding: new MessageBinding({ duration: data.duration }) })
+			this.run(MessageModel(data), { method: Core.METHOD.PREPEND, binding: new MessageBinding({ duration: data.duration }) })
 		})
 
 	}

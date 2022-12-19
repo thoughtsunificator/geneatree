@@ -23,6 +23,15 @@ class Note extends Persistable {
 	}
 
 	/**
+	 * @param {object} data
+	 */
+	update(data) {
+		for(const key in data) {
+			this[key] = data[key]
+		}
+	}
+
+	/**
 	 * @readonly
 	 * @type {Individual}
 	 */

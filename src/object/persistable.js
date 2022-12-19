@@ -13,7 +13,6 @@ class Persistable extends Observable {
 		this._id = id
 		this._networkId = -1
 		this._offlineId = -1
-		this._createdAt = new Date()
 	}
 
 	/**
@@ -43,13 +42,6 @@ class Persistable extends Observable {
 
 	set offlineId(offlineId) {
 		this._offlineId = offlineId
-	}
-
-	/**
-	 * @type {Date}
-	 */
-	get createdAt() {
-		return this._createdAt
 	}
 
 }

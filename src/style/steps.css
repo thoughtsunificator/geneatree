@@ -1,6 +1,7 @@
 .steps {
 	display: grid;
 	grid-gap: 15px;
+	grid-auto-rows: max-content;
 }
 
 .steps .indicators {

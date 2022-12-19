@@ -35,10 +35,10 @@ export default {
 			flatten: false
 		}),
 		nodeResolve(),
+		isDevelopment && livereload("dist"),
 		isDevelopment && serve({
 			contentBase: "dist",
 			port: process.env.PORT || 3000
 		}),
-		isDevelopment && livereload("dist")
 	]
 }

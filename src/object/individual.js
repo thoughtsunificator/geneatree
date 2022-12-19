@@ -71,6 +71,15 @@ class Individual extends Persistable {
 	}
 
 	/**
+	 * @param  {object} data
+	 */
+	update(data) {
+		for(const key in data) {
+			this.meta[key] = data[key]
+		}
+	}
+
+	/**
 	 * @readonly
 	 * @type {Tree}
 	 */

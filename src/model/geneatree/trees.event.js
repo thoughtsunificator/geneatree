@@ -110,6 +110,7 @@ class TreesEventListener extends EventListener {
 		geneatree.trees.list.filter(tree => tree !== data).forEach(tree => tree.emit("unselect"))
 		this.root.style.display = ""
 		geneatree.trees.emit("selected", data)
+		geneatree.router.emit("browse", { path: "/viewer", properties: { tree: data } })
 	}
 
 	/**

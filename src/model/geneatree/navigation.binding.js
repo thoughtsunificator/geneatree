@@ -28,7 +28,7 @@ class NavigationBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		this.run(ItemModel({ title: "🌳 Viewer" }), { parentNode: this.identifier.items, binding: new ItemBinding({ path: "/" }) })
+		this.run(ItemModel({ title: "🏠 Home" }), { parentNode: this.identifier.items, binding: new ItemBinding({ path: "/" }) })
 		this.run(ItemModel({ title: "⚙️ Settings" }), { parentNode: this.identifier.items, binding: new ItemBinding({ path: "/settings" }) })
 		this.run(ItemModel({ title: "🪵 Logs" }), { parentNode: this.identifier.items, binding: new ItemBinding({ path: "/logs" }) })
 		this.run(ItemModel({ title: "ℹ️ About" }), { parentNode: this.identifier.items, binding: new ItemBinding({ path: "/about" }) })

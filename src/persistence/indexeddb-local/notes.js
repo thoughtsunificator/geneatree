@@ -9,19 +9,19 @@ export default properties => {
 		note.offlineId = data.offlineId
 	}})
 
-	geneatree.listen("individualNotesAdded", data => {
+	geneatree.individuals.listen("notesAdded", data => {
 		if(data.offlineId === -1 && data.networkId === -1) {
 			worker.postMessage({ query: "individualNotesAdd", data: { id: data.id, individual: data.individual.offlineId, title: data.title, content: data.content, author: data.author, date: data.date } })
 		}
 	})
 
-	geneatree.listen("individualNotesUpdated", data => {
+	geneatree.individuals.listen("notesUpdated", data => {
 		if(data.offlineId !== -1) {
 			worker.postMessage({ query: "individualNotesUpdate", data: { id: data.note.offlineId, ...data.form, individual: data.note.individual.offlineId, date: data.note.date } })
 		}
 	})
 
-	geneatree.listen("individualNotesRemoved", data => {
+	geneatree.individuals.listen("notesRemoved", data => {
 		if(data.offlineId !== -1) {
 			worker.postMessage({ query: "individualNotesRemove", data: { offlineId: data.offlineId } })
 		}

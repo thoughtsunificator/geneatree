@@ -19,12 +19,6 @@ class TreesBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		if(geneatree.trees.list.length === 0) {
-			this.root.style.display = "none"
-		}
-
-		this.identifier.addButton.addEventListener("click", () => geneatree.router.emit("browse", { path: "/tree/new" }))
-
 	}
 
 }

@@ -21,15 +21,7 @@ export default {
 				{
 					model: TreesFilterModel,
 					binding: TreesFilterBinding,
-				},
-				{
-					tagName: "button",
-					identifier: "addButton",
-					textContent: "+",
-					style: "justify-self: flex-end;",
-					title: "Add tree",
-					className: "add-tree"
-				},
+				}
 			]
 		},
 		{

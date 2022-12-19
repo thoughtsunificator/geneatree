@@ -4,7 +4,7 @@ export default properties => {
 
 	const { geneatree } = properties
 
-	geneatree.emit("log" , { type: Log.TYPE.DEBUG, message: "[persistence:localStorage] Loaded" })
+	geneatree.emit("log" , { type: Log.TYPE.DEBUG, message: "[persistence:localStorage] Module loaded" })
 
 	if(localStorage.getItem("settings") !== null) {
 		geneatree.settings = JSON.parse(localStorage.getItem("settings"))

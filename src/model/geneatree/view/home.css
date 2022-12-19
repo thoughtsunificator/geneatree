@@ -1,0 +1,29 @@
+#tree-viewer-placeholder {
+	display: grid;
+	place-content: center;
+}
+
+#tree-viewer-placeholder .body {
+	display: grid;
+	grid-gap: 15px;
+	color: black;
+	overflow: hidden;
+	background-color: rgb(138, 117, 117) !important;
+	width: 300px;
+	padding: 10px;
+	grid-gap: 5px;
+	background-color: #c6c6c6;
+	display: grid;
+	border: 1px solid #3e3c3c;
+}
+
+#tree-viewer-placeholder button {
+	background-color: #0000003d;
+	padding: var(--SIZE_XS);
+	color: white;
+	border: 1px solid #0000004d;
+}
+
+#tree-viewer-placeholder button:hover {
+	background-color: #0000004d;
+}

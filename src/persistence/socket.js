@@ -13,7 +13,9 @@ function connect(properties) {
 
 	const { geneatree } = properties
 
-	geneatree.emit("log", { type: Log.TYPE.INFO, message: `Connecting to server...` })
+	geneatree.emit("osdSet", { text: "Connecting to remote...", type: "info" })
+
+	geneatree.emit("log", { type: Log.TYPE.INFO, message: `Connecting to remote...` })
 	geneatree.emit("log", { type: Log.TYPE.DEBUG, message: `[persistence:socket] Connecting...` })
 
 	geneatree.socketState = SOCKET_STATE_CONNECTING
@@ -26,6 +28,25 @@ function connect(properties) {
 	Trees(properties_)
 	Individuals(properties_)
 	Notes(properties_)
+
+	listeners.push({ query: "load", callback: data => {
+		geneatree.emit("osdSet", { text: "Connected to remote", type: "valid" })
+		const listenerIndex = listeners.findIndex(listener => listener.query === "initialized")
+		listeners.splice(listenerIndex, 1)
+		const trees = data.trees.map(tree => {
+			tree.individuals = data.individuals.filter(individual => individual.tree.toString() === tree._id.toString())
+			tree.individuals = tree.individuals.map(individual => {
+				individual.notes = data.notes.filter(note => note.individual.toString() === individual._id.toString())
+				return individual
+			})
+			return tree
+		})
+		for(const tree of trees) {
+			tree.individuals[0].networkId = tree.individuals[0]._id
+			geneatree.trees.emit("add", [{ type: "online", _id: tree._id, meta: tree.meta }, tree.individuals])
+		}
+		geneatree.emit("socketTLoaded")
+	}})
 
 	socket.addEventListener('message', event => {
 		const { query, data } = JSON.parse(event.data)
@@ -43,27 +64,26 @@ function connect(properties) {
 
 	socket.addEventListener("open", () => {
 		geneatree.socketState = SOCKET_STATE_CONNECTED
-		geneatree.emit("log", { type: Log.TYPE.INFO, message: `Connected to server` })
+		geneatree.emit("log", { type: Log.TYPE.INFO, message: `Connected to remote` })
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[persistence:socket] Connected" })
-		geneatree.emit("osdSet", { text: "Connected to server",  type: "info", duration: 2500 })
 	})
 
 	socket.addEventListener("error", event => {
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[persistence:socket] An error occured", data: event })
 		if(geneatree.socketState === SOCKET_STATE_CONNECTED) {
-			geneatree.emit("log", { type: Log.TYPE.ERROR, message: `Disconnected from server` })
-			geneatree.emit("osdSet", { text: "Disconnected from server", type: "info", duration: 2500 })
+			geneatree.emit("log", { type: Log.TYPE.ERROR, message: `Disconnected from remote` })
+			geneatree.emit("osdSet", { text: "Disconnected from remote", type: "info" })
 		} else if(geneatree.socketState === SOCKET_STATE_CONNECTING) {
-			geneatree.emit("log", { type: Log.TYPE.ERROR, message: `Failed to connect to server` })
-			geneatree.emit("osdSet", { text: "Failed to connect to server",  type: "error", duration: 3500 })
+			geneatree.emit("log", { type: Log.TYPE.ERROR, message: `Failed to connect to remote` })
+			geneatree.emit("osdSet", { text: "Failed to connect to remote",  type: "error" })
 		}
 	})
 
 	socket.addEventListener("close", () => {
 		if(geneatree.socketState === SOCKET_STATE_CONNECTED) {
-			geneatree.emit("log", { type: Log.TYPE.INFO, message: "Disconnected from server" })
+			geneatree.emit("log", { type: Log.TYPE.INFO, message: "Disconnected from remote" })
 			geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[persistence:socket] Disconnected" })
-			geneatree.emit("osdSet", { text: "Connection to the server was terminated", type: "info", duration: 3500 })
+			geneatree.emit("osdSet", { text: "Connection to the server was terminated", type: "info" })
 		}
 		geneatree.socketState = SOCKET_STATE_DISCONNECTED
 	})

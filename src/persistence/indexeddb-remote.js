@@ -16,8 +16,9 @@ self.addEventListener("message", event => {
 		self.postMessage({ query: "log", data: { type: "debug", message : `[persistence:indexeddb-remote] Unrecognized query: ${query}`} })
 	}
 })
-_listeners.push({ query: "initialize", callback: (data) => {
-	const listenerIndex = _listeners.findIndex(listener => listener.query === "initialize")
+
+_listeners.push({ query: "load", callback: (data) => {
+	const listenerIndex = _listeners.findIndex(listener => listener.query === "load")
 	_listeners.splice(listenerIndex, 1)
 	const _databaseRequest = indexedDB.open(data.databaseName, data.databaseVersion)
 	_databaseRequest.addEventListener("success", async () => {
@@ -33,7 +34,6 @@ _listeners.push({ query: "initialize", callback: (data) => {
 		RemoteTrees({ worker: self, listeners: _listeners, database });
 		RemoteIndividuals({  worker: self, listeners: _listeners, database });
 		RemoteNotes({  worker: self, listeners: _listeners, database });
-		self.postMessage({ query: "initialized" })
 		const transaction = database.transaction(['trees', 'individuals', 'notes'], 'readwrite')
 		const results = new Promise((resolve, reject) => {
 			const results = {}
@@ -51,9 +51,9 @@ _listeners.push({ query: "initialize", callback: (data) => {
 				})
 			}
 		})
-		const { trees, individuals, notes } = await results
+		const data = await results
 		self.postMessage({ query: "log", data: { type: "debug", message : `[persistence:indexeddb-remote] stores data retrieved...` } })
-		self.postMessage({ query: "treesLoad", data: { trees, individuals, notes } })
+		self.postMessage({ query: "load", data })
 	})
 
 	_databaseRequest.addEventListener("upgradeneeded", event => {

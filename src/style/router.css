@@ -1,18 +1,16 @@
 #router {
 	display: grid;
-	grid-template-rows: subgrid;
 	position: relative;
+	grid-template-rows: 1fr auto;
 }
 
-#router.viewer > .router {
+.router {
 	display: contents;
 }
 
 #router:not(.viewer) {
-	place-content: center;
-	padding: var(--SIZE_MEDIUM);
+	justify-content: center;
 	background-color: rgb(200, 177, 177);
-	padding-bottom: 45px;
 }
 
 #router:not(.viewer) > .router {
@@ -22,11 +20,11 @@
 #router:not(.viewer) > .router > div {
 	display: grid;
 	grid-gap: var(--SIZE_MEDIUM);
+	padding-bottom: 45px;
 }
 
 .router > * {
 	overflow: auto;
-	padding-right: 15px;
 }
 
 .router input, .router select {

@@ -2,22 +2,6 @@ export default properties => {
 
 	const { geneatree, socket, listeners } = properties
 
-	listeners.push({ query: "treesLoad", callback: data => {
-		const trees = data.trees.map(tree => {
-			tree.individuals = data.individuals.filter(individual => individual.tree.toString() === tree._id.toString())
-			tree.individuals = tree.individuals.map(individual => {
-				individual.notes = data.notes.filter(note => note.individual.toString() === individual._id.toString())
-				return individual
-			})
-			return tree
-		})
-		for(const tree of trees) {
-			tree.individuals[0].networkId = tree.individuals[0]._id
-			geneatree.trees.emit("add", [{ type: "online", _id: tree._id, meta: tree.meta }, tree.individuals])
-		}
-		geneatree.emit("socketTreesLoaded")
-	}})
-
 	listeners.push({ query: "treeAdded", callback: data => {
 		const tree = geneatree.trees.list.find(tree => tree.id === data.id)
 		tree.networkId = data.networkId

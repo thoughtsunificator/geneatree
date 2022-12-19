@@ -1,4 +1,4 @@
-import { Binding } from "domodel"
+import { Binding, Core } from "domodel"
 import { Router, Route, RouterModel, RouterBinding } from "@domodel/router"
 
 import GeneatreeEventListener from "./geneatree.event.js"
@@ -29,26 +29,9 @@ class GeneatreeBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		if(geneatree.trees.list.length === 0) {
-			this.identifier.treesToggle.style.display = "none"
-			this.identifier.router.style.gridColumn = "span 2"
-		}
-
 		this.root.classList.add(`theme-${geneatree.settings.theme}`)
 
 		this.identifier.treesToggle.addEventListener("click", () => geneatree.trees.emit("toggle", { toggle: !geneatree.trees.toggled }))
-
-		this.listen(geneatree.trees, "add", async data => {
-			this.identifier.treesToggle.style.display = ""
-			geneatree.trees.emit("toggle", { toggle: true })
-		})
-
-		this.listen(geneatree.trees, "remove", async data => {
-			if(geneatree.trees.length === 0) {
-				this.identifier.treesToggle.style.display = "none"
-				geneatree.trees.emit("toggle", { toggle: false })
-			}
-		})
 
 		this.listen(geneatree.trees, "toggle", data => {
 			if(data.toggle === true) {
@@ -59,14 +42,13 @@ class GeneatreeBinding extends Binding {
 		})
 
 		this.listen(geneatree.router, "browse", data => {
-			if(data.path === "/") {
+			if(data.path === "/viewer") {
 				this.identifier.router.classList.add("viewer")
-				if(geneatree.trees.list.length >= 1) {
-					geneatree.trees.emit("toggle", { toggle: true })
-				}
 			} else {
+				if(geneatree.trees.selected) {
+					geneatree.trees.emit("unselect", geneatree.trees.selected)	
+				}
 				this.identifier.router.classList.remove("viewer")
-				geneatree.trees.emit("toggle", { toggle: false })
 			}
 		})
 
@@ -79,7 +61,8 @@ class GeneatreeBinding extends Binding {
 		})
 
 		this.run(RouterModel, {
-			parentNode: this.identifier.router,
+			method: Core.METHOD.INSERT_BEFORE,
+			parentNode: this.identifier.navigation.root,
 			binding: new RouterBinding({ router: geneatree.router })
 		})
 

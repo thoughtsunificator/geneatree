@@ -1,0 +1,58 @@
+#tree-viewer-minimap {
+	position: absolute;
+	padding: var(--SIZE_XXS);
+	left: var(--SIZE_XXS);
+	bottom: var(--SIZE_XXS);
+	grid-gap: 2px;
+}
+
+#tree-viewer-minimap .map {
+	position: relative;
+	border: 1px solid black;
+	background-color: rgba(68, 68, 85, 0.71);
+	border-radius: 5px;
+	border-bottom: 2px solid #353535;
+	overflow: hidden;
+	width: 100px;
+	z-index: 2;
+	box-shadow: -1px 2px 3px inset #13131394;
+	height: 50px;
+	position: relative;
+}
+
+#tree-viewer-minimap .map .individuals {
+	position: absolute;
+}
+
+#tree-viewer-minimap .map .individuals .individual {
+	width: 5px;
+	height: 5px;
+}
+
+#tree-viewer-minimap .map .individuals .individual.man {
+	background-color: lightblue;
+}
+
+#tree-viewer-minimap .map .individuals .individual.woman {
+	background-color: pink;
+}
+
+#tree-viewer-minimap .map .individuals .individual.unknown {
+	background-color: #cac4be;
+}
+
+#tree-viewer-minimap .cursor {
+	position: absolute;
+}
+
+#tree-viewer-minimap .information {
+	display: grid;
+	grid-template-columns: auto auto;
+	font-size: x-small;
+	grid-gap: 5px;
+}
+
+#tree-viewer-minimap .column,
+#tree-viewer-minimap .grid {
+	grid-gap: 5px;
+}

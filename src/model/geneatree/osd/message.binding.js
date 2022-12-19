@@ -7,7 +7,7 @@ class MessageBinding extends Binding {
 
 	onCreated() {
 
-		const { duration } = this.properties
+		const { duration = 3500 } = this.properties
 
 		setTimeout(async () => {
 			const step = 0.1
