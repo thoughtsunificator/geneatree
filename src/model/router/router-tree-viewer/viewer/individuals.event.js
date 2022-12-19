@@ -1,5 +1,7 @@
 import { EventListener } from "domodel"
 
+import Log from "../../../../object/log.js"
+
 /**
  * @global
  */
@@ -10,15 +12,15 @@ class IndividualsEventListener extends EventListener {
 	 * @property {Individual} data
 	 */
 	select(data) {
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualSelect", data })
-		if(geneatree.trees.selected.selectedIndividual !== null) {
-			geneatree.individuals.emit("unselect", geneatree.trees.selected.selectedIndividual)
+		this.properties.geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualSelect", data })
+		if(this.properties.geneatree.trees.selected.selectedIndividual !== null) {
+			this.properties.geneatree.individuals.emit("unselect", this.properties.geneatree.trees.selected.selectedIndividual)
 		}
-		geneatree.trees.selected.selectedIndividual = data
+		this.properties.geneatree.trees.selected.selectedIndividual = data
 		data.emit("select")
-		geneatree.trees.selected.individuals.filter(individual => individual !== data).forEach(individual => individual.emit("nodeHide"))
-		geneatree.emit("treeViewerDragToggle", false)
-		geneatree.individuals.emit("selected", data)
+		this.properties.geneatree.trees.selected.individuals.filter(individual => individual !== data).forEach(individual => individual.emit("nodeHide"))
+		this.properties.geneatree.emit("treeViewerDragToggle", false)
+		this.properties.geneatree.individuals.emit("selected", data)
 	}
 
 	/**
@@ -32,12 +34,12 @@ class IndividualsEventListener extends EventListener {
 	 * @property {Individual} data
 	 */
 	unselect(data) {
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] unselect", data })
+		this.properties.geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] unselect", data })
 		data.tree.selectedIndividual = null
 		data.emit("unselect")
 		data.tree.individuals.filter(individual => individual !== data).forEach(individual => individual.emit("nodeShow"))
-		geneatree.emit("treeViewerDragToggle", true)
-		geneatree.individuals.emit("unselected", data)
+		this.properties.geneatree.emit("treeViewerDragToggle", true)
+		this.properties.geneatree.individuals.emit("unselected", data)
 	}
 
 	/**
@@ -51,12 +53,12 @@ class IndividualsEventListener extends EventListener {
 	 * @property {Individual} data
 	 */
 	update(data) {
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualUpdate", data })
+		this.properties.geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualUpdate", data })
 		for(const key in data.form) {
 			data.individual.meta[key] = data.form[key]
 		}
 		data.individual.emit("update")
-		geneatree.individuals.emit("updated", data)
+		this.properties.geneatree.individuals.emit("updated", data)
 	}
 
 	/**
@@ -70,14 +72,14 @@ class IndividualsEventListener extends EventListener {
 	 * @property {Individual} data
 	 */
 	remove(data) {
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualRemove", data })
+		this.properties.geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualRemove", data })
 		data.tree.removeIndividual(data)
 		data.emit("remove")
 		if(data.tree.individuals.length === 0) {
 			this.root.style.cursor = ""
-			geneatree.explorer.emit("dragReset")
+			this.properties.geneatree.explorer.emit("dragReset")
 		}
-		geneatree.individuals.emit("removed", data)
+		this.properties.geneatree.individuals.emit("removed", data)
 	}
 	
 	/**
@@ -93,10 +95,10 @@ class IndividualsEventListener extends EventListener {
 	 * @property {Individual} data.individual
 	 */
 	notesAdd(data) {
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualNotesAdd", data })
+		this.properties.geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualNotesAdd", data })
 		const { title, content, author } = data.form
 		const note = data.individual.addNote(title, content, author, new Date())
-		geneatree.individuals.emit("notesAdded", note)
+		this.properties.geneatree.individuals.emit("notesAdded", note)
 	}
 
 	/**
@@ -112,12 +114,12 @@ class IndividualsEventListener extends EventListener {
 	 * @property {Individual} data.individual
 	 */
 	notesUpdate(data) {
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualNotesUpdate", data })
+		this.properties.geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualNotesUpdate", data })
 		for(const key in data.form) {
 			data.note[key] = data.form[key]
 		}
 		data.note.emit("update")
-		geneatree.individuals.emit("notesUpdated", data)
+		this.properties.geneatree.individuals.emit("notesUpdated", data)
 	}
 
 	/**
@@ -131,10 +133,10 @@ class IndividualsEventListener extends EventListener {
 	 * @property {Note} data
 	 */
 	notesRemove(data) {
-		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualNotesRemove ", data })
+		this.properties.geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[ui] individualNotesRemove ", data })
 		data.individual.removeNote(data)
 		data.emit("remove")
-		geneatree.individuals.emit("notesRemoved", data)
+		this.properties.geneatree.individuals.emit("notesRemoved", data)
 	}
 
 	/**
