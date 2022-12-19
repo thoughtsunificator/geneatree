@@ -18,11 +18,11 @@ class TabNotesBinding extends Binding {
 	 * @param {string} view
 	 */
 	setView(view) {
-		if(view !== TabNotesBinding.MAIN_VIEW) {
-			this.identifier.back.style.display = ""
-		} else {
-			this.identifier.back.style.display = "none"
-		}
+		// if(view !== TabNotesBinding.MAIN_VIEW) {
+		// 	this.identifier.back.style.display = ""
+		// } else {
+		// 	this.identifier.back.style.display = "none"
+		// }
 		Object.keys(this.identifier).filter(key => key.slice(0, 5) === "view-" && key.slice(5) !== view).forEach(key => this.identifier[key].style.display = "none")
 		this.identifier[`view-${view}`].style.display = ""
 	 }
@@ -100,9 +100,9 @@ class TabNotesBinding extends Binding {
 			this.setView("addNote")
 			_noteForm.emit("focus")
 		})
-		this.identifier.back.addEventListener("click", () => {
-			this.setView(TabNotesBinding.MAIN_VIEW)
-		})
+		// this.identifier.back.addEventListener("click", () => {
+		// 	this.setView(TabNotesBinding.MAIN_VIEW)
+		// })
 
 		this.run(FormModel(NoteFormModel), {
 			parentNode: this.identifier["view-addNote"],

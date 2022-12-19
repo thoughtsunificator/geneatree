@@ -16,11 +16,11 @@ class TabRelationshipsBinding extends Binding {
 	 * @param {string} view
 	 */
 	setView(view) {
-		if(view !== TabRelationshipsBinding.MAIN_VIEW) {
-			this.identifier.back.style.display = ""
-		} else {
-			this.identifier.back.style.display = "none"
-		}
+		// if(view !== TabRelationshipsBinding.MAIN_VIEW) {
+		// 	this.identifier.back.style.display = ""
+		// } else {
+		// 	this.identifier.back.style.display = "none"
+		// }
 		Object.keys(this.identifier).filter(key => key.slice(0, 5) === "view-" && key.slice(5) !== view).forEach(key => this.identifier[key].style.display = "none")
 		this.identifier[`view-${view}`].style.display = ""
 	 }
@@ -74,9 +74,9 @@ class TabRelationshipsBinding extends Binding {
 		// 	const notesList = geneatree.trees.selected.selectedIndividual.findNotes(event.target.value)
 		// 	this.render(notesList)
 		// })
-		this.identifier.back.addEventListener("click", () => {
-			this.setView(TabRelationshipsBinding.MAIN_VIEW)
-		})
+		// this.identifier.back.addEventListener("click", () => {
+		// 	this.setView(TabRelationshipsBinding.MAIN_VIEW)
+		// })
 
 		this.run(PaginatorModel, {
 			parentNode: this.identifier.list,

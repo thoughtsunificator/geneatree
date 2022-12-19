@@ -51,9 +51,8 @@ class IndividualBinding extends Binding {
 		this.run(TabsModel, { binding: new TabsBinding({ tabs }) })
 
 		tabs.emit("tabSet", "Editer")
-
-		this.emit(individualForm, "load", geneatree.trees.selected.selectedIndividual)
-		this.emit(individualForm, "focus")
+		individualForm.emit("load", geneatree.trees.selected.selectedIndividual.meta)
+		individualForm.emit("focus")
 
 	}
 
