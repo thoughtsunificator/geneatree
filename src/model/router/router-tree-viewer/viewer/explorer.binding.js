@@ -27,12 +27,6 @@ class ExplorerBinding extends Binding {
 		geneatree.explorer.emit("coordinatesSet", { x: tree.viewer.x, y: tree.viewer.y })
 		geneatree.explorer.emit("scaleSet", tree.viewer.scale)
 
-		this.root.addEventListener("mouseup", () => {
-			if(tree.viewer.dragging.started) {
-				geneatree.explorer.emit("dragEnd")
-			}
-		})
-
 		this.root.addEventListener("mousemove", event => {
 			if(tree.viewer.dragging.started) {
 				const { clientX, clientY } = event
@@ -71,6 +65,9 @@ class ExplorerBinding extends Binding {
 				} else if(event.button === 0 && !tree.viewer.dragging.moved && tree.selectedIndividual !== null && event.target === this.root) {
 					geneatree.individuals.emit("unselect", tree.selectedIndividual)
 				}
+			}
+			if(tree.viewer.dragging.started) {
+				geneatree.explorer.emit("dragEnd")
 			}
 		})
 
