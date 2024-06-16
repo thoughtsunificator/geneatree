@@ -8,6 +8,7 @@
 	display: grid;
 	grid-auto-flow: column;
 	grid-gap: 15px;
+	padding: 20px;
 	justify-content: center;
 }
 
@@ -57,4 +58,8 @@
 	background-color: #b39d9d;
 	color: #5e5e5eb3;
 	cursor: initial;
+}
+
+.steps .step {
+	padding: 20px;
 }

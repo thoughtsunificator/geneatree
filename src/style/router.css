@@ -28,8 +28,9 @@
 	overflow: auto;
 }
 
-.router > div > .tabs {
+.router > div > .tabs, .router > div > .steps {
 	border: 1px solid #9d8585;
+	border-top: 0;
 }
 
 .router input, .router select {

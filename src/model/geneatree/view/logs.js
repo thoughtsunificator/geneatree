@@ -3,12 +3,8 @@ export default data => ({
 	id: "view-logs",
 	children: [
 		{
-			tagName: "h3",
-			identifier: "title",
-			textContent: `Logs`
-		},
-		{
 			tagName: "div",
+			style: "padding-top: 10px",
 			identifier: "router"
 		}
 	]

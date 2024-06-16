@@ -23,7 +23,7 @@ class SettingsBinding extends Binding {
 
 		this.run(TabsModel, {
 			binding: new TabsBinding({ tabs }),
-			parentNode: this.identifier.tabs
+			parentNode: this.root
 		})
 
 		tabs.emit("tabSet", "General")
