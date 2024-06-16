@@ -14,6 +14,9 @@ const SOCKET_STATE_CONNECTING = "SOCKET_STATE_CONNECTING"
 const SOCKET_STATE_CONNECTED = "SOCKET_STATE_CONNECTED"
 const SOCKET_STATE_DISCONNECTED = "SOCKET_STATE_DISCONNECTED"
 
+/**
+ * Connect to remote and initialize event listeners
+ */
 function connect(properties) {
 
 	const { geneatree } = properties
@@ -96,6 +99,10 @@ function connect(properties) {
 	return socket
 }
 
+/**
+ * Plug UI to remote persistence layer
+ * Listen for UI events and alert remote
+ */
 export default properties => {
 
 	const { geneatree } = properties
@@ -104,7 +111,7 @@ export default properties => {
 
 	geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[persistence:socket] Loaded" })
 
-	let _offline = geneatree.settings.offline
+	let _offline = geneatree.settings.offline // User can disable remote persistence
 
 	if(!_offline) {
 		_socket = connect(properties)

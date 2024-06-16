@@ -2,6 +2,7 @@
  * @module indexeddb-remote
  * Middleware between IndexedDB persistence layer and UI.
  * Propagate IndexedDB persistence layer changes to the UI through events
+ * This module is to be ran inside a worker
  */
 // import Log from "../object/log.js"
 import RemoteGeneatree from "./indexeddb-remote/geneatree.js"

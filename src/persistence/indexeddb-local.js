@@ -14,6 +14,9 @@ import IndexeDBWorker from "worker!./indexeddb-remote.js"
 
 import Log from "../object/log.js"
 
+/**
+ * Plug UI to local persistence layer / IndexedDB
+ */
 export default properties => {
 
 	const { geneatree } = properties
