@@ -11,7 +11,10 @@ Features :
 
 ## Getting started
 
-- npm start
+### Run
+
+- ```npm install```
+- ```npm start```
 
 ## Persistence
 
