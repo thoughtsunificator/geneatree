@@ -23,10 +23,11 @@ class AddTreeBinding extends Binding {
 		])
 
 		this.listen(steps, "done", () => {
+			tree = geneatree.trees.list[geneatree.trees.list.length - 1]
 			geneatree.trees.emit("add", [{ meta: steps.getStepByName("Tree").data }, [{ meta: steps.getStepByName("Decujus").data }]])
-			geneatree.trees.emit("select", geneatree.trees.list[geneatree.trees.list.length - 1])
+			geneatree.trees.emit("select", tree)
 			geneatree.router.emit("browse", { path: "/" })
-		    geneatree.emit("osdSet", { text: "Tree created", type: "valid" })
+			geneatree.emit("osdSet", { text: `Tree ${tree.meta.name} created`, type: "valid" })
 		})
 
 		this.run(StepsModel, { binding: new StepsBinding({ steps }) })
