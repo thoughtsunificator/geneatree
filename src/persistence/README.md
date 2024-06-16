@@ -1,4 +1,4 @@
-A two way multilayer persistence.
+A bidirectional multilayer persistence.
 
 Feature :
 
