@@ -31,16 +31,29 @@ export default properties => {
 
 	const properties_ = { ...properties, worker, listeners }
 
+	/**
+	 * Whether the initial data payload was received
+	 * It might not have been processed yet
+	 */
 	let dataRetrieved = false
 
+	/**
+	 * Local notifying it wants to log
+	 * These logs can be accessed through the UI
+	 */
 	listeners.push({ query: "log", callback: data => {
 		geneatree.emit("log", data)
 	}})
 
+	/**
+	 * Local notifying it has data for us to load
+	 * This is a one time event
+	 */
 	listeners.push({ query: "load", callback: data => {
 		const listenerIndex = listeners.findIndex(listener => listener.query === "load")
 		listeners.splice(listenerIndex, 1)
 		dataRetrieved = true
+		// Initialize event listeners
 		LocalGeneatree(properties_)
 		LocalTrees(properties_)
 		LocalIndividuals(properties_)
@@ -48,6 +61,7 @@ export default properties => {
 		LocalRelationship(properties_)
 		geneatree.emit("osdSet", { text: "Connected to local persistence layer", type: "valid" })
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message : `[persistence:indexeddb-local] data retrieved...` } )
+		// Make a list of trees from the initial data payload sent by the local persistence layer
 		const trees = data.trees.map(tree => {
 			tree.individuals = data.individuals.filter(individual => individual.tree.toString() === tree.id.toString())
 			tree.individuals = tree.individuals.map(individual => {
@@ -57,12 +71,18 @@ export default properties => {
 			return tree
 		})
 		for(const tree of trees) {
+			// Rename id to offlineId (to avoid confusion)
 			tree.individuals[0].offlineId = tree.individuals[0].id
+			// Notify UI it should create/add a tree
 			geneatree.trees.emit("add", [{ id: tree.id, type: "offline", meta: tree.meta }, tree.individuals])
 		}
-		geneatree.emit("indexedbdbLoaded")
+		geneatree.emit("indexedbdbLoaded") // notify UI local persistence has been loaded
 	}})
 
+	/**
+	 * Local notifying an event
+	 * Propagate to event listeners
+	 */
 	worker.addEventListener("message", event => {
 		const { query, data } = event.data
 
@@ -77,6 +97,10 @@ export default properties => {
 		}
 	})
 
+	/**
+	 * Local notifying an error
+	 * Send a feedback to user through the OSD
+	 */
 	worker.addEventListener("error", event => {
 		geneatree.emit("log" , { type: Log.TYPE.DEBUG, message: "[persistence:indexeddb-local] An error occured", event })
 		if(!dataRetrieved) {
@@ -84,6 +108,7 @@ export default properties => {
 		}
 	})
 
+	// Ask local persistence to send the initial data payload
 	worker.postMessage({
 		query: "load",
 		data: {

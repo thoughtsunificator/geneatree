@@ -37,12 +37,14 @@ _listeners.push({ query: "load", callback: (data) => {
 		database.addEventListener("close", event => {
 			self.postMessage({ query: "log", data: { type: "debug", message : `[persistence:indexeddb-remote] connection closed` } })
 		})
+		// Initialize event listeners
 		RemoteGeneatree({ worker: self, listeners: _listeners, database });
 		RemoteTrees({ worker: self, listeners: _listeners, database });
 		RemoteIndividuals({  worker: self, listeners: _listeners, database });
 		RemoteNotes({  worker: self, listeners: _listeners, database });
 		RemoteRelationships({  worker: self, listeners: _listeners, database });
-		const transaction = database.transaction(['trees', 'individuals', 'notes'], 'readwrite')
+		// Retrieve initial data
+		const transaction = database.transaction(['trees', 'individuals', 'notes', 'relationships'], 'readwrite')
 		const results = new Promise((resolve, reject) => {
 			const results = {}
 			const storeNames = Object.values(transaction.objectStoreNames)
@@ -61,7 +63,7 @@ _listeners.push({ query: "load", callback: (data) => {
 		})
 		const data = await results
 		self.postMessage({ query: "log", data: { type: "debug", message : `[persistence:indexeddb-remote] stores data retrieved...` } })
-		self.postMessage({ query: "load", data })
+		self.postMessage({ query: "load", data }) // Send initial data to UI
 	})
 
 	_databaseRequest.addEventListener("upgradeneeded", event => {
@@ -75,6 +77,9 @@ _listeners.push({ query: "load", callback: (data) => {
 		}
 		if(!database.objectStoreNames.contains("notes")) {
 			database.createObjectStore("notes", { autoIncrement : true, keyPath: "id" })
+		}
+		if(!database.objectStoreNames.contains("relationships")) {
+			database.createObjectStore("relationships", { autoIncrement : true, keyPath: "id" })
 		}
 	})
 
