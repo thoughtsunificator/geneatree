@@ -18,15 +18,20 @@ class ItemBinding extends Binding {
 
 		const { path, geneatree } = this.properties
 
+		console.log(this.properties)
+
 		this.listen(geneatree.router, "browse", data => {
 			if(data.path === path) {
+				if(data.osd) {
+					this.properties.geneatree.emit("osdSet", { text: `Navigated to ${this.properties.title}`, type: "info" })
+				}
 				this.root.classList.add("active")
 			} else {
 				this.root.classList.remove("active")
 			}
 		})
 
-		this.root.addEventListener("click", () => geneatree.router.emit("browse", { path }))
+		this.root.addEventListener("click", () => geneatree.router.emit("browse", { path, osd: true }))
 
 
 	}

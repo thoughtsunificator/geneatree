@@ -28,10 +28,10 @@ class NavigationBinding extends Binding {
 
 		const { geneatree } = this.properties
 
-		this.run(ItemModel({ title: "🏠 Home" }), { parentNode: this.identifier.items, binding: new ItemBinding({ path: "/" }) })
-		this.run(ItemModel({ title: "⚙️ Settings" }), { parentNode: this.identifier.items, binding: new ItemBinding({ path: "/settings" }) })
-		this.run(ItemModel({ title: "🪵 Logs" }), { parentNode: this.identifier.items, binding: new ItemBinding({ path: "/logs" }) })
-		this.run(ItemModel({ title: "ℹ️ About" }), { parentNode: this.identifier.items, binding: new ItemBinding({ path: "/about" }) })
+		this.run(ItemModel({ title: "🏠 Home" }), { parentNode: this.identifier.items, binding: new ItemBinding({ title: "🏠 Home", path: "/" }) })
+		this.run(ItemModel({ title: "⚙️ Settings" }), { parentNode: this.identifier.items, binding: new ItemBinding({ title: "⚙️ Settings", path: "/settings" }) })
+		this.run(ItemModel({ title: "🪵 Logs" }), { parentNode: this.identifier.items, binding: new ItemBinding({ title: "🪵 Logs", path: "/logs" }) })
+		this.run(ItemModel({ title: "ℹ️ About" }), { parentNode: this.identifier.items, binding: new ItemBinding({ title: "ℹ️ About", path: "/about" }) })
 
 	}
 
