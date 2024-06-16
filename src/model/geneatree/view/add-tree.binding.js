@@ -23,8 +23,8 @@ class AddTreeBinding extends Binding {
 		])
 
 		this.listen(steps, "done", () => {
-			tree = geneatree.trees.list[geneatree.trees.list.length - 1]
 			geneatree.trees.emit("add", [{ meta: steps.getStepByName("Tree").data }, [{ meta: steps.getStepByName("Decujus").data }]])
+			const tree = geneatree.trees.list[geneatree.trees.list.length - 1] // TODO Might not work if multiple users are working on th
 			geneatree.trees.emit("select", tree)
 			geneatree.router.emit("browse", { path: "/" })
 			geneatree.emit("osdSet", { text: `Tree ${tree.meta.name} created`, type: "valid" })
