@@ -18,9 +18,9 @@ function connect(properties) {
 
 	const { geneatree } = properties
 
-	geneatree.emit("osdSet", { text: "Connecting to remote...", type: "info" })
+	geneatree.emit("osdSet", { text: "Connecting to remote persistence layer...", type: "info" })
 
-	geneatree.emit("log", { type: Log.TYPE.INFO, message: `Connecting to remote...` })
+	geneatree.emit("log", { type: Log.TYPE.INFO, message: `Connecting to remote persistence layer...` })
 	geneatree.emit("log", { type: Log.TYPE.DEBUG, message: `[persistence:socket] Connecting...` })
 
 	geneatree.socketState = SOCKET_STATE_CONNECTING
@@ -35,7 +35,7 @@ function connect(properties) {
 	Notes(properties_)
 
 	listeners.push({ query: "load", callback: data => {
-		geneatree.emit("osdSet", { text: "Connected to remote", type: "valid" })
+		geneatree.emit("osdSet", { text: "Connected to remote persistence layer", type: "valid" })
 		const listenerIndex = listeners.findIndex(listener => listener.query === "initialized")
 		listeners.splice(listenerIndex, 1)
 		const trees = data.trees.map(tree => {
@@ -69,7 +69,7 @@ function connect(properties) {
 
 	socket.addEventListener("open", () => {
 		geneatree.socketState = SOCKET_STATE_CONNECTED
-		geneatree.emit("log", { type: Log.TYPE.INFO, message: `Connected to remote` })
+		geneatree.emit("log", { type: Log.TYPE.INFO, message: `Connected to remote persistence layer` })
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message: "[persistence:socket] Connected" })
 	})
 
@@ -79,8 +79,8 @@ function connect(properties) {
 			geneatree.emit("log", { type: Log.TYPE.ERROR, message: `Disconnected from remote` })
 			geneatree.emit("osdSet", { text: "Disconnected from remote", type: "info" })
 		} else if(geneatree.socketState === SOCKET_STATE_CONNECTING) {
-			geneatree.emit("log", { type: Log.TYPE.ERROR, message: `Failed to connect to remote` })
-			geneatree.emit("osdSet", { text: "Failed to connect to remote",  type: "error" })
+			geneatree.emit("log", { type: Log.TYPE.ERROR, message: `Failed to connect to remote persistence layer` })
+			geneatree.emit("osdSet", { text: "Failed to connect to remote persistence layer",  type: "error" })
 		}
 	})
 

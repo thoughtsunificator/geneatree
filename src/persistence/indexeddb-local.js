@@ -20,7 +20,7 @@ export default properties => {
 
 	const worker = new IndexeDBWorker()
 
-	geneatree.emit("osdSet", { text: "Connecting to local...", type: "info" })
+	geneatree.emit("osdSet", { text: "Connecting to local persistence layer...", type: "info" })
 
 	geneatree.emit("log" , { type: Log.TYPE.DEBUG, message: "[persistence:indexeddb-local] Module Loaded" })
 
@@ -43,7 +43,7 @@ export default properties => {
 		LocalIndividuals(properties_)
 		LocalNotes(properties_)
 		LocalRelationship(properties_)
-		geneatree.emit("osdSet", { text: "Connected to local", type: "valid" })
+		geneatree.emit("osdSet", { text: "Connected to local persistence layer", type: "valid" })
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message : `[persistence:indexeddb-local] data retrieved...` } )
 		const trees = data.trees.map(tree => {
 			tree.individuals = data.individuals.filter(individual => individual.tree.toString() === tree.id.toString())
