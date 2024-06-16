@@ -2,6 +2,21 @@
 
 Family tree maker.
 
-For the back-end see [geneatree-server](https://github.com/thoughtsunificator/geneatree-server).
+Features :
+
+- No server required (multilayer persistence)
+- Lightweight and minimalist UI 
+- Interfaces with GEDCOM
+- No dependencies
 
 ## Getting started
+
+- npm start
+
+## Persistence
+
+- LocalStorage (Client side settings)
+- IndexedDB (Client side storage)
+- MongoDB (Server side storage) 
+> See [geneatree-server](https://github.com/thoughtsunificator/geneatree-server).
+
