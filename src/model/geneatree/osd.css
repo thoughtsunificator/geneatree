@@ -1,5 +1,5 @@
 #osd {
-	position: absolute;
+	position: fixed;
 	right: var(--SIZE_XS);
 	top: var(--SIZE_XS);
 	z-index: 1;
