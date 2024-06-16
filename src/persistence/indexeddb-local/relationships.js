@@ -11,10 +11,9 @@ export default properties => {
 	 * We set the offlineId accordingly
 	 */
 	listeners.push({ query: "relationshipAdded", callback: data => {
-		// const tree = geneatree.trees.list.find(tree => tree.individuals.find(individual => individual.offlineId === data.individual))
-		// const individual = tree.individuals.find(individual => individual.offlineId === data.individual)
-		// const note = individual.notes.find(note => note.id === data.id)
-		// note.offlineId = data.offlineId
+		const tree = geneatree.trees.list.find(tree => tree.relationships.find(relationship => relationship.offlineId === data.relationship))
+		const relationship = tree.relationships.find(relationship => relationship.offlineId === data.relationship)
+		relationship.offlineId = data.offlineId
 	}})
 
 	/**
@@ -22,7 +21,10 @@ export default properties => {
 	 * Notify local persistence
 	 */
 	geneatree.trees.listen("relationshipAdded", data => {
-		console.log("relationshipAdded", data)
+		if(data.offlineId === -1 && data.networkId === -1) {
+			console.log({ id: data.id, type: data.type, relationshipIndividual1: data.relationshipIndividual1, relationshipIndividual2: data.relationshipIndividual2, meta: data.meta })
+			worker.postMessage({ query: "relationshipAdd", data: { id: data.id, type: data.type, relationshipIndividual1: {}, relationshipIndividual2: {}, meta: data.meta } })
+		}
 	})
 
 }

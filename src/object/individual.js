@@ -4,6 +4,7 @@ import Persistable from "./persistable.js"
 
 /**
  * @global
+ * A person
  */
 class Individual extends Persistable {
 
@@ -36,6 +37,9 @@ class Individual extends Persistable {
 			...meta
 		}
 		this._cell = null
+		/**
+		 * @type {Note[]}
+		 */
 		this._notes = []
 		this._nextNoteId = 0
 	}

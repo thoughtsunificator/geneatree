@@ -2,6 +2,7 @@ import Persistable from "./persistable.js"
 
 /**
  * @global
+ * An individual and its role in a given relationship
  */
 class RelationshipIndividual extends Persistable {
 

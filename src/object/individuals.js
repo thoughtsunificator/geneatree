@@ -4,6 +4,7 @@ import { Grid } from "@thoughtsunificator/grid"
 
 /**
  * @global
+ * Observable collection of Individual
  */
 class Individuals extends Observable {
 

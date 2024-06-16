@@ -5,12 +5,10 @@ import Tree from "./tree.js"
 
 /**
  * @global
+ * Observable collection of Tree
  */
 class Trees extends Observable {
 
-	/**
-	 * @param {[type]} list
-	 */
 	constructor() {
 		super()
 		this._list = []

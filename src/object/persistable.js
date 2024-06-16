@@ -2,6 +2,7 @@ import { Observable } from 'domodel'
 
 /**
  * @global
+ * A persistable is an observable that has both a network and offline ID
  */
 class Persistable extends Observable {
 
@@ -43,6 +44,8 @@ class Persistable extends Observable {
 	set offlineId(offlineId) {
 		this._offlineId = offlineId
 	}
+
+	// TODO serialize/deserialize
 
 }
 

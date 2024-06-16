@@ -6,6 +6,7 @@ import Persistable from "./persistable.js"
 
 /**
  * @global
+ * A genealogy tree with individuals and relationships
  */
 class Tree extends Persistable {
 

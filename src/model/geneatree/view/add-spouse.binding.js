@@ -31,7 +31,7 @@ class AddSpouseBinding extends Binding {
 			const relationshipIndividual1 = new RelationshipIndividual(individual, RelationshipIndividual.ROLES.SPOUSE)
 			const relationshipIndividual2 = new RelationshipIndividual(newIndividual, RelationshipIndividual.ROLES.SPOUSE)
 
-			const relationship = tree.addRelationship(Relationship.TYPES.UNION.MARRIAGE, relationshipIndividual1, relationshipIndividual2)
+			const relationship = tree.addRelationship(Relationship.TYPES.MARRIAGE, relationshipIndividual1, relationshipIndividual2)
 			relationship.meta.startDate = steps.getStepByName("Relationship").data.relationDate
 			relationship.meta.place = steps.getStepByName("Relationship").data.relationPlace
 

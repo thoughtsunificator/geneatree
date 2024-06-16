@@ -38,9 +38,13 @@ import Trees from "./trees.js"
 
 /**
  * @global
+ * Application object
  */
 class Geneatree extends Observable {
 
+	/**
+	 * Default application settings
+	 */
 	static SETTINGS = {
 		offline: false,
 		minimap: true,

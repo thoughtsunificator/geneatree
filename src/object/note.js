@@ -2,6 +2,7 @@ import Persistable from "./persistable.js"
 
 /**
  * @global
+ * An individual can have notes
  */
 class Note extends Persistable {
 
