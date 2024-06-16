@@ -7,6 +7,8 @@ Feature :
 
 ## Local
 
+These are responsible for the offline persistence of the application state.
+
 ### LocalStorage
 
 This is where application settings are stored.
