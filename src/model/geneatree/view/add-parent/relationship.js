@@ -23,7 +23,7 @@ export default FormModel({
 						},
 						{
 							tagName: "span",
-							textContent: `Cet enfant reconnu`
+							textContent: `The child is recognized`
 						}
 					]
 				}
@@ -43,7 +43,7 @@ export default FormModel({
 						},
 						{
 							tagName: "span",
-							textContent: `Cet enfant adopté`
+							textContent: `The child is adopted`
 						}
 					]
 				}

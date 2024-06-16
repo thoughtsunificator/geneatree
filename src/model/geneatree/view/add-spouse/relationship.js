@@ -18,7 +18,7 @@ export default FormModel({
 			children: [
 				{
 					tagName: "option",
-					textContent: "Sélectionner un type d'union",
+					textContent: "Type",
 					value: ""
 				},
 				...Object.keys(Relationship.TYPES).map((key) => ({

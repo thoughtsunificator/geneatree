@@ -5,13 +5,13 @@ export default data => ({
         {
             tagName: "button",
             identifier: "export",
-            textContent: "Exporter"
+            textContent: "Export"
         },
         {
             tagName: "button",
             className: "button-danger",
             identifier: "delete",
-            textContent: "Supprimer"
+            textContent: "Delete"
         }
     ]
 })

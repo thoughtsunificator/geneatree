@@ -50,7 +50,7 @@ export default data => ({
 							tagName: "button",
 							identifier: "exportButton",
 							className: "button4",
-							textContent: "Exporter"
+							textContent: "Export"
 						}
 					]
 				}
@@ -60,7 +60,7 @@ export default data => ({
 			tagName: "div",
 			style: "display: none",
 			identifier: "placeholder",
-			textContent: "Aucun log n'a pu être trouvé."
+			textContent: "No log were found for this query."
 		},
 		{
 			tagName: "div",

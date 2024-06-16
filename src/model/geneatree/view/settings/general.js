@@ -23,12 +23,12 @@ export default data => FormModel({
 								{
 									tagName: "option",
 									value: true,
-									textContent: "Activée"
+									textContent: "Enabled"
 								},
 								{
 									tagName: "option",
 									value: false,
-									textContent: "Désactivée"
+									textContent: "Disabled"
 								}
 							]
 						}

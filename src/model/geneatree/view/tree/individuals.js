@@ -7,7 +7,7 @@ export default {
 			tagName: "h3",
 			className: "title",
 			identifier: "title",
-			textContent: `Liste des individus`
+			textContent: `Individuals`
 		},
 		{
 			tagName: "div",
@@ -16,13 +16,13 @@ export default {
 				{
 					tagName: "input",
 					identifier: "searchInput",
-					placeholder: "Filtrer les individus",
+					placeholder: "Filter individuals",
 				},
 				{
 					tagName: "div",
 					style: "display: none; text-align: center;",
 					identifier: "placeholder",
-					textContent: "Aucun résultats."
+					textContent: "No individuals were found for this query."
 				},
 				{
 					tagName: "div",

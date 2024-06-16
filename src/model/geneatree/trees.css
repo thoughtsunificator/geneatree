@@ -11,6 +11,7 @@
 	border-image: initial;
 	z-index: 2;
 	grid-template-rows: auto auto 1fr;
+	border-top: 0;
 }
 
 #trees .logo {

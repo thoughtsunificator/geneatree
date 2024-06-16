@@ -71,7 +71,7 @@ class Individual extends Persistable {
 		return this.notes.filter(note => note.title.toLowerCase().includes(lowerCaseInput)
 			|| note.author.toLowerCase().includes(lowerCaseInput)
 			|| note.content.toLowerCase().includes(lowerCaseInput)
-			|| new Intl.DateTimeFormat("fr-FR").format(note.date).includes(lowerCaseInput))
+			|| new Intl.DateTimeFormat("en-US").format(note.date).includes(lowerCaseInput))
 	}
 
 	/**

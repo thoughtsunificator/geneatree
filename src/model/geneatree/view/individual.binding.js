@@ -26,9 +26,9 @@ export default class extends Binding {
 		const { geneatree } = this.properties
 
 		const tabs = new Tabs([
-			new Tab("Editer", IndividualModel, IndividualBinding),
+			new Tab("Edit", IndividualModel, IndividualBinding),
 			new Tab("Notes", NotesModel, NotesBinding),
-			new Tab("Relations", RelationshipsModel, RelationshipsBinding),
+			new Tab("Relationships", RelationshipsModel, RelationshipsBinding),
 			new Tab("Actions", ActionsModel(this.properties.individual), ActionsBinding)
 		])
 
@@ -38,7 +38,7 @@ export default class extends Binding {
 
 		this.run(TabsModel, { binding: new TabsBinding({ tabs }) })
 
-		tabs.emit("tabSet", "Editer")
+		tabs.emit("tabSet", "Edit")
 
 	}
 

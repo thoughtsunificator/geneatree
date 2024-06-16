@@ -19,7 +19,7 @@ export default data => ({
 		},
 		{
 			tagName: "div",
-			textContent: ` ${data.note.date.toLocaleDateString("fr-FR", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`
+			textContent: ` ${data.note.date.toLocaleDateString("en-US", { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}`
 		},
 		{
 			tagName: "div",
@@ -27,7 +27,7 @@ export default data => ({
 			children: [
 				{
 					tagName: "button",
-					textContent: "Editer",
+					textContent: "Edit",
 					className: "button4",
 					identifier: "edit"
 				},

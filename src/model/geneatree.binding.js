@@ -4,7 +4,7 @@ import { Router, Route, RouterModel, RouterBinding } from "@domodel/router"
 import GeneatreeEventListener from "./geneatree.event.js"
 
 export const THEMES = [
-	"white",
+	"classic",
 	"pattern",
 	"dark"
 ]
@@ -46,7 +46,7 @@ class GeneatreeBinding extends Binding {
 				this.identifier.router.classList.add("viewer")
 			} else {
 				if(geneatree.trees.selected) {
-					geneatree.trees.emit("unselect", geneatree.trees.selected)	
+					geneatree.trees.emit("unselect", geneatree.trees.selected)
 				}
 				this.identifier.router.classList.remove("viewer")
 			}
@@ -55,7 +55,7 @@ class GeneatreeBinding extends Binding {
 		this.listen(geneatree.explorer, "dragStarted", () => {
 			this.root.style.userSelect = "none"
 		})
-			
+
 		this.listen(geneatree.explorer, "dragEnded", () => {
 			this.root.style.userSelect = ""
 		})

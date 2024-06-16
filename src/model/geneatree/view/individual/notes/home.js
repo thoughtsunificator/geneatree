@@ -14,7 +14,7 @@ export default data => ({
                     tagName: "div",
                     style: "display: none",
                     identifier: "placeholder",
-                    textContent: "No notes were found."
+                    textContent: "No notes were found for this query."
                 },
                 {
                     tagName: "div",

@@ -87,25 +87,25 @@ export default data => ({
 									children: [
 										{
 											tagName: "option",
-											textContent: "Inconnu",
+											textContent: "N/A",
 											value: "unknown"
 										},
 										{
 											tagName: "option",
 											value: "man",
 											style: "background-color: lightblue",
-											textContent: "Homme"
+											textContent: "Man"
 										},
 										{
 											tagName: "option",
 											value: "woman",
 											style: "background-color: pink",
-											textContent: "Femme"
+											textContent: "Woman"
 										},
 										{
 											tagName: "option",
 											value: "other",
-											textContent: "Autre"
+											textContent: "Other"
 										}
 									]
 								}

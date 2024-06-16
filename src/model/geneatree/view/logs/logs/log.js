@@ -10,7 +10,7 @@ export default data => ({
 		{
 			tagName: "span",
 			title: data.log.date,
-			textContent: `${data.log.date.toLocaleTimeString('fr-FR')}:${data.log.date.getMilliseconds()} ${data.log.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'numeric' })}`
+			textContent: `${data.log.date.toLocaleTimeString('en-US')}:${data.log.date.getMilliseconds()} ${data.log.date.toLocaleDateString('fr-FR', { day: 'numeric', month: 'numeric' })}`
 		},
 		{
 			tagName: "span",

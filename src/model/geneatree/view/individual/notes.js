@@ -6,7 +6,7 @@ export default {
 		{
 			tagName: "h3",
 			identifier: "title",
-			textContent: `Liste des notes`
+			textContent: `Notes`
 		},
 		{
 			tagName: "div",

@@ -24,7 +24,7 @@ export default data => ({
 					className: "button-danger",
 					identifier: "delete",
 					disabled: data.meta.decujus,
-					textContent: "Supprimer"
+					textContent: "Delete"
 				}
 			]
 		}

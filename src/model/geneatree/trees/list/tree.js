@@ -18,7 +18,7 @@ export default data => ({
 			tagName: "button",
 			identifier: "editButton",
 			className: "edit-icon",
-			title: "Editer",
+			title: "Edit",
 			textContent: "📝"
 		}
 	]

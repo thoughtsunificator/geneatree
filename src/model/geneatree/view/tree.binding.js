@@ -22,14 +22,14 @@ export default class extends Binding {
 
 		this.individualForm = new Form()
 		const tabs = new Tabs([
-			new Tab("Editer", TreeModel, TreeBinding),
-			new Tab("Individus", IndividualsModel, IndividualsBinding),
+			new Tab("Edit", TreeModel, TreeBinding),
+			new Tab("Individuals", IndividualsModel, IndividualsBinding),
 			new Tab("Actions", ActionsModel, ActionsBinding)
 		])
 
 		this.run(TabsModel, { binding: new TabsBinding({ tabs }) })
 
-		tabs.emit("tabSet", "Editer")
+		tabs.emit("tabSet", "Edit")
 
 	}
 
