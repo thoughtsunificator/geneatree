@@ -1,9 +1,9 @@
 import { Core, Binding } from 'domodel'
 
 export default class extends Binding {
-    
+
     onCreated() {
-    
+
         const { geneatree, router, tree } = this.properties
 
 		this.identifier.export.addEventListener("click", () => {
@@ -11,8 +11,8 @@ export default class extends Binding {
 		})
 		this.identifier.delete.addEventListener("click", () => {
 			geneatree.trees.emit("remove", tree)
-		    geneatree.emit("osdSet", { text: "Tree removed", type: "valid" })
+		    geneatree.emit("osdSet", { text: `Tree ${tree.meta.name} removed`, type: "valid" })
 		})
-        
+
     }
 }
