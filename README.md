@@ -1,12 +1,13 @@
 # geneatree
 
-Family tree maker.
+Web-based interactive family tree maker.
 
 Features :
 
 - No server required (multilayer persistence)
+- Works offline
 - Lightweight and minimalist UI 
-- Interfaces with GEDCOM
+- Interface with existing genealogy softwares through data standards such as [GEDCOM](https://www.gedcom.org/gedcom.html)
 - No dependencies
 
 ## Getting started
