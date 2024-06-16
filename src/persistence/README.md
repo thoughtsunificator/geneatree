@@ -25,7 +25,7 @@ The whole point of this persistence is to allow data synchronization between use
 
 ## Events
 
-To create a new type of persistence these are the following events that should be implemented.
+To create a new persistence these are the following events that should be implemented.
 
 ### individualNotesAdd
 
