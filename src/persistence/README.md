@@ -67,3 +67,14 @@ Update a tree
 ### treeRemove
 
 Remove a tree
+
+## Workflow
+
+For both local and remote persistence the workflow basically is :
+
+1. Persistence listen for UI events
+2. UI listen for persistence events
+3. Persistence is notified of an UI event
+  1. Save / update the subject and send back a new ID (offlineId or networkId)
+4. UI is notified of a persistence event
+  1. Save / update the subject in-memory (if we're creating a new object we will set either offlineId or networkId dependeing on the type of persistence)
