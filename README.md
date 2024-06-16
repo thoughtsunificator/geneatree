@@ -33,3 +33,4 @@ There are plenty of great genealogy softwares out there (FamilySearch, geneatiqu
 - MongoDB (Server side storage) 
 > See [geneatree-server](https://github.com/thoughtsunificator/geneatree-server).
 
+For more information see [Persistence](./src/persistence)
