@@ -2,7 +2,16 @@
 
 Web-based interactive family tree maker.
 
-Features :
+## Introduction
+
+There are plenty of great genealogy softwares out there (FamilySearch, geneatique etc..), so why the need to create another one?
+
+1. Most of them are not web based, surely not lightweight and most of all not open-source
+2. They are not interactive enough
+3. They lack support for collaborative work
+4. They lack support for descending genealogy (used by professional genealogists for example)
+
+## Features
 
 - No server required (multilayer persistence)
 - Works offline
