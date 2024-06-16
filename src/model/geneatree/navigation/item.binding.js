@@ -18,8 +18,6 @@ class ItemBinding extends Binding {
 
 		const { path, geneatree } = this.properties
 
-		console.log(this.properties)
-
 		this.listen(geneatree.router, "browse", data => {
 			if(data.path === path) {
 				if(data.osd) {
