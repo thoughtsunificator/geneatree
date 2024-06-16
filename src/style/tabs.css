@@ -1,6 +1,7 @@
 .tabs {
 	display: grid;
 	grid-gap: 15px;
+	grid-auto-rows: max-content;
 }
 
 .tabs .indicators {
@@ -26,6 +27,9 @@
 	border-bottom: 0;
 }
 
+.tabs .tab {
+	padding: 20px;
+}
 
 .tabs .tab:not(.active) {
 	visibility: hidden;

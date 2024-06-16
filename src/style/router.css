@@ -21,10 +21,15 @@
 	display: grid;
 	grid-gap: var(--SIZE_MEDIUM);
 	padding-bottom: 45px;
+	grid-auto-rows: max-content;
 }
 
 .router > * {
 	overflow: auto;
+}
+
+.router > div > .tabs {
+	border: 1px solid #9d8585;
 }
 
 .router input, .router select {
