@@ -28,9 +28,9 @@ class IndividualBinding extends Binding {
 			}
 		})
 
-		this.identifier.addParent.addEventListener("click", () => geneatree.router.emit("browse", { path: "/tree/add-parent", properties: { individual: tree.selectedIndividual } }))
-		this.identifier.addSpouse.addEventListener("click", () => geneatree.router.emit("browse", { path: "/tree/add-spouse", properties: { individual: tree.selectedIndividual } }))
-		this.identifier.addChild.addEventListener("click", () => geneatree.router.emit("browse", { path: "/tree/add-child", properties: { individual: tree.selectedIndividual } }))
+		this.identifier.addParent.addEventListener("click", () => geneatree.router.emit("browse", { path: "/tree/add-parent", properties: { tree: tree, individual: tree.selectedIndividual } }))
+		this.identifier.addSpouse.addEventListener("click", () => geneatree.router.emit("browse", { path: "/tree/add-spouse", properties: { tree: tree, individual: tree.selectedIndividual } }))
+		this.identifier.addChild.addEventListener("click", () => geneatree.router.emit("browse", { path: "/tree/add-child", properties: { tree: tree, individual: tree.selectedIndividual } }))
 
 	}
 
