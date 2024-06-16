@@ -13,7 +13,18 @@ export default data => ({
 						{
 							tagName: "p",
 							style: "text-align: center; color: white; padding: 15px 0;",
-							innerHTML: "Welcome to <b>geneatree</b>"
+							innerHTML: "Welcome to <b>geneatree</b>",
+							children: [
+								{
+									tagName:"p",
+									style: "text-align: center; color: white; padding: 15px 0px;",
+									innerHTML: "Select an existing tree via the sidebar"
+								},
+								{
+									tagName: "p",
+									textContent: "OR"
+								},
+							]
 						},
 						{
 							tagName: "button",
@@ -28,7 +39,7 @@ export default data => ({
 							textContent: "Import existing tree"
 						}
 					]
-				}				
+				}
 			]
 		}
 	]
