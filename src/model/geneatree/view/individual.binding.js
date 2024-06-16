@@ -17,7 +17,7 @@ import RelationshipsBinding from "./individual/relationships.binding.js"
 export default class extends Binding {
 
 	remove() {
-		this.properties.tree.selectedIndividual = null
+		this.properties.individual.tree.selectedIndividual = null
 		super.remove()
 	}
 
