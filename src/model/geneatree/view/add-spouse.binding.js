@@ -35,7 +35,7 @@ class AddSpouseBinding extends Binding {
 			relationship.meta.startDate = steps.getStepByName("Relationship").data.relationDate
 			relationship.meta.place = steps.getStepByName("Relationship").data.relationPlace
 
-			// TODO
+			geneatree.trees.emit("relationshipAdded", relationship)
 		})
 
 		this.run(StepsModel, { binding: new StepsBinding({ steps }) })

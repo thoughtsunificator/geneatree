@@ -36,6 +36,9 @@ class AddChildBinding extends Binding {
 			if (steps.getStepByName("Relationship").data.adopted) {
 				relationship.meta.adoptedType = steps.getStepByName("Relationship").data.adopted_simple ? "simple" : "full"
 			}
+
+			geneatree.trees.emit("relationshipAdded", relationship)
+
 			// TODO
 		})
 

@@ -36,7 +36,7 @@ class AddParentBinding extends Binding {
 			if (steps.getStepByName("Relationship").data.adopted) {
 				relationship.meta.adoptedType = steps.getStepByName("Relationship").data.adopted_simple ? "simple" : "full"
 			}
-			// TODO
+			geneatree.trees.emit("relationshipAdded", relationship)
 		})
 
 		this.run(StepsModel, { binding: new StepsBinding({ steps }) })

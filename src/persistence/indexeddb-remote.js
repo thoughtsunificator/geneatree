@@ -1,8 +1,14 @@
+/**
+ * @module indexeddb-remote
+ * Middleware between IndexedDB persistence layer and UI.
+ * Propagate IndexedDB persistence layer changes to the UI through events
+ */
 // import Log from "../object/log.js"
 import RemoteGeneatree from "./indexeddb-remote/geneatree.js"
 import RemoteTrees from "./indexeddb-remote/trees.js"
 import RemoteIndividuals from "./indexeddb-remote/individuals.js"
 import RemoteNotes from "./indexeddb-remote/notes.js"
+import RemoteRelationships from "./indexeddb-remote/relationships.js"
 
 const _listeners = []
 
@@ -34,6 +40,7 @@ _listeners.push({ query: "load", callback: (data) => {
 		RemoteTrees({ worker: self, listeners: _listeners, database });
 		RemoteIndividuals({  worker: self, listeners: _listeners, database });
 		RemoteNotes({  worker: self, listeners: _listeners, database });
+		RemoteRelationships({  worker: self, listeners: _listeners, database });
 		const transaction = database.transaction(['trees', 'individuals', 'notes'], 'readwrite')
 		const results = new Promise((resolve, reject) => {
 			const results = {}

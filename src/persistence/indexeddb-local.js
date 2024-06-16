@@ -1,8 +1,14 @@
+/**
+ * @module indexeddb-local
+ * Middleware between UI and IndexedDB persistence layer.
+ * Propagate UI actions to the IndexedDB persistence layer through events
+ */
 import { Observable } from "domodel"
 import LocalGeneatree from "./indexeddb-local/geneatree.js"
 import LocalTrees from "./indexeddb-local/trees.js"
 import LocalIndividuals from "./indexeddb-local/individuals.js"
 import LocalNotes from "./indexeddb-local/notes.js"
+import LocalRelationship from "./indexeddb-local/relationships.js"
 
 import IndexeDBWorker from "worker!./indexeddb-remote.js"
 
@@ -19,7 +25,7 @@ export default properties => {
 	geneatree.emit("log" , { type: Log.TYPE.DEBUG, message: "[persistence:indexeddb-local] Module Loaded" })
 
 	const listeners = []
-	
+
 	const properties_ = { ...properties, worker, listeners }
 
 	let dataRetrieved = false
@@ -36,6 +42,7 @@ export default properties => {
 		LocalTrees(properties_)
 		LocalIndividuals(properties_)
 		LocalNotes(properties_)
+		LocalRelationship(properties_)
 		geneatree.emit("osdSet", { text: "Connected to local", type: "valid" })
 		geneatree.emit("log", { type: Log.TYPE.DEBUG, message : `[persistence:indexeddb-local] data retrieved...` } )
 		const trees = data.trees.map(tree => {
@@ -52,10 +59,10 @@ export default properties => {
 		}
 		geneatree.emit("indexedbdbLoaded")
 	}})
-	
+
 	worker.addEventListener("message", event => {
 		const { query, data } = event.data
-		
+
 		geneatree.emit("log" , { type: Log.TYPE.DEBUG, message: `[persistence:indexeddb-local] Received query: ${query}`, data })
 
 		const listeners_ = listeners.filter(listener => listener.query === query)
@@ -73,12 +80,12 @@ export default properties => {
 			geneatree.emit("osdSet", { type: "error", text : `[persistence:indexeddb-local] Unable to retrieve local data` } )
 		}
 	})
-	
+
 	worker.postMessage({
 		query: "load",
 		data: {
-			databaseName: window.INDEXEDDB_DATABASE_NAME, 
-			databaseVersion: window.INDEXEDDB_DATABASE_VERSION 
+			databaseName: window.INDEXEDDB_DATABASE_NAME,
+			databaseVersion: window.INDEXEDDB_DATABASE_VERSION
 		}
 	})
 	geneatree.emit("log", { type: Log.TYPE.DEBUG, message : `[persistence:indexeddb-local] waiting for remote to load...` } )
