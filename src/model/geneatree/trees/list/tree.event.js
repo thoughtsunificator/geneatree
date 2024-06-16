@@ -7,6 +7,7 @@ class TreeEventListener extends EventListener {
 
 	select() {
 		this.root.classList.add("active")
+		this.properties.geneatree.emit("osdSet", { text: `Tree ${this.properties.tree.meta.name} selected`, type: "valid" })
 	}
 
 	unselect() {
