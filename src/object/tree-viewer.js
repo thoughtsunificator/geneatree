@@ -2,6 +2,7 @@ import { Observable } from "domodel"
 
 /**
  * @global
+ * Provide mouse navigation for a given tree
  */
 class TreeViewer extends Observable {
 

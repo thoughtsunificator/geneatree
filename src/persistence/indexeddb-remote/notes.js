@@ -1,3 +1,7 @@
+/**
+ * @module indexeddb-remote/notes
+ * Propagate IndexedDB persistence layer changes related to notes to the UI through events
+ */
 export default properties => {
 
 	const { listeners, database } = properties

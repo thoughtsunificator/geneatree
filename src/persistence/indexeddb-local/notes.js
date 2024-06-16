@@ -1,3 +1,7 @@
+/**
+ * @module indexeddb-local/notes
+ * Propagate UI actions related to notes to the IndexedDB persistence layer through events
+ */
 export default properties => {
 
 	const { geneatree, worker, listeners } = properties

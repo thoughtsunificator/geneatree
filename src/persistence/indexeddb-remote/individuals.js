@@ -1,3 +1,7 @@
+/**
+ * @module indexeddb-remote/individuals
+ * Propagate IndexedDB persistence layer changes related to individuals to the UI through events
+ */
 export default properties => {
 
 	const { listeners, database } = properties

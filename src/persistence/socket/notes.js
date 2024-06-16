@@ -1,3 +1,7 @@
+/**
+ * @module socket/individual
+ * Propagate UI actions related to notes to the Remote persistence layer through events
+ */
 export default properties => {
 
 	const { geneatree, socket, listeners } = properties

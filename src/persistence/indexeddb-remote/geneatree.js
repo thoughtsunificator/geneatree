@@ -1,3 +1,7 @@
+/**
+ * @module indexeddb-remote/geneatree
+ * Propagate IndexedDB persistence layer changes related to the application to the UI through events
+ */
 export default properties => {
 
 	const { listeners, database } = properties

@@ -1,3 +1,8 @@
+/**
+ * @module local-storage
+ * Middleware between UI and LocalStorage persistence layer.
+ * Propagate UI actions to the LocalStorage persistence layer through events
+ */
 import Log from "../object/log.js"
 
 export default properties => {

@@ -1,3 +1,7 @@
+/**
+ * @module indexeddb-local/trees
+ * Propagate UI actions related to trees to the IndexedDB persistence layer through events
+ */
 export default properties => {
 
 	const { geneatree, worker, listeners } = properties

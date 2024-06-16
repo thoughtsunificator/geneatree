@@ -1,3 +1,7 @@
+/**
+ * @module indexeddb-local/individuals
+ * Propagate UI actions related to individuals to the IndexedDB persistence layer through events
+ */
 export default properties => {
 
 	const { geneatree, worker, listeners } = properties

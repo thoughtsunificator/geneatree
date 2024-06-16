@@ -1,3 +1,8 @@
+/**
+ * @module socket
+ * Middleware between UI and Remote persistence layer.
+ * Propagate UI actions to the Remote persistence layer through events
+ */
 import Trees from "./socket/trees.js"
 import Individuals from "./socket/individuals.js"
 import Notes from "./socket/notes.js"
