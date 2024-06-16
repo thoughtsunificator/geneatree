@@ -23,7 +23,13 @@ export default properties => {
 	geneatree.trees.listen("relationshipAdded", data => {
 		if(data.offlineId === -1 && data.networkId === -1) {
 			console.log({ id: data.id, type: data.type, relationshipIndividual1: data.relationshipIndividual1, relationshipIndividual2: data.relationshipIndividual2, meta: data.meta })
-			worker.postMessage({ query: "relationshipAdd", data: { id: data.id, type: data.type, relationshipIndividual1: {}, relationshipIndividual2: {}, meta: data.meta } })
+			worker.postMessage({ query: "relationshipAdd", data: {
+				id: data.id,
+				type: data.type,
+				relationshipIndividual1: { role: data.relationshipIndividual1.role, individual: data.relationshipIndividual1.individual.offlineId },
+				relationshipIndividual2: { role: data.relationshipIndividual2.role, individual: data.relationshipIndividual2.individual.offlineId },
+				meta: data.meta
+			} })
 		}
 	})
 
